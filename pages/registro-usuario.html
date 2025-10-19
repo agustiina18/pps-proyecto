@@ -21,10 +21,14 @@
     </a>
     <img src="../img/logo-miturno.png" alt="Mi Turno Logo" class="logo">
 
-    <form onsubmit="registrarEmpresa(event)" class="login-form" id="registroEmpresaForm">
+    <form onsubmit="registrarUsuario(event)" class="login-form" id="registroUsuarioForm">
       <div class="input-group">
         <input type="text" id="regNombreEmpresa" placeholder="Nombre" required>
       </div>
+		
+	  <div class="input-group">
+		<input type="text" id="regApellido" placeholder="Apellido">
+	  </div>
 
       <div class="input-group">
         <input type="email" id="regEmail" placeholder="Email" required>
@@ -71,7 +75,7 @@
       </p>
     </div>
   </footer>
-  <script src="../js/registro-usuario.js"></script>
+  <script type="module" src="../js/registro-usuario.js"></script>
 </body>
 
 </html>
