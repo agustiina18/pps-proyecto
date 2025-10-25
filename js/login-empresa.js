@@ -1,58 +1,44 @@
-const login = async (event) => {
-    event.preventDefault(); // Evita que la página se recargue
+// js/login-empresa.js
+import { API_URL } from './config.js';
 
-    // Obtiene los valores del formulario
+async function login(event) {
+    event.preventDefault();
+
     const email = document.getElementById('loginEmail').value.trim();
     const password = document.getElementById('loginPassword').value.trim();
 
-    // Valida que los campos no estén vacíos
     if (!email || !password) {
         alert('Por favor, ingresa tu correo electrónico y contraseña.');
-        return; // Detiene la ejecución si los campos están vacíos
+        return;
     }
 
-    // Si los campos están completos, se envianlos datos
-    const loginData = {
-        email: email,
-        password: password
-    };
-    
-    // Integración con el back
     try {
-        const response = await fetch('http://supuestobackdeejemplo-api.com/login', {
+        const response = await fetch(`${API_URL}/api/auth/login`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(loginData)
+            body: JSON.stringify({ email, password })
         });
 
         const result = await response.json();
 
-        // Procesando la respuesta del servidor
         if (response.ok) {
             alert('¡Inicio de sesión exitoso!');
 
-            // Guardar datos en el almacenamiento local
-            localStorage.setItem('isAuthenticated', 'true');
-            localStorage.setItem('userType', result.userType);
+            // Guardar datos en localStorage
             localStorage.setItem('token', result.token);
+            localStorage.setItem('usuario', JSON.stringify(result.usuario));
 
-            // Redirigir al usuario a la página correspondiente
-            if (result.userType === 'empresa') {
-                window.location.href = '/dashboard-empresa.html';
-            } else {
-                window.location.href = '/dashboard-usuario.html';
-            }
-
+            // Redirigir a home de empresa
+            window.location.href = 'home-empresa.html';
         } else {
-            // El inicio de sesión falló
-            // Mostrar un mensaje específico si el servidor lo proporciona
-            alert('Error al iniciar sesión: ' + result.message);
+            alert(`Error al iniciar sesión: ${result.detail || 'Credenciales incorrectas'}`);
         }
-
     } catch (error) {
         console.error('Error de red o del servidor:', error);
-        alert('Hubo un problema de conexión. Por favor, inténtalo de nuevo más tarde.');
+        alert('Hubo un problema de conexión. Por favor, intentá de nuevo más tarde.');
     }
-};
+}
+// Hacer la función global
+window.login = login;

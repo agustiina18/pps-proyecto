@@ -1,30 +1,53 @@
-function registrarUsuario(event) {
+// js/registro-usuario.js
+import { API_URL } from './config.js';
+
+async function registrarUsuario(event) {
   event.preventDefault();
 
-  const nombre = document.getElementById("regNombre").value.trim();
+  const nombre = document.getElementById("regNombreEmpresa").value.trim();
+  const apellido = document.getElementById("regApellido")?.value.trim() || "";
   const email = document.getElementById("regEmail").value.trim();
   const telefono = document.getElementById("regTelefono").value.trim();
   const password = document.getElementById("regPassword").value.trim();
 
-  if ( !nombre || !email || !telefono || !password) {
-    alert("Por favor completá todos los campos.");
+  if (!nombre || !email || !telefono || !password) {
+    alert("Por favor completá todos los campos obligatorios.");
     return;
   }
 
   const usuario = {
     nombre,
+    apellido,
     email,
     telefono,
-    password
+    password,
+    tipo_usuario: "CLIENTE"
   };
- 
-  console.log("Usuario registrado:", usuario);
 
-  let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
-  usuarios.push(usuario);
-  localStorage.setItem("usuarios", JSON.stringify(usuarios));
+  try {
+    const response = await fetch(`${API_URL}/api/auth/register`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(usuario)
+    });
 
-alert("¡Cuenta creada exitosamente!");
+    const result = await response.json();
 
-  document.getElementById("registroUsuarioForm").reset();
+    if (response.ok) {
+      alert("¡Cuenta creada exitosamente!");
+      document.getElementById("registroUsuarioForm").reset();
+      
+      // Redirigir a página de login
+      window.location.href = 'login-usuario.html';
+    } else {
+      alert(`Error: ${result.detail || 'No se pudo crear la cuenta'}`);
+    }
+  } catch (error) {
+    console.error('Error de conexión:', error);
+    alert('No se pudo conectar con el servidor. Verificá que el backend esté corriendo.');
+  }
 }
+// Hacer la función global
+window.registrarUsuario = registrarUsuario;
