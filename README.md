@@ -2,6 +2,8 @@
 
 Este es un proyecto de desarrollo web para un sistema de gestión de turnos.
 
+## Acceso: https://pps-proyecto.vercel.app/
+
 ## Tecnologías Utilizadas
 
 - HTML5
