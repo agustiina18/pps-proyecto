@@ -28,12 +28,20 @@
             </div>
 
             <div class="input-group">
+                <input type="text" id="regCUIT" placeholder="CUIT" required>
+            </div>
+
+            <div class="input-group">
                 <input type="text" id="regRubro" placeholder="Rubro (ej: peluquería, consultorio)" required>
             </div>
 
             <div class="input-group">
                 <label for="regDireccion"></label>
                 <input type="text" id="regDireccion" placeholder="Dirección" required onchange="intentarGeocodificar()">
+            </div>
+
+            <div class="input-group">
+                <input type="text" id="regDatosAdicionales" placeholder="Datos Adicionales">
             </div>
 
             <div id="map-container"
