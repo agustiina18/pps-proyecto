@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Registro de Empresa</title>
+  <title>Registro de Usuario</title>
   <link rel="stylesheet" href="../css/style-global.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,13 +23,21 @@
     </a>
     <img src="../img/logo-miturno.png" alt="Mi Turno Logo" class="logo">
 
-    <form onsubmit="registrarEmpresa(event)" class="login-form" id="registroEmpresaForm">
+    <form onsubmit="registrarUsuario(event)" class="login-form" id="registroUsuarioForm">
       <div class="input-group">
-        <input type="text" id="regNombreEmpresa" placeholder="Nombre" required>
+        <input type="text" id="regNombre" placeholder="Nombre" required>
+      </div>
+
+      <div class="input-group">
+        <input type="text" id="regDni" placeholder="DNI" required>
       </div>
 
       <div class="input-group">
         <input type="email" id="regEmail" placeholder="Email" required>
+      </div>
+
+      <div class="input-group">
+        <input type="text" id="regDireccion" placeholder="Direccion" required>
       </div>
 
       <div class="input-group">
@@ -38,10 +46,6 @@
 
       <div class="input-group">
         <input type="password" id="regPassword" placeholder="Contraseña" required>
-      </div>
-
-      <div class="input-group">
-        <input type="password" id="regRepetirPassword" placeholder="Repetir Contraseña" required>
       </div>
 
       <button type="submit" class="submit-btn">Crear Cuenta</button>
