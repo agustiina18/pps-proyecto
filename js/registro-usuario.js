@@ -14,7 +14,7 @@ function registrarUsuario(event) {
   }
 
   const usuario = {
-    nombre,
+    nombre, 
     dni,
     email,
     direccion,
