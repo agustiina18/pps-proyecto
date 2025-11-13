@@ -15,7 +15,6 @@ body {
     padding: 0;
     text-align: center;
     min-height: 100vh;
-
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -67,7 +66,8 @@ main h2 {
 .botones {
     display: flex;
     justify-content: center;
-    margin-top: 60px;  
+    align-items: center;
+    margin-top: 60px;
     margin-bottom: 60px;
     width: 100%;
 }
@@ -102,22 +102,19 @@ main h2 {
 /* DESCRIPCIÓN */
 .descripcion {
     max-width: 992px;
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
     padding: 20px;
-
+    font-size: 20px;
     background: #000000;
     opacity: 1;
-
     color: #fff;
-    font-family: 'Poppins', sans-serif;
-    font-size: 16px;
     line-height: 1.6;
     text-align: justify;
     border-radius: 10px;
 }
 
-
+/*
 .footer {
     width: 100%;
     margin-top: auto;
@@ -167,7 +164,7 @@ main h2 {
 .footer-bottom i {
     margin-right: 5px;
 }
-
+*
 
 /* Contenedor principal */
 .login-container {
@@ -396,32 +393,33 @@ input::placeholder {
     padding: 5px 10px;
     transition: background-color 0.2s ease;
     border-radius: 5px;
-    
+
 }
 
 /* ======== ESTILOS DEL MENÚ GENERAL DE USUARIO ======== */
 .user-dropdown-content {
-    position: fixed; 
-    top: 0; 
-    left: 0; 
-    width: 250px; 
-    height: 100vh; 
-    
-    transform: translateX(-100%); 
-    transition: transform 0.3s ease-in-out; /* Animación de entrada/salida */
-    
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100vh;
+
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+    /* Animación de entrada/salida */
+
     /* Estilos Visuales */
-    background-color: #7D0000; 
-    box-shadow: 2px 0 5px rgba(0,0,0,0.5); 
-    z-index: 1000; 
-    overflow-y: auto; 
-    padding-top: 60px; 
+    background-color: #7D0000;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    overflow-y: auto;
+    padding-top: 60px;
     text-align: left;
 }
 
 /* Estado Activo de JS */
 .user-dropdown-content.show-user-menu {
-    transform: translateX(0); 
+    transform: translateX(0);
 }
 
 /* Estilos de los enlaces */
@@ -430,14 +428,14 @@ input::placeholder {
     text-decoration: none;
     display: block;
     font-size: 16px;
-    background-color: transparent; 
+    background-color: transparent;
     font-weight: 500;
-     color: white;
+    color: white;
 }
 
 .user-dropdown-content a:hover {
-    background-color: #AC0505; 
-    color: white; 
+    background-color: #AC0505;
+    color: white;
 }
 
 /* Estilo para el campo de búsqueda "busca un servicio o empresa" */
@@ -662,10 +660,161 @@ input::placeholder {
     margin: 0;
 }
 
+/* ESTILOS ESPECÍFICOS PARA PERFIL DE EMPRESA  */
+
+.perfil-main {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px 80px 20px;
+}
+
+.perfil-container {
+    width: 100%;
+    max-width: 800px;
+    background: #D9D9D9;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.perfil-titulo {
+    font-size: 30px;
+    color: #333;
+    margin-bottom: 5px;
+    text-align: left;
+    font-weight: 600;
+}
+
+.perfil-subtitulo {
+    font-size: 20px;
+    color: #666;
+    margin-bottom: 30px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+}
+
+/* --- FOTO DE PERFIL --- */
+.foto-perfil-section {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 40px;
+    padding: 15px 0;
+}
+
+.foto-circulo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: #f2f4f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: 3px solid #b71c1c;
+}
+
+.foto-circulo i.fa-camera {
+    font-size: 40px;
+    color: #aaa;
+}
+
+.foto-circulo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+    /* Inicialmente oculto */
+}
+
+.foto-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.formato-info {
+    font-size: 15px;
+    color: #999;
+    margin-top: 10px;
+}
+
+/* --- FORMULARIO --- */
+.perfil-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.campo-grupo {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.campo-grupo label {
+    font-weight: 500;
+    color: #333;
+    font-size: 14px;
+}
+
+.campo-contenedor {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    padding-right: 10px;
+}
+
+.campo-contenedor input {
+    flex-grow: 1;
+    padding: 12px 15px;
+    border: none;
+    background: transparent;
+    font-size: 16px;
+    color: #333;
+}
+
+.campo-contenedor input:disabled {
+    color: #666;
+    background: #f9f9f9;
+    cursor: default;
+}
+
+.campo-contenedor input:not(:disabled) {
+    background: #fff;
+    border: 1px solid #b71c1c;
+    border-radius: 8px;
+}
+
+.btn-editar {
+    background: none;
+    border: none;
+    color: #b71c1c;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 5px;
+    transition: color 0.2s;
+}
+
+.btn-editar:hover {
+    color: #8c1414;
+}
+
+.btn-actualizar-perfil {
+    align-self: flex-start;
+    margin-top: 20px;
+    width: 200px;
+}
+
 /* Pie de página */
 .footer {
     width: 100%;
-    margin-top: 40px;
+    margin-top: auto;
     text-align: center;
     font-size: 13px;
     color: #333;
@@ -758,7 +907,8 @@ input::placeholder {
     .botones {
         flex-direction: column;
         gap: 15px;
-        width: 80%;
+        width: 90%;
+        margin: 20px auto;
     }
 
     .btn {
@@ -766,6 +916,7 @@ input::placeholder {
         min-width: 0;
         height: 60px;
         line-height: 60px;
+        max-width: 300px;
     }
 
     main h2 {
@@ -783,12 +934,23 @@ input::placeholder {
         /* Ajuste para móvil */
     }
 
+    /* 4. Descripción */
+    .descripcion {
+        width: 90%;
+        padding: 15px;
+        font-size: 14px;
+    }
+
+    .descripcion p {
+        font-size: 14px;
+        text-align: left;
+    }
+
+
     .nav-logo-container {
         position: static;
-        /* Restaura el flujo normal en móvil */
         transform: none;
         order: 1;
-        /* Posiciona el logo después del botón de menú */
         flex-grow: 1;
         text-align: center;
     }
@@ -804,7 +966,6 @@ input::placeholder {
     /* BUSCADOR debajo del título en móvil */
     .search-container {
         order: 3;
-        /* Mueve el buscador a la parte de abajo en móvil */
         width: 90%;
         max-width: 100%;
         margin-top: 15px;
@@ -870,5 +1031,29 @@ input::placeholder {
 
     .feature-card p {
         font-size: 12px;
+    }
+
+    /* PERFIL DE EMPRESA */
+    .perfil-container {
+        padding: 20px;
+    }
+
+    .foto-perfil-section {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .btn-actualizar-perfil {
+        width: 100%;
+    }
+
+    .foto-actions {
+        align-items: center;
+    }
+
+    .perfil-titulo,
+    .perfil-subtitulo {
+        text-align: center;
     }
 }
