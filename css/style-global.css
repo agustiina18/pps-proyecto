@@ -68,11 +68,6 @@ main h2 {
     margin-top: 60px;
     margin-bottom: 60px;
     width: 100%;
-    gap: 20px;
-    margin: 0 auto 50px auto;
-    flex-wrap: wrap;
-    width: 90%;
-    max-width: 850px;
 }
 
 .btn {
@@ -112,13 +107,9 @@ main h2 {
     background: transparent;
     opacity: 1;
     color: #333;
-    background: #000000;
-    opacity: 1;
-    color: #fff;
     line-height: 1.6;
     text-align: justify;
     border-radius: 10px;
- 
 }
 
 .footer {
