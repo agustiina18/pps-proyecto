@@ -5,7 +5,7 @@ const BASE_URL = "http://localhost:8000";
 // Endpoint específico para la autenticación de usuarios/empresas.
 const LOGIN_ENDPOINT = "/auth/login"; 
 // Ruta a la que se redirigirá al usuario tras un login exitoso.
-const HOME_EMPRESA_URL = "../panel-empresa.html"; 
+const HOME_EMPRESA_URL = "../home-empresa.html"; 
 // Clave usada para almacenar el token de sesión en el almacenamiento local del navegador.
 const TOKEN_STORAGE_KEY = 'userToken';
 

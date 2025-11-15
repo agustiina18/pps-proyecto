@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Empresa - MiTurno</title>
+    <link rel="stylesheet" href="../css/style-global.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+    <nav class="main-nav">
+        <button class="menu-toggle-btn">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <div class="nav-logo-container">
+            <a href="../index.html">
+                <img src="../img/logo-miturno2.png" alt="Mi Turno Logo">
+            </a>
+        </div>
+
+        <div class="nav-icons" style="display: flex; align-items: center;">
+            <button class="menu-toggle-btn" style="background-color: transparent; color: white; padding: 5px 10px;">
+                <i class="fas fa-bell"></i>
+            </button>
+
+            <div class="dropdown-menu-container">
+                <button class="menu-toggle-btn profile-dropdown-btn">
+                    <i class="fas fa-user-circle"></i>
+                    <i class="fas fa-caret-down dropdown-arrow"></i>
+
+
+                    <div class="dropdown-content">
+                        <a href="#">Ver perfil</a>
+                        <a href="#">Configurar mi cuenta</a>
+                        <a href="#">Seguridad</a>
+                        <a href="#">Términos y condiciones</a>
+                        <a href="#" class="logout-link">Cerrar sesión</a>
+                    </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="perfil-main">
+        <div class="perfil-container">
+            <h2 class="perfil-titulo">Perfil de Empresa</h2>
+            <p class="perfil-subtitulo">Cambia tu foto de perfil y edita tu información personal.</p>
+
+            <section class="foto-perfil-section">
+                <div class="foto-display-container">
+                    <div class="foto-circulo">
+                        <i class="fas fa-camera"></i>
+                        <img id="imagenPerfilPrevia" src="#" alt="Vista previa" style="display:none;">
+                    </div>
+                </div>
+
+                <div class="foto-actions">
+                    <input type="file" id="inputFotoPerfil" accept="image/png, image/jpeg" style="display:none;">
+
+                    <button type="button" class="btn btn-actualizar-perfil" id="btnCambiarFoto">
+                        Cambiar foto
+                    </button>
+
+                    <p class="formato-info">
+                        <span style="font-style: italic;">JPG o PNG.</span> Tu foto se recortará automáticamente.
+                    </p>
+                </div>
+            </section>
+            <form class="perfil-form" onsubmit="actualizarPerfil(event)">
+
+                <script>
+                    function generarCampo(id, etiqueta, valorInicial) {
+                        return `
+                            <div class="campo-grupo">
+                                <label for="${id}">${etiqueta}</label>
+                                <div class="campo-contenedor">
+                                    <input type="text" id="${id}" value="${valorInicial}" disabled>
+                                    <button type="button" class="btn-editar" data-campo="${id}">
+                                        <i class="fas fa-pencil-alt"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        `;
+                    }
+
+                    // Insertar campos en el formulario
+                    document.write(generarCampo('nombreEmpresa', 'Nombre de Empresa', 'Barbería Central'));
+                    document.write(generarCampo('cuit', 'CUIT', '30-12345678-9'));
+                    document.write(generarCampo('rubro', 'Rubro', 'Peluquería / Barbería'));
+                    document.write(generarCampo('direccion', 'Dirección', 'Av. Corrientes 1353, Bs. As.'));
+                    document.write(generarCampo('datosAdicionales', 'Datos Adicionales', 'Frente a la farmacia principal'));
+                    document.write(generarCampo('telefono', 'Teléfono', '+54 9 11 4444-4444'));
+                    document.write(generarCampo('email', 'Email', 'contacto@barberiacentral.com'));
+                </script>
+
+                <button type="submit" class="btn btn-actualizar-perfil btn-guardar-perfil">
+                    Actualizar Perfil
+                </button>
+            </form>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+            </div>
+            <p>© 2025 MiTurno. Todos los derechos reservados</p>
+        </div>
+        <div class="footer-bottom">
+            <p>
+                <span><i class="fas fa-phone"></i> +54 9 11 4444-4444</span> |
+                <span><i class="fas fa-envelope"></i> miturno@gmail.com</span> |
+                <span><i class="fas fa-map-marker-alt"></i> Av. Corrientes 1353, Bs. As. (Argentina)</span> |
+                <span><i class="fas fa-users"></i> Sobre nosotros</span>
+            </p>
+        </div>
+    </footer>
+    <script src="perfil-empresa.js"></script>
+    <script src="../js/main.js"></script>
+
+</body>
+
+</html>
