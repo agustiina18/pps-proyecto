@@ -64,18 +64,15 @@ main h2 {
 .botones {
     display: flex;
     justify-content: center;
-<<<<<<< HEAD
     align-items: center;
     margin-top: 60px;
     margin-bottom: 60px;
     width: 100%;
-=======
     gap: 20px;
     margin: 0 auto 50px auto;
     flex-wrap: wrap;
     width: 90%;
     max-width: 850px;
->>>>>>> a124bb0bb325146a0278707669fc88b664dc8176
 }
 
 .btn {
@@ -112,25 +109,18 @@ main h2 {
     margin: 0 auto;
     padding: 20px;
     font-size: 20px;
-<<<<<<< HEAD
     background: transparent;
     opacity: 1;
     color: #333;
-=======
     background: #000000;
     opacity: 1;
     color: #fff;
->>>>>>> a124bb0bb325146a0278707669fc88b664dc8176
     line-height: 1.6;
     text-align: justify;
     border-radius: 10px;
  
 }
 
-<<<<<<< HEAD
-=======
-/*
->>>>>>> a124bb0bb325146a0278707669fc88b664dc8176
 .footer {
     width: 100%;
     margin-top: auto;
@@ -938,11 +928,7 @@ input::placeholder {
         min-width: 0;
         height: 100px;
         line-height: 60px;
-<<<<<<< HEAD
         max-width: 300px;
-=======
-     
->>>>>>> a124bb0bb325146a0278707669fc88b664dc8176
     }
 
     main h2 {
@@ -1082,7 +1068,6 @@ input::placeholder {
     .perfil-subtitulo {
         text-align: center;
     }
-<<<<<<< HEAD
 }
 
 /* ======== NUEVO LAYOUT INDEX ======== */
@@ -1403,6 +1388,4 @@ input::placeholder {
     font-size: 16px;
     font-weight: 700;
     cursor: pointer;
-=======
->>>>>>> a124bb0bb325146a0278707669fc88b664dc8176
 }
