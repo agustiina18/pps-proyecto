@@ -11,33 +11,52 @@
 </head>
 
 <body>
-  <header>
-    <img src="img/logo-miturno.png" alt="MiTurno Logo">
-  </header>
+  <div class="index-layout">
+    <section class="left-section">
+      <img src="img/logo-miturno.png" alt="MiTurno Logo" class="index-logo">
 
-  <main>
-    <h2>Bienvenido a <span class="resaltado">MiTurno</span>.</h2>
+      <h2>Bienvenido a <span class="resaltado">MiTurno</span>.</h2>
 
-    <section class="descripcion">
-      <p>
-        Nuestra aplicación es un sistema de <b>gestión de turnos</b>online pensado para
-        <b>empresas de cualquier rubro</b> (peluquerías, talleres, consultorios, gimnasios, etc.)
-        y sus clientes.
-        El objetivo es digitalizar el proceso de reserva de turnos,
-        <b>evitar llamadas telefónicas</b> y facilitar la
-        <b>comunicación entre clientes y empresas</b>.
-      </p>
-      <p>
-        El app permite a los usuarios (clientes) registrarse, buscar empresas por categoría, ver la disponibilidad
-        de horarios y reservar turnos de manera simple.
-        Por otro lado, las empresas pueden registrarse, administrar sus horarios, servicios y turnos recibidos, además de comunicarse
-        directamente con los clientes.
-      </p>
+      <div class="descripcion">
+        <p>
+          Nuestra aplicación es un sistema de <b>gestión de turnos online</b> pensado para
+          <b>empresas de cualquier rubro</b> (peluquerías, talleres, consultorios, gimnasios, etc.)
+          y sus clientes.
+          El objetivo es digitalizar el proceso de reserva de turnos,
+          <b>evitar llamadas telefónicas</b> y facilitar la
+          <b>comunicación entre clientes y empresas</b>.
+        </p>
+        <p>
+          La app permite a los usuarios (clientes) registrarse, buscar empresas por categoría, ver la disponibilidad
+          de horarios y reservar turnos de manera simple.
+          Por otro lado, las empresas pueden registrarse, administrar sus horarios, servicios y turnos recibidos, además
+          de comunicarse directamente con los clientes.
+        </p>
+      </div>
     </section>
-  </main>
 
-  <div class="botones">
-      <a href="login/login-usuario.html" class="btn">Iniciar Sesión</a>
+    <section class="right-section">
+      <div class="login-box">
+        <form action="login/login-usuario.html" method="get" class="login-form">
+          <div class="input-group">
+            <input type="email" placeholder="Email" required>
+          </div>
+          <div class="input-group">
+            <input type="password" placeholder="Contraseña" required>
+          </div>
+          <button type="submit" class="submit-btn">Iniciar Sesión</button>
+
+          <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
+          <button type="button" class="google-login-btn">
+            <span>Entrar con</span>
+            <img src="img/icono-google.png" alt="Google Icon">
+          </button>
+
+          <p class="register-text">¿No tenés cuenta? <a href="registro.html">Registrate</a></p>
+          <a href="registro.html" class="create-account-btn">Crea una cuenta</a>
+        </form>
+      </div>
+    </section>
   </div>
 
   <footer class="footer">
@@ -51,7 +70,6 @@
     </div>
     <div class="footer-bottom">
       <p>
-        <span><i class="contact"></i>Atención al cliente:</span>
         <span><i class="fas fa-phone"></i> +54 9 11 4444-4444</span> |
         <span><i class="fas fa-envelope"></i> miturno.pps.443@gmail.com</span> |
         <span><i class="fas fa-map-marker-alt"></i> Av. Corrientes 1353, Bs. As. (Argentina)</span> |
