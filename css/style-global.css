@@ -1380,3 +1380,11 @@ input::placeholder {
     font-weight: 700;
     cursor: pointer;
 }
+
+/* Centrado exclusivo para la página registro-usuario */
+body.registro-page .login-container {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

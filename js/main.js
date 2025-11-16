@@ -93,3 +93,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 });
+
+document.getElementById("loginBtn").addEventListener("click", function (e) {
+    e.preventDefault(); 
+    window.location.href = "home-usuario.html";
+});
