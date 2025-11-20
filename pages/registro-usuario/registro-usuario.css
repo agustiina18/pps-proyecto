@@ -48,17 +48,28 @@
 #form-registro {
     display: flex !important;
     flex-direction: column !important;
-    gap: 1.5rem; /* Aumento del gap para más espacio vertical */
+    gap: 1.5rem; /
     width: 100%;
 }
 
+/* ESTILOS DE DOS COLUMNAS */
+.form-row-2col {
+    display: flex;
+    gap: 1.5rem; 
+    width: 100%;
+}
+
+.form-row-2col input {
+    width: 50% !important; 
+}
+
 /* Inputs ocupan todo el ancho del card */
-#form-registro input {
+#form-registro > input {
     width: 100% !important;
 }
 
 #card-registro {
-    max-width: 550px !important; /* Aumentado a 550px para un look más amplio */
+    max-width: 550px !important; /
     width: 100%;
     padding: 3.5rem; 
     margin: 0 auto;
@@ -84,7 +95,7 @@
 .btn-rojo {
     background: var(--rojo);
     color: white;
-    padding: 1.2rem; /* Más padding en el botón */
+    padding: 1.2rem; 
     border-radius: 15px;
     font-size: 20px;
     font-weight: 600;
@@ -155,9 +166,7 @@
     justify-content: center;
 }
 
-/* =========================================
-   RESPONSIVE
-========================================= */
+/* RESPONSIVE*/
 @media (max-width: 992px) {
     #card-registro {
         max-width: 500px !important; 
@@ -173,6 +182,14 @@
 }
 
 @media (max-width: 600px) {
+    .form-row-2col {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    .form-row-2col input {
+        width: 100% !important; 
+    }
+
 #card-registro {
         width: 95%;
         padding: 1.8rem;
