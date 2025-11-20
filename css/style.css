@@ -1,404 +1,229 @@
-/* ======== RESET ======== */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+:root {
+    --rojo: #AC0505;
+    --gris-fondo: #ECF0F1;
+    --gris-input: #E5E5E5;
+    --gris-card: #D9D9D9;
 }
 
-body {
-  background: #f2f4f5;
-  color: #333;
-  font-family: 'Poppins', sans-serif;
-  text-align: center;
-  position: relative;
-  height: 100vh;
+#body {
+    font-family: "Poppins", sans-serif;
+    background: var(--gris-fondo);
+    padding: 2rem;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
-/* ======== HEADER / LOGO ======== */
-header {
-  display: flex; /* Añadir */
-  justify-content: center; /* Añadir */
-  padding-top: 50px; /* Ajusta el espacio superior */
+#main.horizontal {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: auto;
+    gap: 3rem;
 }
 
-header img { /* Selector más simple para el <img> */
-  width: 583px;
-  height: 211px;
-  /* Eliminar position, top, y left */
+#info {
+    width: 50%;
 }
 
-.logo span {
-  color: #9d0d0d;
-  font-weight: 800;
-  font-style: italic;
+#logo {
+    width: 450px;
+    margin-bottom: 12px;
 }
 
-/* ======== TITULO PRINCIPAL ======== */
-main h2 {
-  position: absolute;
-  width: 869px;
-  height: 54px;
-  top: 351px;
-  left: 526px;
-  
-  font-family: 'Poppins', sans-serif;
-  font-weight: 500;
-  font-style: italic;
-  font-size: 36px;
-  line-height: 100%;
-  letter-spacing: 0;
-  text-align: center;
-  color: #333;
-
-  text-shadow: 0px 4px 4px rgba(0,0,0,0.25);
+#titulo {
+    font-size: 42px;
+    color: #333;
+    font-weight: 600;
 }
 
-.resaltado {
-  font-weight: 800;
-  font-style: italic;
-  color: #b71c1c;
+#titulo span {
+    color: var(--rojo);
+    font-weight: 700;
 }
 
-/* ======== BOTONES ======== */
-.botones {
-  display: flex;
-  justify-content: center; /* Centra horizontalmente */
-  gap: 30px; /* Espacio entre los botones */
-  margin-top: 30px; /* Espacio después del título */
-  margin-bottom: 50px;
+#descripcion {
+    max-width: 900px;
+    margin-top: 1rem;
+    text-align: justify;
+    line-height: 1.7;
 }
 
-.btn {
-  width: 384.45px;
-  height: 99px;
-  line-height: 99px;
-  text-align: center;
-
-  background: #ac0505;
-  color: #fff;
-  font-family: 'Poppins', sans-serif;
-  font-size: 20px;
-  font-weight: 700;
-
-  border: none;
-  border-radius: 15px;
-  text-decoration: none;
-  cursor: pointer;
-
-  /* sombra */
-  box-shadow: 5px 5px 7px rgba(0,0,0,0.25);
-
-  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+#formulario {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.btn:hover {
-  opacity: 0.9;
-  transform: scale(1.02);
+#card {
+    background: var(--gris-card);
+    padding: 3rem;
+    border-radius: 25px;
+    width: 100%;
+    max-width: 450px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
 }
 
-
-/* ======== DESCRIPCIÓN ======== */
-.descripcion {
-  position: absolute;
-  width: 992px;
-  height: 270px;
-  top: 621px;
-  left: 448px;
-
-  background: #000000;
-  opacity: 1;
-
-  color: #fff;
-  font-family: 'Poppins', sans-serif;
-  font-size: 16px;
-  line-height: 1.6;
-  text-align: justify;
-  padding: 20px;
-  border-radius: 10px;
+.sombra {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.20);
 }
 
-/* ======== FOOTER ======== */
-footer {
-  position: absolute;
-  width: 812px;
-  height: 71px;
-  top: 1002px;
-  left: 554px;
-
-  opacity: 1;
-  background: #f2f4f5;
-  color: #555;
-  font-family: 'Poppins', sans-serif;
-  font-size: 14px;
-  line-height: 71px;
-  text-align: center;
-
-  border-top: 1px solid #ccc;
+/* Contenedor del formulario de login*/
+#form-login {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
-/* ======== BOTÓN HOME ======== */
-.home-btn {
-  position: absolute;
-  width: 96px;
-  height: 96px;
-  top: 30px;
-  left: 30px;
+#correo,
+#clave {
+    background: var(--gris-input);
+    border: none;
+    padding: 1rem;
+    border-radius: 15px;
+    font-size: 18px;
+    font-weight: bold;
+
 }
 
-.home-btn img {
-  width: 100%;
-  height: 100%;
+.btn-rojo {
+    background: var(--rojo);
+    color: white;
+    padding: 1rem;
+    font-weight: bold;
+
+    border-radius: 15px;
+    font-size: 18px;
+    font-weight: 600;
+    transition: 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-/* ======== LOGIN CONTAINER ======== */
-.login-container {
-  position: relative;
-  top: 40px;
-  text-align: center;
-  font-family: 'Poppins', sans-serif;
+.btn-rojo:hover {
+    background: #920303;
+    transform: translateY(-2px);
 }
 
-/* LOGO */
-.logo {
-  position: absolute;
-  width: 383px;
-  height: 138px;
-  top: 41px;
-  left: 769px;
-  font-size: 3rem;
-  font-weight: 800;
-  color: #b71c1c;
+.btn-borde {
+    padding: 1rem;
+    border-radius: 15px;
+    font-weight: bold;
+
+    border: 2px solid var(--rojo);
+    background: var(--gris-card);
+    color: var(--rojo);
+    font-size: 18px;
+    transition: 0.2s ease;
 }
 
-/* FORM */
-.form-login {
-  position: absolute;
-  top: 270px;
-  left: 780px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+.btn-borde:hover {
+    background: var(--rojo);
+    color: white;
+    transform: translateY(-2px);
 }
 
-.form-login input {
-  width: 360px;
-  height: 75px;
-  padding: 0 15px;
-  border: 1px solid #c5c5c5;
-  border-radius: 15px;
-  font-size: 1rem;
-  outline: none;
+#olvide {
+    color: var(--rojo);
+    text-align: center;
+    font-size: 16px;
+    margin-top: -15px;
 }
 
-/* BOTÓN LOGIN */
-.btn-login {
-  width: 360px;
-  height: 75px;
-  background: #b71c1c;
-  color: #fff;
-  border-radius: 15px;
-  border: none;
-  font-size: 1.1rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: opacity 0.3s ease-out;
+#registro {
+    text-align: center;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
-.btn-login:hover {
-  opacity: 0.9;
+#footer {
+    margin-top: auto;
+    padding-top: 3rem;
+    text-align: center;
+    font-size: 15px;
 }
 
-/* OLVIDASTE TU CONTRASEÑA */
-.link-forgot {
-  position: absolute;
-  width: 261px;
-  height: 30px;
-  top: 591px;
-  left: 830px;
-  font-size: 0.9rem;
-  color: #ac0505;
-  text-decoration: none;
+#social {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    font-size: 20px;
 }
 
-.link-forgot:hover {
-  text-decoration: underline;
+#contacto {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    font-size: 15px;
 }
 
-/* BOTÓN GOOGLE */
-.btn-google {
-  position: absolute;
-  top: 661px;
-  left: 862px;
-  width: 195px;
-  height: 54px;
+/* === RESPONSIVE COMPLETO === */
+@media (max-width: 1200px) {
+    #main.horizontal {
+        gap: 2.5rem;
+    }
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-
-  padding: 10px;
-  background: #fff;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 1rem;
-  font-weight: 500;
-  cursor: pointer;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    #titulo {
+        font-size: 36px;
+    }
 }
 
-.btn-google img {
-  width: 20px;
-  height: 20px;
+@media (max-width: 992px) {
+    #main.horizontal {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        text-align: center;
+        margin-top: 2rem;
+        gap: 3rem;
+    }
+
+    #info,
+    #formulario {
+        width: 95%;
+    }
+
+    #logo {
+        margin: auto;
+    }
+
+    #descripcion {
+        max-width: 90%;
+        margin: auto;
+        text-align: center;
+    }
+
+    #card {
+        margin: auto;
+    }
 }
 
-/* REGISTRO */
-.link-register {
-  position: absolute;
-  width: 300px;
-  height: 30px;
-  top: 764px;
-  left: 810px;
-  font-size: 0.9rem;
-}
+@media (max-width: 600px) {
+    #main.horizontal {
+        margin-top: 1rem;
+        gap: 2rem;
+    }
 
-.link-register a {
-  color: #ac0505;
-  font-weight: bold;
-  text-decoration: none;
-}
+    #titulo {
+        font-size: 30px;
+    }
 
-.link-register a:hover {
-  text-decoration: underline;
-}
+    #logo {
+        width: 250px;
+    }
 
-/* CREA UNA CUENTA */
-.btn-outline {
-  position: absolute;
-  top: 802px;
-  left: 780px;
-  width: 360px;
-  height: 75px;
-
-  background: transparent;
-  border: 3px solid #ac0505;
-  color: #ac0505;
-  border-radius: 15px;
-  font-weight: bold;
-  font-size: 1rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  transition: 0.3s ease-out;
-}
-
-.btn-outline:hover {
-  background: #ac0505;
-  color: #fff;
-}
-
-/* ======== BOTÓN GOOGLE ======== */
-.btn-google {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 10px;
-  background: #fff;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 1rem;
-  cursor: pointer;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-}
-
-.btn-google img {
-  width: 20px;
-  height: 20px;
-}
-
-/* ======== BOTÓN OUTLINE ======== */
-.btn-outline {
-  padding: 12px;
-  background: transparent;
-  border: 3px solid #b71c1c;
-  color: #b71c1c;
-  font-weight: bold;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.btn-outline:hover {
-  background: #b71c1c;
-  color: #fff;
-}
-
-/* ======== ÉXITO CONTAINERS ======== */
-.exito-container {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  text-align: center;
-  font-family: 'Poppins', sans-serif;
-  background: #f5f7f8;
-}
-
-.icono-exito {
-  position: absolute;
-  width: 220.64px;
-  height: 220.64px;
-  top: 133px;
-  left: 850px;
-  border-radius: 30px;
-  background: #fff;
-  color: #ac0505;
-  font-size: 120px;
-  line-height: 220px;
-  text-align: center;
-  font-weight: bold;
-}
-
-.titulo-exito {
-  position: absolute;
-  width: 563px;
-  height: 37px;
-  top: 421px;
-  left: 678px;
-  font-family: 'Poppins', sans-serif;
-  font-size: 32px;
-  font-weight: 700;
-  color: #ac0505;
-  line-height: 100%;
-  margin: 0;
-}
-
-.mensaje-exito {
-  position: absolute;
-  width: 563px;
-  height: 49px;
-  top: 515px;
-  left: 678px;
-  font-size: 28px;
-  font-weight: 400;
-  color: #454545;
-  line-height: 100%;
-  margin: 0;
-  text-align: center;
-}
-
-.logo-mini {
-  position: absolute;
-  width: 196px;
-  height: 71px;
-  top: 996px;
-  left: 862px;
-  font-size: 2rem;
-  font-weight: 700;
-  color: #b71c1c;
-}
-.logo-mini span {
-  color: #000;
+    #card {
+        width: 100%;
+        padding: 1.5rem;
+    }
 }

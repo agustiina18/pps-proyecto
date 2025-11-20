@@ -1,0 +1,200 @@
+:root {
+    --rojo: #AC0505;
+    --gris-fondo: #ECF0F1;
+    --gris-input: #FFFFFF;
+    --sombra: rgba(0, 0, 0, 0.18);
+}
+
+/* Body */
+#body {
+    font-family: "Poppins", sans-serif;
+    background: var(--gris-fondo);
+    padding: 2rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* HOME ICONO*/
+#icono-home {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    transition: 0.2s ease;
+}
+#icono-home img {
+    width: 80px;
+    height: 80px;
+}
+#icono-home:hover {
+    transform: scale(1.05);
+}
+
+/*main*/
+#main-registro {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#logo-registro {
+    width: 380px;
+   
+}
+
+/*Formulario de registro*/
+#form-registro {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.5rem; /* Aumento del gap para más espacio vertical */
+    width: 100%;
+}
+
+/* Inputs ocupan todo el ancho del card */
+#form-registro input {
+    width: 100% !important;
+}
+
+#card-registro {
+    max-width: 550px !important; /* Aumentado a 550px para un look más amplio */
+    width: 100%;
+    padding: 3.5rem; 
+    margin: 0 auto;
+
+}
+
+/*inputs*/
+.sombra-input {
+    background: var(--gris-input);
+    border: none;
+    padding: 1.2rem 1.5rem; 
+    border-radius: 15px;
+    font-size: 20px;
+    outline: none;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+}
+.sombra-input::placeholder {
+    color: #777;
+    font-weight: 500;
+}
+
+/*botones*/
+.btn-rojo {
+    background: var(--rojo);
+    color: white;
+    padding: 1.2rem; /* Más padding en el botón */
+    border-radius: 15px;
+    font-size: 20px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+    transition: 0.25s ease;
+}
+.btn-rojo:hover {
+    transform: translateY(-3px);
+    background: #920303;
+}
+
+.btn-borde {
+    padding: 1.2rem;
+    border-radius: 15px;
+    border: 2px solid var(--rojo);
+    background: transparent;
+    font-size: 18px;
+    color: var(--rojo);
+    transition: 0.25s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1); 
+}
+.btn-borde:hover {
+    background: var(--rojo);
+    color: white;
+}
+
+#ya-tienes-cuenta {
+    text-align: center;
+    font-size: 16px;
+    color: #444;
+    margin-top: 1rem; 
+    margin-bottom: 0.5rem; 
+}
+#ya-tienes-cuenta a {
+    color: var(--rojo);
+    font-weight: 600;
+}
+
+#btn-iniciar-sesion {
+    display: block;
+    width: 100%;
+    max-width: 250px; 
+    margin: 0.5rem auto 0 auto;
+}
+
+/* Footer */
+#footer {
+    margin-top: auto;
+    text-align: center;
+    padding-top: 2rem;
+    font-size: 15px;
+}
+
+#social {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    font-size: 22px;
+}
+
+#contacto {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+@media (max-width: 992px) {
+    #card-registro {
+        max-width: 500px !important; 
+    }
+#icono-home {
+        top: 1.5rem; 
+        left: 1.5rem;
+    }
+    #logo-registro {
+        width: 350px;
+        margin-top: 1rem; 
+    }
+}
+
+@media (max-width: 600px) {
+#card-registro {
+        width: 95%;
+        padding: 1.8rem;
+        max-width: 100% !important;
+    }
+    
+    #icono-home {
+        top: 1rem;
+        left: 1rem;
+    }
+    #icono-home img {
+        width: 45px;
+        height: 45px;
+    }
+    
+    #logo-registro {
+        width: 280px;
+        margin-bottom: 2rem;
+        margin-top: 4rem;
+    }
+
+    #btn-iniciar-sesion {
+        max-width: 100%;
+    }
+}

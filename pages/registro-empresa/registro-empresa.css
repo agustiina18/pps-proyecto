@@ -1,0 +1,394 @@
+:root{
+    --rojo: #AC0505;
+    --gris-fondo: #ECF0F1;
+    --gris-input: #FFFFFF;
+    --sombra: rgba(0, 0, 0, 0.18);
+}
+
+/*body*/
+#body {
+    font-family: "Poppins", sans-serif;
+    background: var(--gris-fondo);
+    padding: 2rem; 
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/*icono home*/
+#icono-home {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    transition: 0.2s ease;
+}
+#icono-home img {
+    width: 80px; 
+    height: 80px;
+}
+#icono-home:hover {
+    transform: scale(1.05);
+}
+
+/*main*/
+#main-registro {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 0; 
+}
+
+#logo-registro {
+    width: 380px; 
+}
+
+/*Formulario*/
+#form-registro {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.2rem; 
+    width: 100%;
+}
+
+/* Contenedor de dos columnas */
+.form-row-2col {
+    display: flex;
+    gap: 1rem; 
+    width: 100%;
+}
+
+/* Inputs dentro de las filas de 2 columnas */
+.form-row-2col input {
+    width: 50% !important; 
+    margin-right: 0 !important;
+}
+
+/* Inputs y botones ocupan todo el ancho del card */
+#form-registro input {
+    padding: 1.2rem 1.5rem;
+    font-size: 20px; 
+}
+
+#card-registro {
+    max-width: 700px !important; 
+    width: 100%;
+    padding: 3rem; 
+    margin: 0 auto;
+    background: var(--gris-fondo); 
+}
+
+/*inputs*/
+.sombra-input {
+    background: var(--gris-input);
+    border: none;
+    border-radius: 15px;
+    outline: none;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+}
+.sombra-input::placeholder {
+    color: #777;
+    font-weight: 500;
+}
+
+/*Botones*/
+.btn-rojo {
+    background: var(--rojo);
+    color: white;
+    padding: 1.2rem;
+    border-radius: 15px;
+    font-size: 20px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+    transition: 0.25s ease;
+    margin-top: 1rem; 
+}
+.btn-rojo:hover {
+    transform: translateY(-3px);
+    background: #920303;
+}
+
+.btn-borde {
+    padding: 1.2rem;
+    border-radius: 15px;
+    border: 2px solid var(--rojo);
+    background: transparent;
+    font-size: 18px;
+    color: var(--rojo);
+    transition: 0.25s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1); 
+}
+.btn-borde:hover {
+    background: var(--rojo);
+    color: white;
+}
+
+
+/*footer*/
+#footer {
+    margin-top: auto; 
+    padding-top: 1.5rem; 
+    padding-bottom: 1rem;
+    text-align: center;
+    font-size: 15px;
+}
+
+#social {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    font-size: 22px;
+}
+
+#contacto {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+
+#copyright {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/*logo*/
+#logo-input-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0; 
+    position: relative;
+    height: 60px; 
+    line-height: 60px; 
+    overflow: hidden; 
+}
+
+#logo-placeholder {
+    color: #777; 
+    font-weight: 500;
+    font-size: 20px;
+    padding-left: 1.5rem; 
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    flex-grow: 1; 
+}
+
+.btn-subir-logo-v2 {
+    background: var(--rojo);
+    color: white;
+    padding: 0 1.5rem;
+    height: 100%; 
+    border: none;
+    border-radius: 0 15px 15px 0; 
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: none; 
+    transition: filter 0.25s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-subir-logo-v2:hover {
+    filter: brightness(1.05);
+}
+
+
+/*MODAL*/
+.modal-overlay {
+    display: none; 
+    position: fixed;
+    z-index: 1000; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6); 
+    backdrop-filter: blur(2px);
+    transition: opacity 0.3s ease;
+}
+
+.modal-content {
+    background-color: var(--gris-input);
+    margin: 15% auto; 
+    padding: 2rem; 
+    border-radius: 20px;
+    width: 90%; 
+    max-width: 450px; 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    animation: fadeIn 0.3s;
+}
+
+.modal-header {
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+}
+
+#modal-titulo {
+    font-size: 24px;
+}
+
+#modal-mensaje {
+    font-size: 18px;
+}
+
+.modal-footer {
+    padding-top: 1.5rem;
+}
+
+.modal-footer .btn-rojo {
+    padding: 0.8rem 2rem;
+    font-size: 18px; 
+    margin-top: 0; 
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Clases para estados */
+.modal-success #modal-titulo {
+    color: #28a745; 
+}
+
+.modal-error #modal-titulo {
+    color: #dc3545; 
+}
+
+/* =========================================
+   ESTILOS ESPECÍFICOS DEL MAPA
+========================================= */
+#map-container {
+    /* Sobreescribe el padding del sombra-input para contener el mapa */
+    padding: 1rem; 
+    /* Asegura que el contenedor del mapa use el color de fondo y sombra de input */
+    background: var(--gris-input); 
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    border-radius: 15px;
+}
+
+.map-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.8rem;
+}
+
+#map {
+    /* Altura fija para el mapa */
+    height: 300px; 
+    /* Asegura que el mapa dentro del contenedor tenga bordes redondeados (opcional) */
+    border-radius: 8px; 
+}
+
+.coords-display {
+    text-align: center;
+    margin-top: 0.8rem;
+    font-weight: 500;
+    font-size: 16px;
+    color: #444;
+}
+
+/* Colores para las coordenadas */
+#lat-display, #lng-display {
+    color: var(--rojo); 
+}
+
+
+/*Responsive*/
+/* Ajustes para resoluciones altas (Desktop 1200px+) */
+@media (min-width: 1200px) {
+    #logo-registro {
+        width: 380px; 
+    }
+    #card-registro {
+        max-width: 1000px !important; 
+    }
+    .sombra-input {
+        font-size: 20px;
+        padding: 1.2rem 1.5rem;
+    }
+}
+
+/* Responsive para tabletas/pantallas medianas (992px) */
+@media (max-width: 992px) {
+    #card-registro {
+        max-width: 600px !important;
+        padding: 2.5rem;
+    }
+    #logo-registro {
+        width: 350px;
+    }
+    #icono-home img {
+        width: 70px;
+        height: 70px;
+    }
+}
+
+/* Responsive para móviles (600px) */
+@media (max-width: 600px) {
+    #body {
+        padding: 1rem;
+    }
+    #icono-home {
+        top: 1rem;
+        left: 1rem;
+    }
+    #icono-home img {
+        width: 45px;
+        height: 45px;
+    }
+    #card-registro {
+        padding: 1.5rem;
+    }
+    #logo-registro {
+        width: 250px;
+        margin-top: 3rem; 
+    }
+    
+    .form-row-2col {
+        flex-direction: column;
+        gap: 0;
+    }
+    .form-row-2col input {
+        width: 100% !important;
+    }
+    
+    .sombra-input {
+        padding: 1rem;
+        font-size: 16px;
+    }
+    .btn-rojo {
+        font-size: 18px;
+        padding: 1rem;
+    }
+    
+    #logo-input-container {
+        height: auto;
+        line-height: normal;
+    }
+    #logo-placeholder {
+        padding: 1rem;
+        font-size: 16px;
+    }
+    .btn-subir-logo-v2 {
+        height: 50px;
+        font-size: 16px;
+    }
+    #footer {
+        font-size: 12px;
+    }
+
+    #map {
+        height: 200px; /* Menos alto en móvil */
+    }
+}

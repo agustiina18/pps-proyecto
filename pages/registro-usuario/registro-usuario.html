@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MiTurno - Registro</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../registro-usuario/registro-usuario.css" /> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body id="body">
+
+    <a href="/index.html" id="icono-home">
+        <img src="../../img/home.png" alt="Inicio" />
+    </a>
+    
+    <main id="main-registro">
+        
+        <img id="logo-registro" src="../../img/logo-miturno.png" alt="MiTurno logo" />
+        
+        <section id="formulario-registro">
+            <div id="card-registro">
+                
+                <form id="form-registro" onsubmit="registrarUsuario(event)">
+                    <input type="text" id="nombre" placeholder="Nombre" required class="sombra-input">
+                    <input type="text" id="dni" placeholder="DNI" required class="sombra-input">
+                    <input type="email" id="email" placeholder="Email" required class="sombra-input">
+                    <input type="text" id="direccion" placeholder="Dirección" required class="sombra-input"> 
+                    <input type="tel" id="telefono" placeholder="Teléfono" required class="sombra-input">
+                    <input type="password" id="clave" placeholder="Contraseña" required class="sombra-input">
+                    
+                    <button id="btn-registro" class="btn-rojo" type="submit">Crear Cuenta</button>
+                </form>
+
+                <p id="ya-tienes-cuenta">Ya tienes cuenta, <a href="../../index.html">Inicia sesión</a></p>
+                
+                <button id="btn-iniciar-sesion" class="btn-borde" onclick="window.location.href='./index.html'">Iniciar Sesión</button>
+                
+            </div>
+        </section>
+
+    </main>
+
+    <footer id="footer">
+        <div id="social">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-tiktok"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+        </div>
+
+        <p id="copyright">© 2025 MiTurno. Todos los derechos reservados.</p>
+
+        <div id="contacto">
+            <span><i class="fas fa-phone"></i> +54 9 11 4444-4444</span>
+            <span><i class="fas fa-envelope"></i> miturno@gmail.com</span>
+            <span><i class="fas fa-map-marker-alt"></i> Av. Corrientes 1353, Bs. As.</span>
+            <span><i class="fas fa-users"></i> Sobre nosotros</span>
+        </div>
+    </footer>
+
+    <script src="../registro-usuario/script-registro.js"></script> 
+</body>
+</html>

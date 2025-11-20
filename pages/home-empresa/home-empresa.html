@@ -5,37 +5,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home - MiTurno</title>
-    <link rel="stylesheet" href="../css/style-global.css">
+    <link rel="stylesheet" href="../../css/style-global.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="icon" type="favicon" href="../favicon.ico">
+  <link rel="icon" type="favicon" href="../../favicon.ico">
+</head>
 
 <body>
 
     <nav class="main-nav">
-        <div class="user-menu-container">
-            <button class="menu-toggle-btn user-menu-dropdown-btn">
-                <i class="fas fa-bars"></i>
-            </button>
-
-            <div class="user-dropdown-content">
-                <a href="#">Mis Turnos</a>
-                <a href="#">Categorías</a>
-                <a href="#">Contacto</a>
-                <a href="#">Configuración</a>
-            </div>
-        </div>
+        <button class="menu-toggle-btn">
+            <i class="fas fa-bars"></i>
+        </button>
 
         <div class="nav-logo-container">
-            <a href="../index.html">
-                <img src="../img/logo-miturno2.png" alt="Mi Turno Logo">
+            <a href="../../index.html">
+                <img src="../../img/logo-miturno2.png" alt="Mi Turno Logo">
             </a>
         </div>
 
         <div class="nav-icons" style="display: flex; align-items: center;">
-            <button class="menu-toggle-btn">
+            <button class="menu-toggle-btn" style="background-color: transparent; color: white; padding: 5px 10px;">
                 <i class="fas fa-bell"></i>
             </button>
 
@@ -43,19 +35,19 @@
                 <button class="menu-toggle-btn profile-dropdown-btn">
                     <i class="fas fa-user-circle"></i>
                     <i class="fas fa-caret-down dropdown-arrow"></i>
-                </button>
 
-                <div class="dropdown-content">
-                    <a href="../registro-empresa/registro-empresa.html">Crear Perfil de Empresa</a>
-                    <a href="#">Ver perfil</a>
-                    <a href="#">Configurar mi cuenta</a>
-                    <a href="#">Seguridad</a>
-                    <a href="#">Términos y condiciones</a>
-                    <a href="#" class="logout-link">Cerrar sesión</a>
-                </div>
+
+                    <div class="dropdown-content">
+                        <a href="../home-empresa/perfil-empresa.html">Ver perfil</a>
+                        <a href="../home-empresa/perfil-empresa.html">Configurar mi cuenta</a>
+                        <a href="#">Seguridad</a>
+                        <a href="#">Términos y condiciones</a>
+                        <a href="#" class="logout-link">Cerrar sesión</a>
+                    </div>
             </div>
         </div>
     </nav>
+
 
     <main>
         <h2 class="home-title" style="margin-bottom: 20px;">Qué servicio necesitas hoy?</h2>
@@ -70,70 +62,70 @@
             <a href="#" class="category-item">
                 <span>Salud</span>
                 <div class="category-icon">
-                    <img src="../img/Frame 9.png" alt="Icono Salud">
+                    <img src="../../img/Frame 9.png" alt="Icono Salud">
                 </div>
             </a>
 
             <a href="#" class="category-item">
                 <span>Cuidado Personal</span>
                 <div class="category-icon">
-                    <img src="../img/Frame 10.png" alt="Icono Cuidado Personal">
+                    <img src="../../img/Frame 10.png" alt="Icono Cuidado Personal">
                 </div>
             </a>
 
             <a href="#" class="category-item">
                 <span>Automotriz / Mecánica</span>
                 <div class="category-icon">
-                    <img src="../img/Frame 11.png" alt="Icono Automotriz / Mecánica">
+                    <img src="../../img/Frame 11.png" alt="Icono Automotriz / Mecánica">
                 </div>
             </a>
 
             <a href="#" class="category-item">
                 <span>Mascotas</span>
                 <div class="category-icon">
-                    <img src="../img/Frame 12.png" alt="Icono Mascotas">
+                    <img src="../../img/Frame 12.png" alt="Icono Mascotas">
                 </div>
             </a>
 
             <a href="#" class="category-item">
                 <span>Hogar</span>
                 <div class="category-icon">
-                    <img src="../img/Frame 13.png" alt="Icono Hogar">
+                    <img src="../../img/Frame 13.png" alt="Icono Hogar">
                 </div>
             </a>
 
             <a href="#" class="category-item">
                 <span>Educación</span>
                 <div class="category-icon">
-                    <img src="../img/Frame 18.png" alt="Icono Educación">
+                    <img src="../../img/Frame 18.png" alt="Icono Educación">
                 </div>
             </a>
 
             <a href="#" class="category-item">
                 <span>Deporte</span>
                 <div class="category-icon">
-                    <img src="../img/Frame 17.png" alt="Icono Deporte">
+                    <img src="../../img/Frame 17.png" alt="Icono Deporte">
                 </div>
             </a>
 
             <a href="#" class="category-item">
                 <span>Gastronomía</span>
                 <div class="category-icon">
-                    <img src="../img/Frame 16.png" alt="Icono Gastronomía">
+                    <img src="../../img/Frame 16.png" alt="Icono Gastronomía">
                 </div>
             </a>
 
             <a href="#" class="category-item">
                 <span>Entretenimiento</span>
                 <div class="category-icon">
-                    <img src="../img/Frame 15.png" alt="Icono Entretenimiento">
+                    <img src="../../img/Frame 15.png" alt="Icono Entretenimiento">
                 </div>
             </a>
 
             <a href="#" class="category-item">
                 <span>Tecnología</span>
                 <div class="category-icon">
-                    <img src="../img/Frame 14.png" alt="Icono Tecnología">
+                    <img src="../../img/Frame 14.png" alt="Icono Tecnología">
                 </div>
             </a>
         </section>
@@ -201,8 +193,7 @@
             </p>
         </div>
     </footer>
-    <script src="../js/main.js"></script>
-    <script src="../js/home.js"></script>
+    <script src="../../js/main.js"></script>
 
 </body>
 

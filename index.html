@@ -1,84 +1,76 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mi Turno</title>
-  <link rel="stylesheet" href="css/style-global.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="icon" type="favicon" href="favicon.ico">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MiTurno - Inicio</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="icon" type="favicon" href="./favicon.ico">
 </head>
+<body id="body">
 
-<body>
-  <div class="index-layout">
-    <section class="left-section">
-      <img src="img/logo-miturno.png" alt="MiTurno Logo" class="index-logo">
+    <header id="header"></header>
 
-      <h2>Bienvenido a <span class="resaltado">MiTurno</span>.</h2>
+    <main id="main" class="horizontal">
 
-      <div class="descripcion">
-        <p>
-          Nuestra aplicación es un sistema de <b>gestión de turnos online</b> pensado para
-          <b>empresas de cualquier rubro</b> (peluquerías, talleres, consultorios, gimnasios, etc.)
-          y sus clientes.
-          El objetivo es digitalizar el proceso de reserva de turnos,
-          <b>evitar llamadas telefónicas</b> y facilitar la
-          <b>comunicación entre clientes y empresas</b>.
-        </p>
-        <p>
-          La app permite a los usuarios (clientes) registrarse, buscar empresas por categoría, ver la disponibilidad
-          de horarios y reservar turnos de manera simple.
-          Por otro lado, las empresas pueden registrarse, administrar sus horarios, servicios y turnos recibidos, además
-          de comunicarse directamente con los clientes.
-        </p>
-      </div>
-    </section>
+        <section id="info">
+            <img id="logo" src="./img/logo-miturno.png" alt="MiTurno logo" />
 
-    <section class="right-section">
-      <div class="login-box">
-        <form action="home-usuario.html" method="get" class="login-form">
-          <div class="input-group">
-            <input type="email" placeholder="Email" required>
-          </div>
-          <div class="input-group">
-            <input type="password" placeholder="Contraseña" required>
-          </div>
-          <button type="submit" id="loginBtn" class="submit-btn">Iniciar Sesión</button>
+            <h2 id="titulo">Bienvenido a <span>MiTurno</span>.</h2>
 
-          <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
-          <button type="button" class="google-login-btn">
-            <span>Entrar con</span>
-            <img src="img/icono-google.png" alt="Google Icon">
-          </button>
+            <div id="descripcion">
+                <p>
+                    Nuestra aplicación es un sistema de <strong>gestión de turnos online</strong> pensado para empresas de cualquier rubro y sus clientes. El objetivo es digitalizar el proceso de reserva de turnos, evitar llamadas telefónicas y facilitar la comunicación entre clientes y empresas.
+                </p>
+                <p>
+                    La app permite a los usuarios registrarse, buscar empresas, ver la disponibilidad de horarios y reservar turnos de manera simple.
+                </p>
+            </div>
+        </section>
 
-          <p class="register-text">¿No tenés cuenta? <a href="registro/registro-usuario.html">Registrate</a></p>
-          <a href="registro/registro-usuario.html" class="create-account-btn">Crea una cuenta</a>
-        </form>
-      </div>
-    </section>
-  </div>
-        
-  <footer class="footer">
-    <div class="footer-top">
-      <div class="social-icons">
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-tiktok"></i></a>
-        <a href="#"><i class="fab fa-facebook"></i></a>
-      </div>
-      <p>© 2025 MiTurno. Todos los derechos reservados</p>
-    </div>
-    <div class="footer-bottom">
-      <p>
-        <span><i class="fas fa-phone"></i> +54 9 11 4444-4444</span> |
-        <span><i class="fas fa-envelope"></i> miturno.pps.443@gmail.com</span> |
-        <span><i class="fas fa-map-marker-alt"></i> Av. Corrientes 1353, Bs. As. (Argentina)</span> |
-        <span><i class="fas fa-users"></i> Sobre nosotros</span>
-      </p>
-    </div>
-  </footer>
+        <section id="formulario">
+            <div id="card" class="sombra">
 
-  <script src="js/main.js"></script>
+                <form id="form-login" onsubmit="iniciarSesion(event)">
+                    <input id="correo" type="email" placeholder="Email" required>
+                    <input id="clave" type="password" placeholder="Contraseña" required>
+                    <button id="btn-login" class="btn-rojo" type="submit">Iniciar Sesión</button>
+                </form>
+
+                <a id="olvide" href="#" onclick="olvidoClave(event)">¿Olvidaste tu contraseña?</a>
+
+                <button id="btn-google" class="btn-borde" onclick="entrarConGoogle()">Entrar con Google</button>
+
+                <div id="registro">
+                    <p>¿No tienes cuenta? <a href="./pages/registro-usuario/registro-usuario.html">Regístrate</a></p>
+                    <button id="btn-crear" class="btn-borde" onclick="crearCuenta()">Crea una cuenta</button>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer id="footer">
+        <div id="social">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-tiktok"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+        </div>
+
+        <p id="copyright">© 2025 MiTurno. Todos los derechos reservados.</p>
+
+        <div id="contacto">
+            <span><i class="fas fa-phone"></i> +54 9 11 4444-4444</span>
+            <span><i class="fas fa-envelope"></i> miturno@gmail.com</span>
+            <span><i class="fas fa-map-marker-alt"></i> Av. Corrientes 1353, Bs. As.</span>
+            <span><i class="fas fa-users"></i> Sobre nosotros</span>
+        </div>
+    </footer>
+
+    <script src="./js/script.js"></script>
 </body>
-
 </html>
