@@ -886,7 +886,7 @@ input::placeholder {
 
 @media (min-width: 1025px) {
     * {
-        font-size: revert-layer; /* restaura tamaños grandes por defecto */
+        font-size: revert-layer; 
     }
 }
 
@@ -997,7 +997,7 @@ input::placeholder {
     }
 
 
-    /* FEATURES SECTION */
+    /* FEATURES SECCION */
     .features-section {
         padding: 30px 10px;
     }
@@ -1012,12 +1012,12 @@ input::placeholder {
     }
 
     .cards-container {
-        /* Permite que las tarjetas se apilen o usen 2 columnas */
+        /* 2 columnas */
         gap: 15px;
     }
 
     .feature-card {
-        /* 100% en móvil para que se apilen bien */
+        /* 100% en móvil*/
         width: 90%;
         max-width: 350px;
         margin: 0 auto;
@@ -1061,330 +1061,180 @@ input::placeholder {
     }
 }
 
-/* ======== NUEVO LAYOUT INDEX ======== */
-.index-layout {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 100vh;
-  padding: 0 5%;
-  gap: 40px;
+
+/* ======== ESTILOS ESPECÍFICOS PARA TARJETAS DE TURNO ======== */
+
+.turnos-container {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto 50px auto;
+    display: grid;
+    /* 2 columnas en desktop, se apilan en mobile */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 20px;
 }
 
-.left-section {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: #333;
-  padding-left: 50px;
-
-}
-
-.left-section img {
-  width: 35vw;         /* ocupa el 35% del ancho de la ventana */
-  max-width: 500px;    /* pero no pasa de 500px */
-  min-width: 280px;    /* ni baja de 280px */
-  margin-bottom: 25px;
-}
-
-.left-section h2 {
-  font-family: 'Poppins', sans-serif; /* misma fuente del principio */
-  font-style: italic;
-  font-weight: 500;
-  font-size: 30px;
-  color: #333;
-  margin-bottom: 10px;
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-/* Parte roja del título */
-.left-section h2 .resaltado {
-  font-weight: 800;        /* negrita fuerte */
-  font-style: italic;
-  color: #b71c1c;          /* rojo del diseño */
-}
-
-.left-section p {
-  font-size: 18px;
-  line-height: 1.5;
-  max-width: 500px;
-}
-
-.right-section {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.login-box {
-  background: #e8e8e8;
-  padding: 40px 35px;
-  border-radius: 20px;
-  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
-  width: 350px;
-}
-
-/* ======== RESPONSIVE ======== */
-@media (max-width: 992px) {
-  .index-layout {
+.turno-card {
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+    display: flex;
     flex-direction: column;
-    text-align: center;
-    padding: 40px 20px;
-    height: auto;
-  }
-
-  .left-section {
-    align-items: center;
-    text-align: center;
-  }
-
-  .left-section img {
-    width: 220px;
-  }
-
-  .left-section h2 {
-    font-size: 28px;
-  }
-
-  .left-section p {
-    font-size: 16px;
-  }
-
-  .login-box {
-    padding: 30px;
-  }
+    justify-content: space-between;
 }
 
-/* ======== FORMULARIO LOGIN (DERECHA) ======== */
-
-.right-section {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.turno-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 }
 
-/* Campos de texto */
-.login-form .input-group {
-  width: 100%;
-  margin-bottom: 15px;
+.turno-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 15px;
 }
 
-.login-form input[type="email"],
-.login-form input[type="password"] {
-  width: 100%;
-  height: 48px;
-  border: 1.5px solid #ccc;
-  border-radius: 12px;
-  padding: 0 15px;
-  font-size: 15px;
-  font-family: 'Poppins', sans-serif;
-  background-color: #f9f9f9;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
-  transition: all 0.2s ease-in-out;
+.turno-info h4 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 5px;
+    line-height: 1.2;
 }
 
-.login-form input:focus {
-  border-color: #ac0505;
-  background-color: #fff;
-}
-
-/* Botón principal */
-.submit-btn {
-  width: 100%;
-  height: 50px;
-  background-color: #ac0505;
-  color: #fff;
-  border: none;
-  border-radius: 12px;
-  font-size: 17px;
-  font-weight: 600;
-  margin-top: 10px;
-  cursor: pointer;
-  box-shadow: 0px 4px 6px rgba(172, 5, 5, 0.25);
-  transition: background-color 0.3s ease;
-}
-
-.submit-btn:hover {
-  background-color: #920404;
-}
-
-/* "¿Olvidaste tu contraseña?" */
-.forgot-password {
-  display: block;
-  text-align: center;
-  width: 100%;
-  color: #ac0505;
-  font-size: 14px;
-  font-weight: 500;
-  margin-top: 12px;
-  text-decoration: none;
-  align-self: flex-end;
-}
-
-.forgot-password:hover {
-  text-decoration: underline;
-}
-
-/* Botón Google */
-.google-login-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 50px;
-  margin-top: 15px;
-  background-color: #ffffff;
-  border: 2px solid #ccc;
-  border-radius: 12px;
-  font-size: 16px;
-  font-weight: 500;
-  color: #444;
-  cursor: pointer;
-  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
-  transition: all 0.2s ease-in-out;
-}
-
-.google-login-btn:hover {
-  background-color: #f5f5f5;
-}
-
-.google-login-btn img {
-  width: 24px;
-  height: 24px;
-  margin-left: 8px;
-}
-
-/* Texto de registro */
-.register-text {
-  font-size: 14px;
-  color: #333;
-  margin-top: 18px;
-  font-weight: 500;
-}
-
-.register-text a {
-  color: #ac0505;
-  text-decoration: none;
-  font-weight: 600;
-}
-
-.register-text a:hover {
-  text-decoration: underline;
-}
-
-/* Botón "Crear cuenta" */
-.create-account-btn {
-  width: 100%;
-  height: 48px;
-  line-height: 48px;
-  background-color: transparent;
-  color: #ac0505;
-  border: 2px solid #ac0505;
-  border-radius: 12px;
-  font-size: 16px;
-  font-weight: 600;
-  text-align: center;
-  text-decoration: none;
-  margin-top: 15px;
-  transition: all 0.3s ease;
-}
-
-.create-account-btn:hover {
-  background-color: #ac0505;
-  color: #fff;
-}
-
-/* --- CONTENEDOR DEL FORMULARIO --- */
-.form-container {
-    background-color: #e5e5e5;
-    width: 380px;
-    padding: 35px 40px;
-    border-radius: 20px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-
-/* --- INPUTS --- */
-.form-container input {
-    width: 100%;
-    padding: 14px;
-    border: none;
-    border-radius: 12px;
-    background-color: #ffffff;
-    font-size: 16px;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-    margin-bottom: 4px;
-}
-
-/* --- BOTÓN INICIAR SESIÓN --- */
-.btn-login {
-    width: 100%;
-    background-color: #b00000;
-    color: white;
-    border: none;
-    padding: 14px;
-    border-radius: 10px;
-    font-size: 17px;
-    font-weight: 600;
-    cursor: pointer;
-}
-
-/* --- OLVIDASTE TU CONTRASEÑA --- */
-.forgot-link {
+.turno-info p {
     font-size: 14px;
-    color: #b00000;
-    text-decoration: underline;
-    cursor: pointer;
+    color: #666;
+    margin: 0;
 }
 
-/* --- BOTÓN GOOGLE --- */
-.google-btn {
-    width: 65%;
-    padding: 8px;
-    background-color: white;
-    border: 2px solid #b00000;
-    border-radius: 10px;
-    text-align: center;
-    font-size: 15px;
+.turno-datetime {
+    text-align: right;
     font-weight: 600;
-    cursor: pointer;
+    color: #ac0505;
+}
+
+.turno-datetime .time {
+    font-size: 24px;
+    display: block;
+    margin-bottom: 3px;
+}
+
+.turno-datetime .date {
+    font-size: 14px;
+    font-weight: 500;
+    color: #555;
+}
+
+.turno-footer {
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.turno-direccion {
+    font-size: 14px;
+    color: #ac0505;
+    font-weight: 500;
+    text-decoration: none;
+    transition: text-decoration 0.2s;
+}
+
+.turno-direccion:hover {
+    text-decoration: underline;
+}
+
+/* ESTADOS DE TURNO */
+.turno-estado {
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.estado-confirmado {
+    background-color: #4CAF50; 
+}
+
+.estado-cancelado {
+    background-color: #F44336; 
+}
+
+.estado-cumplido {
+    background-color: #2196F3; 
+}
+
+.estado-no-cumplido {
+    background-color: #FF9800; 
+}
+
+.estado-vencido {
+    background-color: #9E9E9E; 
+}
+
+/* Filtros de botones */
+.filter-buttons {
     display: flex;
     justify-content: center;
-    align-items: center;
-    gap: 8px;
+    gap: 10px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
 }
 
-/* --- REGISTRARSE --- */
-.register-text {
+.filter-btn {
+    background-color: #fff;
+    color: #ac0505;
+    border: 1px solid #ac0505;
+    padding: 8px 15px;
+    border-radius: 20px;
     font-size: 14px;
-}
-
-.register-text span {
-    color: #b00000;
-    font-weight: 600;
-}
-
-/* --- BOTÓN CREAR CUENTA --- */
-.create-btn {
-    width: 90%;
-    padding: 12px;
-    border: 2px solid #b00000;
-    color: #b00000;
-    border-radius: 12px;
-    background-color: white;
-    font-size: 16px;
-    font-weight: 700;
+    font-weight: 500;
     cursor: pointer;
+    transition: all 0.2s;
 }
 
-/* Centrado exclusivo para la página registro-usuario */
-body.registro-page .login-container {
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.filter-btn.active, .filter-btn:hover {
+    background-color: #ac0505;
+    color: #fff;
+}
+
+/* Responsive para la vista de turnos */
+@media (max-width: 600px) {
+    .turnos-container {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 0 10px;
+    }
+    .turno-card {
+        padding: 15px;
+    }
+    .turno-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .turno-datetime {
+        text-align: left;
+        margin-top: 10px;
+    }
+    .turno-datetime .time {
+        font-size: 20px;
+    }
+    .turno-info h4 {
+        font-size: 18px;
+    }
+    .filter-buttons {
+        padding: 0 10px;
+    }
+    .filter-btn {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
 }
