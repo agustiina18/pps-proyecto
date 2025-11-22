@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Usuario - MiTurno</title>
+
+    <link rel="stylesheet" href="../../css/style-global.css">
+    <link rel="stylesheet" href="../../css/perfil-usuario.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="icon" type="favicon" href="../../favicon.ico">
+</head>
+
+<body>
+
+    <nav class="main-nav">
+         <button class="menu-toggle-btn">
+            <i class="fas fa-bars"></i>
+        </button>
+        
+         <button class="btn-empresa" id="btnEmpresa">SOY UNA EMPRESA</button>
+
+        <div class="nav-logo-container">
+            <a href="../../index.html">
+                <img src="../../img/logo-miturno2.png" alt="Mi Turno Logo">
+            </a>
+        </div>
+
+        <div class="nav-icons">
+            <button class="menu-toggle-btn" style="background: transparent; color: white;">
+                <i class="fas fa-bell"></i>
+            </button>
+
+            <div class="dropdown-menu-container">
+                <button class="menu-toggle-btn profile-dropdown-btn">
+                    <i class="fas fa-user-circle"></i>
+                    <i class="fas fa-caret-down dropdown-arrow"></i>
+                </button>
+
+                <div class="dropdown-content">
+                    <a href="#">Ver perfil</a>
+                    <a href="#">Seguridad</a>
+                    <a href="#">Términos y condiciones</a>
+                    <a href="#" class="logout-link">Cerrar sesión</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="perfil-main">
+
+        <!-- COLUMNA + CONTENIDO -->
+        <div class="perfil-container">
+
+        <!-- TITULOS -->
+         <h2 class="perfil-titulo">Perfil</h2>
+         <p class="perfil-subtitulo">
+            Cambia tu foto de perfil y edita tu información personal.
+        </p>
+        
+        <!-- FOTO PERFIL -->
+         <section class="foto-perfil-section">
+
+            <div class="foto-display-container">
+                <div class="foto-circulo">
+                    <img id="imagenPerfilPrevia" src="../../img/user-placeholder.png" alt="Foto de perfil">
+                </div>
+            </div>
+            
+            <div class="foto-actions">
+                <input type="file" id="inputFotoPerfil" accept="image/png, image/jpeg" style="display:none;">
+
+                <button type="button" class="btn btn-actualizar-perfil" id="btnCambiarFoto">
+                    Cambiar foto
+                </button>
+
+                <p class="formato-info">
+                    <span style="font-style: italic;">JPG o PNG.</span>
+                    Tu foto se recortará automáticamente.
+                </p>
+            </div>
+        </section>
+
+        <!-- FORMULARIO USUARIO -->
+         <form class="perfil-form" onsubmit="actualizarPerfilUsuario(event)">
+
+            <!-- NOMBRE -->
+             <div class="campo-grupo">
+                <label>Nombre</label>
+                <div class="campo-contenedor">
+                    <input type="text" id="nombreUsuario" value="EJEMPLO" disabled>
+                    <button type="button" class="btn-editar" data-campo="nombreUsuario">
+                        <i class="fas fa-pencil-alt"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- DNI -->
+             <div class="campo-grupo">
+                <label>DNI</label>
+                <div class="campo-contenedor">
+                    <input type="text" id="dniUsuario" value="EJEMPLO" disabled>
+                    <button type="button" class="btn-editar" data-campo="dniUsuario">
+                        <i class="fas fa-pencil-alt"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- EMAIL -->
+             <div class="campo-grupo">
+                <label>Email</label>
+                <div class="campo-contenedor">
+                    <input type="email" id="emailUsuario" value="EJEMPLO" disabled>
+                    <button type="button" class="btn-editar" data-campo="emailUsuario">
+                        <i class="fas fa-pencil-alt"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- DIRECCIÓN -->
+             <div class="campo-grupo">
+                <label>Dirección</label>
+                <div class="campo-contenedor">
+                    <input type="text" id="direccionUsuario" value="EJEMPLO" disabled>
+                    <button type="button" class="btn-editar" data-campo="direccionUsuario">
+                        <i class="fas fa-pencil-alt"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- TELÉFONO -->
+             <div class="campo-grupo">
+                <label>Teléfono</label>
+                <div class="campo-contenedor">
+                    <input type="text" id="telefonoUsuario" value="EJEMPLO" disabled>
+                    <button type="button" class="btn-editar" data-campo="telefonoUsuario">
+                        <i class="fas fa-pencil-alt"></i>
+                    </button>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-actualizar-perfil btn-guardar-perfil">
+                Actualizar Perfil
+            </button>
+
+        </form>
+    </div>
+</main>
+
+<!-- FOOTER -->
+ <footer class="footer">
+    <div class="footer-top">
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-tiktok"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+        </div>
+        <p>© 2025 MiTurno. Todos los derechos reservados</p>
+    </div>
+
+    <div class="footer-bottom">
+        <p>
+            <span><i class="fas fa-phone"></i> +54 9 11 4444-4444</span> |
+            <span><i class="fas fa-envelope"></i> miturno@gmail.com</span> |
+            <span><i class="fas fa-map-marker-alt"></i> Av. Corrientes 1353, Bs. As.</span> |
+            <span><i class="fas fa-users"></i> Sobre nosotros</span>
+        </p>
+    </div>
+</footer>
+
+<script src="../../js/main.js"></script>
+<script src="../../js/perfil-usuario.js"></script>
+
+</body>
+
+</html>
