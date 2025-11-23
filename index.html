@@ -1,37 +1,41 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MiTurno - Inicio</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/style-index-d.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <link rel="icon" type="favicon" href="./favicon.ico">
 </head>
-<body id="body">
 
-    <header id="header"></header>
+<body id="body">
 
     <main id="main" class="horizontal">
 
         <section id="info">
             <img id="logo" src="./img/logo-miturno.png" alt="MiTurno logo" />
 
-            <h2 id="titulo">Bienvenido a <span>MiTurno</span>.</h2>
-
+            <h1 id="titulo">Bienvenido a <span>MiTurno</span>.</h1>
             <div id="descripcion">
                 <p>
-                    Nuestra aplicación es un sistema de <strong>gestión de turnos online</strong> pensado para empresas de cualquier rubro y sus clientes. El objetivo es digitalizar el proceso de reserva de turnos, evitar llamadas telefónicas y facilitar la comunicación entre clientes y empresas.
+                    Nuestra aplicación es un sistema de <strong>gestión de turnos online</strong> pensado para <strong>
+                        empresas de cualquier rubro</strong> y sus clientes. El objetivo es digitalizar el proceso de
+                    reserva de turnos,
+                    <strong>evitar llamadas telefónicas</strong> y facilitar la <strong>comunicación entre clientes y
+                        empresas.</strong>
                 </p>
-                <p>
-                    La app permite a los usuarios registrarse, buscar empresas, ver la disponibilidad de horarios y reservar turnos de manera simple.
-                </p>
+                <p><br> La app permite a los usuarios (clientes) registrarse, buscar empresas por categoría, ver la
+                    disponibilidad de horarios y reservar turnos de manera simple. Por otro lado, las empresas
+                    pueden registrarse, administrar sus horarios, servicios y turnos recibidos, además de comunicarse
+                    directamente con los clientes. </p>
             </div>
         </section>
 
-        <section id="formulario">
+        <section id="formulario" aria-label="Inicio de Sesión">
             <div id="card" class="sombra">
 
                 <form id="form-login" onsubmit="iniciarSesion(event)">
@@ -40,7 +44,8 @@
                     <button id="btn-login" class="btn-rojo" type="submit">Iniciar Sesión</button>
                 </form>
 
-                <a id="olvide" href="#" onclick="olvidoClave(event)">¿Olvidaste tu contraseña?</a>
+                <a id="olvide" href="./pages/restablecer-password/forgot-password.html"
+                    onclick="olvidoClave(event)">¿Olvidaste tu contraseña?</a>
 
                 <button id="btn-google" class="btn-borde" onclick="entrarConGoogle()">Entrar con Google</button>
 
@@ -56,21 +61,22 @@
 
     <footer id="footer">
         <div id="social">
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-tiktok"></i></a>
-            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.tiktok.com/" target="_blank"><i class="fab fa-tiktok"></i></a>
+            <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook"></i></a>
         </div>
 
         <p id="copyright">© 2025 MiTurno. Todos los derechos reservados.</p>
 
         <div id="contacto">
             <span><i class="fas fa-phone"></i> +54 9 11 4444-4444</span>
-            <span><i class="fas fa-envelope"></i> miturno@gmail.com</span>
+            <span><i class="fas fa-envelope"></i> miturno.pps.443@gmail.com</span>
             <span><i class="fas fa-map-marker-alt"></i> Av. Corrientes 1353, Bs. As.</span>
             <span><i class="fas fa-users"></i> Sobre nosotros</span>
         </div>
     </footer>
 
-    <script src="./js/script.js"></script>
+    <script src="./js/index-d.js"></script>
 </body>
+
 </html>
