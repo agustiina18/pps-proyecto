@@ -1,15 +1,22 @@
+/* AJUSTES GLOBALES PARA CONSISTENCIA Y ELIMINAR SCROLL */
+* {
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0;
+}
+
 :root{
     --rojo: #AC0505;
     --gris-fondo: #ECF0F1;
-    --gris-input: #FFFFFF;
-    --sombra: rgba(0, 0, 0, 0.18);
+    --gris-input: #e5e5e5; /* ¡MODIFICADO! Usamos el gris claro consistente */
+    --sombra: rgba(0, 0, 0, 0.1); /* ¡MODIFICADO! Usamos la sombra sutil consistente */
 }
 
-/*body*/
+/*body (Configuración para Sticky Footer)*/
 #body {
     font-family: "Poppins", sans-serif;
     background: var(--gris-fondo);
-    padding: 2rem; 
+    /* padding: 2rem; <-- ELIMINADO para evitar scroll */
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -23,8 +30,8 @@
     transition: 0.2s ease;
 }
 #icono-home img {
-    width: 80px; 
-    height: 80px;
+    width: 120px; /* ¡AUMENTADO! Mismo tamaño que login/registro */
+    height: 120px; /* ¡AUMENTADO! Mismo tamaño que login/registro */
 }
 #icono-home:hover {
     transform: scale(1.05);
@@ -32,30 +39,31 @@
 
 /*main*/
 #main-registro {
-    flex: 1;
+    flex: 1; /* Ocupa todo el espacio, empujando el footer */
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start; /* ¡MODIFICADO! Alinea el logo en la parte superior */
     align-items: center;
-    min-height: 0; 
+    padding: 20px; /* Padding interno */
 }
 
 #logo-registro {
-    width: 380px; 
+    width: 500px; /* ¡AUMENTADO! Mismo tamaño que login/registro */
+    margin-top: 5rem; /* ¡NUEVO! Misma posición vertical que login/registro */
 }
 
 /*Formulario*/
 #form-registro {
     display: flex !important;
     flex-direction: column !important;
-    gap: 1.2rem; 
+    gap: 1.8rem; /* ¡AUMENTADO! Misma separación que registro */
     width: 100%;
 }
 
 /* Contenedor de dos columnas */
 .form-row-2col {
     display: flex;
-    gap: 1rem; 
+    gap: 1.8rem; /* ¡AUMENTADO! Misma separación que registro */
     width: 100%;
 }
 
@@ -67,38 +75,38 @@
 
 /* Inputs y botones ocupan todo el ancho del card */
 #form-registro input {
-    padding: 1.2rem 1.5rem;
-    font-size: 20px; 
+    padding: 1.8rem 1.8rem; /* ¡AUMENTADO! Mismo padding grande que registro */
+    font-size: 20px; /* Mismo tamaño de fuente grande que registro */
 }
 
 #card-registro {
-    max-width: 700px !important; 
+    max-width: 900px !important; /* ¡AUMENTADO! Mismo ancho grande que registro */
     width: 100%;
-    padding: 3rem; 
+    padding: 4.5rem; /* ¡AUMENTADO! Mismo padding grande que registro */
     margin: 0 auto;
     background: var(--gris-fondo); 
 }
 
 /*inputs*/
 .sombra-input {
-    background: var(--gris-input);
+    background: var(--gris-input); /* Fondo gris claro */
     border: none;
     border-radius: 15px;
     outline: none;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    box-shadow: 0 8px 5px var(--sombra); /* ¡MODIFICADO! Sombra sutil de login/registro */
 }
 .sombra-input::placeholder {
-    color: #777;
-    font-weight: 500;
+    color: #989898; /* ¡MODIFICADO! Color de placeholder de login/registro */
+    font-weight: 600; /* Peso de fuente de placeholder de login/registro */
 }
 
 /*Botones*/
 .btn-rojo {
     background: var(--rojo);
     color: white;
-    padding: 1.2rem;
+    padding: 1.8rem; /* ¡AUMENTADO! Mismo padding grande que registro */
     border-radius: 15px;
-    font-size: 20px;
+    font-size: 20px; /* Mismo tamaño de fuente grande que registro */
     font-weight: 600;
     border: none;
     cursor: pointer;
@@ -112,11 +120,11 @@
 }
 
 .btn-borde {
-    padding: 1.2rem;
+    padding: 1.5rem; /* ¡AUMENTADO! Mismo padding grande que registro */
     border-radius: 15px;
-    border: 2px solid var(--rojo);
+    border: 4px solid var(--rojo); /* ¡AUMENTADO! Mismo borde que registro */
     background: transparent;
-    font-size: 18px;
+    font-size: 20px; /* Mismo tamaño de fuente grande que registro */
     color: var(--rojo);
     transition: 0.25s ease;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1); 
@@ -129,25 +137,24 @@
 
 /*footer*/
 #footer {
-    margin-top: auto; 
-    padding-top: 1.5rem; 
+    padding-top: 2rem; /* Aumento de padding top */
     padding-bottom: 1rem;
     text-align: center;
-    font-size: 15px;
+    font-size: 14px; /* Mismo tamaño de fuente que login/registro */
 }
 
 #social {
     display: flex;
     justify-content: center;
-    gap: 1rem;
-    font-size: 22px;
+    gap: 1.5rem; /* Mismo gap que login/registro */
+    font-size: 20px; /* Mismo tamaño de íconos que login/registro */
 }
 
 #contacto {
     margin-top: 1rem;
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: 1.5rem; /* Mismo gap que login/registro */
     justify-content: center;
 }
 
@@ -156,23 +163,24 @@
     margin-bottom: 0.5rem;
 }
 
-/*logo*/
+/*logo subir archivo*/
 #logo-input-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0; 
     position: relative;
-    height: 60px; 
-    line-height: 60px; 
+    /* Ajustamos la altura para que coincida con los inputs grandes */
+    height: 5.6rem; /* Altura basada en 1.8rem padding + font-size */
+    line-height: 5.6rem; 
     overflow: hidden; 
 }
 
 #logo-placeholder {
-    color: #777; 
-    font-weight: 500;
+    color: #989898; 
+    font-weight: 600;
     font-size: 20px;
-    padding-left: 1.5rem; 
+    padding-left: 1.8rem; /* Mismo padding horizontal que inputs */
     white-space: nowrap; 
     overflow: hidden;
     text-overflow: ellipsis; 
@@ -182,7 +190,7 @@
 .btn-subir-logo-v2 {
     background: var(--rojo);
     color: white;
-    padding: 0 1.5rem;
+    padding: 0 2rem; /* Aumento de padding */
     height: 100%; 
     border: none;
     border-radius: 0 15px 15px 0; 
@@ -193,7 +201,7 @@
     transition: filter 0.25s ease;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.8rem; /* Aumento de gap */
 }
 
 .btn-subir-logo-v2:hover {
@@ -201,7 +209,7 @@
 }
 
 
-/*MODAL*/
+/*MODAL - Los estilos del modal se mantienen consistentes pero se re-escalan si es necesario */
 .modal-overlay {
     display: none; 
     position: fixed;
@@ -218,22 +226,22 @@
 
 .modal-content {
     background-color: var(--gris-input);
-    margin: 15% auto; 
-    padding: 2rem; 
+    margin: 10% auto; /* Subir ligeramente el modal */
+    padding: 3rem; /* Aumentar padding */
     border-radius: 20px;
     width: 90%; 
-    max-width: 450px; 
+    max-width: 500px; /* Aumentar ancho */
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
     animation: fadeIn 0.3s;
 }
 
 .modal-header {
-    padding-bottom: 1rem;
-    margin-bottom: 1rem;
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
 }
 
 #modal-titulo {
-    font-size: 24px;
+    font-size: 28px; /* Aumentar fuente */
 }
 
 #modal-mensaje {
@@ -245,56 +253,39 @@
 }
 
 .modal-footer .btn-rojo {
-    padding: 0.8rem 2rem;
-    font-size: 18px; 
+    padding: 1rem 2rem; /* Aumentar padding del botón */
+    font-size: 20px; /* Aumentar fuente del botón */
     margin-top: 0; 
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* Clases para estados */
-.modal-success #modal-titulo {
-    color: #28a745; 
-}
-
-.modal-error #modal-titulo {
-    color: #dc3545; 
-}
 
 /* =========================================
    ESTILOS ESPECÍFICOS DEL MAPA
 ========================================= */
 #map-container {
-    /* Sobreescribe el padding del sombra-input para contener el mapa */
-    padding: 1rem; 
-    /* Asegura que el contenedor del mapa use el color de fondo y sombra de input */
+    /* Mismo padding y estilos que los inputs */
     background: var(--gris-input); 
-    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    box-shadow: 0 8px 5px var(--sombra);
     border-radius: 15px;
 }
 
 .map-title {
-    font-size: 18px;
+    font-size: 20px; /* Mismo tamaño de fuente que los inputs */
     font-weight: 600;
     color: #333;
-    margin-bottom: 0.8rem;
+    margin-bottom: 1rem;
 }
 
 #map {
-    /* Altura fija para el mapa */
-    height: 300px; 
-    /* Asegura que el mapa dentro del contenedor tenga bordes redondeados (opcional) */
+    height: 450px; /* Ligeramente más alto */
     border-radius: 8px; 
 }
 
 .coords-display {
     text-align: center;
-    margin-top: 0.8rem;
+    margin-top: 1rem;
     font-weight: 500;
-    font-size: 16px;
+    font-size: 18px;
     color: #444;
 }
 
@@ -305,39 +296,57 @@
 
 
 /*Responsive*/
-/* Ajustes para resoluciones altas (Desktop 1200px+) */
-@media (min-width: 1200px) {
-    #logo-registro {
-        width: 380px; 
-    }
-    #card-registro {
-        max-width: 1000px !important; 
-    }
-    .sombra-input {
-        font-size: 20px;
-        padding: 1.2rem 1.5rem;
-    }
-}
-
 /* Responsive para tabletas/pantallas medianas (992px) */
 @media (max-width: 992px) {
     #card-registro {
-        max-width: 600px !important;
-        padding: 2.5rem;
+        max-width: 700px !important; /* Ajuste para tablets */
+        padding: 3.5rem;
     }
     #logo-registro {
-        width: 350px;
+        width: 400px;
+        margin-top: 3rem;
+        margin-bottom: 3rem;
     }
     #icono-home img {
-        width: 70px;
-        height: 70px;
+        width: 80px;
+        height: 80px;
+    }
+    .sombra-input {
+        font-size: 18px;
+        padding: 1.5rem;
+    }
+    .btn-rojo {
+        padding: 1.5rem;
+        font-size: 18px;
+    }
+    .btn-borde {
+        padding: 1.2rem;
+        font-size: 18px;
+    }
+    
+    #logo-input-container {
+        height: 4.8rem;
+        line-height: 4.8rem; 
+    }
+    #logo-placeholder {
+        padding-left: 1.5rem; 
+        font-size: 18px;
+    }
+    .btn-subir-logo-v2 {
+        font-size: 16px;
+    }
+    .map-title {
+        font-size: 18px;
+    }
+    #map {
+        height: 300px; 
     }
 }
 
 /* Responsive para móviles (600px) */
 @media (max-width: 600px) {
     #body {
-        padding: 1rem;
+        padding: 0.5rem; 
     }
     #icono-home {
         top: 1rem;
@@ -347,48 +356,77 @@
         width: 45px;
         height: 45px;
     }
-    #card-registro {
-        padding: 1.5rem;
-    }
     #logo-registro {
         width: 250px;
         margin-top: 3rem; 
+        margin-bottom: 2rem;
     }
     
+    /* Formulario y Card */
+    #card-registro {
+        padding: 1.5rem;
+        max-width: 100% !important;
+    }
     .form-row-2col {
         flex-direction: column;
-        gap: 0;
+        gap: 1rem; 
     }
     .form-row-2col input {
-        width: 100% !important;
+        width: 100% !important; 
     }
     
+    /* Inputs */
     .sombra-input {
-        padding: 1rem;
+        padding: 1.2rem 1rem;
+        font-size: 16px;
+        border-radius: 10px; 
+    }
+    .sombra-input::placeholder {
         font-size: 16px;
     }
+
+    /* Botones */
     .btn-rojo {
-        font-size: 18px;
+        font-size: 16px;
         padding: 1rem;
     }
-    
+    .btn-borde {
+        font-size: 16px;
+        padding: 0.8rem;
+    }
+
+    /* Subir Logo */
     #logo-input-container {
-        height: auto;
+        height: auto; 
         line-height: normal;
     }
     #logo-placeholder {
-        padding: 1rem;
+        padding: 1.2rem;
         font-size: 16px;
     }
     .btn-subir-logo-v2 {
-        height: 50px;
+        height: 100%;
+        padding: 1rem;
+        font-size: 14px;
+        gap: 0.5rem;
+    }
+    
+    /* Mapa */
+    .map-title {
         font-size: 16px;
     }
-    #footer {
-        font-size: 12px;
+    #map {
+        height: 200px; /* Altura del mapa reducida */
     }
 
-    #map {
-        height: 200px; /* Menos alto en móvil */
+    /* Footer */
+    #footer {
+        font-size: 11px;
+    }
+    #social {
+        font-size: 18px;
+    }
+    #contacto {
+        gap: 0.8rem;
     }
 }

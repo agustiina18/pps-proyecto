@@ -1,6 +1,6 @@
 // VARIABLES DE CONFIGURACIÓN 
-const BASE_URL = "http://localhost:8000"; // URL base API de FastAPI
-const LOGIN_URL_REDIRECT = "./index.html"; // URL de a donde redirigir
+const BASE_URL = "http://localhost:8000"; // URL base API 
+const LOGIN_URL_REDIRECT = "../login/login-usuario.html"; 
 
 //  REFERENCIAS A ELEMENTOS DEL DOM 
 const formRegistro = document.getElementById('form-registro');
@@ -15,7 +15,6 @@ const modalTitulo = document.getElementById('modal-titulo');
 const modalMensaje = document.getElementById('modal-mensaje');
 
 
-// 
 // LÓGICA DEL MODAL DE NOTIFICACIÓN
 
 /**
@@ -51,7 +50,6 @@ function cerrarModal() {
 window.cerrarModal = cerrarModal;
 
 
-// FUNCIONES AUXILIARES DEL FORMULARIO
 // Función para restablecer el estado del botón
 function resetearBoton() {
     btnRegistro.textContent = "Crear Empresa";
@@ -106,99 +104,41 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-// Registrar Empresa 
+// Registrar Empresa (SIMULACION)
 async function registrarEmpresa(event) {
     event.preventDefault();
 
-    const nombre = document.getElementById('nombre-empresa').value;
-    const cuit = document.getElementById('cuit').value;
-    const rubro = document.getElementById('rubro').value;
-    const segundoRubro = document.getElementById('segundo-rubro').value; 
-    const email = document.getElementById('email').value;
-    const password = ""; 
-    const direccion = document.getElementById('direccion').value; 
-    const telefono = document.getElementById('telefono').value; 
-    const logoFile = logoFileInput.files[0];
-    
-    // Obtener Coordenadas del Mapa (Inputs Ocultos)
+    // Obtención y validación de datos
     const latitud = document.getElementById('latitud').value;
     const longitud = document.getElementById('longitud').value;
+    const logoFile = logoFileInput.files[0];
 
-    // Validación de coordenadas (asegurar que no sean N/A)
+    // 1. Validación de coordenadas (asegurar que no sean N/A)
     if (!latitud || !longitud || latitud === "N/A") {
         mostrarModal("Ubicación Requerida", "Por favor, ajusta el marcador en el mapa para confirmar la ubicación de tu empresa.", 'error');
         return;
     }
     
+    // 2. Validación de tipo de archivo para el logo
     if (logoFile && (logoFile.type !== 'image/jpeg' && logoFile.type !== 'image/png')) {
          mostrarModal("Error de Archivo", "El archivo de logo seleccionado no es JPG o PNG.", 'error');
          return;
     }
 
-
+    // SIMULACIÓN DE REGISTRO EXITOSO
     btnRegistro.textContent = "Registrando...";
     btnRegistro.disabled = true;
 
-    // Objeto de Datos  
-    const telefonosArray = telefono ? [parseInt(telefono.replace(/\D/g, ''))] : [];
-    const rubrosCombinados = segundoRubro ? `${rubro}, ${segundoRubro}` : rubro;
+    // Simulación de tiempo de carga (1.5 segundos)
+    await new Promise(resolve => setTimeout(resolve, 1500)); 
 
-    const datosEmpresa = {
-        cuit: parseInt(cuit), 
-        nombre: nombre,
-        rubro: rubrosCombinados,
-        email: email,
-        direccion: { 
-            domicilio: direccion,
-            // Usamos las coordenadas del mapa
-            lat: parseFloat(latitud), 
-            lng: parseFloat(longitud),
-            aclaracion: document.getElementById('datos-adicionales').value || null
-        },
-        telefonos: telefonosArray,
-        email_de_usuario: email, 
-        password_de_usuario: password 
-    };
-
-
-    try {
-        const response = await fetch(`${BASE_URL}/empresas/`, { 
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(datosEmpresa)
-        });
-
-        if (response.ok) {
+    // Éxito: Registro completado y redirección
+    mostrarModal("¡Registro Exitoso!", "Tu empresa ha sido registrada correctamente. Serás redirigido al inicio.", 'success');
             
-            // Éxito: Registro completado.
-            mostrarModal("¡Registro Exitoso! ✅", "Tu empresa ha sido registrada correctamente. Serás redirigido al inicio de sesión.", 'success');
-            
-            // Redirigir al login
-            setTimeout(() => {
-                window.location.href = LOGIN_URL_REDIRECT;
-            }, 3000); 
-            
-            if (logoFile) {
-                console.log("Simulando subida de logo con otro endpoint...");
-            }
-
-        } else {
-            // Error del servidor (400, 422, etc.)
-            const errorData = await response.json();
-            const errorMessage = errorData.detail || "Error desconocido al registrar la empresa. Por favor, revisa los datos.";
-            
-            mostrarModal("Error al Registrar ❌", errorMessage, 'error');
-            resetearBoton();
-        }
-
-    } catch (error) {
-        // Error de red
-        console.error("Error de conexión:", error);
-        mostrarModal("Error de Conexión ⚠️", "No se pudo conectar al servidor. Asegúrate de que tu API esté funcionando.", 'error');
-        resetearBoton();
-    }
+    // Redirigir 
+    setTimeout(() => {
+        window.location.href = LOGIN_URL_REDIRECT; 
+    }, 3000); // 3 segundos antes de redirigir
 }
 
 // Globalmente accesible desde el HTML
