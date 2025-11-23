@@ -1,0 +1,268 @@
+* {
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+}
+
+:root {
+    --rojo: #AC0505;
+    --gris-fondo: #ecf0f1;
+    --gris-input-claro: #e5e5e5;
+    --sombra: rgba(0, 0, 0, 0.1); 
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: var(--gris-fondo);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+
+}
+
+.home-icon-link {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    transition: 0.2s ease;
+}
+.home-icon {
+    width: 120px; 
+    height: 120px;
+}
+.home-icon-link:hover {
+    transform: scale(1.05);
+}
+
+/* Contenedor del Formulario*/
+#form-contenedor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    flex-grow: 1; 
+    width: 100%;
+    max-width: 900px; 
+    padding: 20px; 
+    box-sizing: border-box;
+    margin-top: 5rem;
+}
+
+/* Logo  */
+.logo {
+    width: 100%;
+    max-width: 500px; 
+    height: auto;
+    margin-bottom: 4rem; 
+    margin-top: 0; 
+}
+
+/* Formulario Principal */
+#form-login {
+    width: 100%;
+    max-width: 500px; 
+    padding: 0; 
+    background: transparent; 
+    border-radius: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/* Inputs  */
+#form-login > div {
+    width: 100%;
+    margin-bottom: 1.5rem; 
+}
+
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 1.8rem 1.8rem;
+    border: none;
+    border-radius: 15px; 
+    font-size: 20px; 
+    outline: none;
+    background: var(--gris-input-claro); 
+    box-shadow: 0 8px 5px var(--sombra);
+    box-sizing: border-box;
+}
+
+input::placeholder {
+    color: #989898;
+    font-weight: 600;
+    font-size: 20px; 
+}
+
+
+/* Botón Iniciar Sesión */
+.submit-btn {
+    width: 100%;
+    background: var(--rojo);
+    color: white;
+    padding: 1.8rem 1.8rem;
+    font-size: 20px; 
+    font-weight: 600;
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 3px 5px var(--sombra);
+    transition: 0.25s ease;
+    margin-top: 0.5rem; 
+    margin-bottom: 0.5rem; 
+}
+.submit-btn:hover {
+    background: #920303;
+}
+
+.olvido-clave {
+    color: var(--rojo);
+    text-decoration: none;
+    font-size: 16px; 
+    font-weight: 500;
+    text-align: center;
+    width: 100%; 
+    margin-top: 0.8rem; 
+    margin-bottom: 2.5rem; 
+}
+.olvido-clave:hover {
+    text-decoration: underline;
+}
+
+.google-login-btn {
+    background: #ecf0f1;
+    width: 55%; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    border: 4px solid #CCC; 
+    color: var(--rojo); 
+    padding: 1rem 1rem;
+    font-size: 20px; 
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.25s ease;
+    margin-top: 0.5rem; 
+}
+.google-login-btn:hover {
+    background: #f5f5f5;
+}
+.google-login-btn span {
+    margin-right: 15px;
+    color: var(--rojo); 
+}
+.google-login-btn img {
+    width: 40px; 
+    height: 50px;
+    vertical-align: middle;
+}
+
+.no-account {
+    color: #444;
+    text-decoration: none;
+    font-size: 18px; 
+    text-align: center;
+    margin-top: 3rem; 
+    margin-bottom: 0.8rem; 
+}
+
+.no-account span {
+    color: var(--rojo);
+    font-weight: 500;
+}
+
+.create-account-btn {
+    width: 100%; 
+    text-align: center;
+    display: block; 
+    padding: 1.5rem; 
+    border-radius: 15px;
+    border: 4px solid var(--rojo);
+    background: var(--gris-fondo); 
+    color: var(--rojo);
+    font-size: 20px; 
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.25s ease;
+    margin-top: 0.5rem; 
+}
+.create-account-btn:hover {
+    background: var(--rojo);
+    color: white;
+}
+
+/* Footer */
+#footer {
+    width: 100%;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    text-align: center;
+    font-size: 14px; 
+
+}
+#social {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    font-size: 20px; 
+    margin: 0 auto 0.8rem auto;
+}
+#social a {
+    color: #000;
+}
+#copyright {
+    font-size: 14px;
+    margin: 0.5rem 0;
+}
+#contacto {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    font-size: 14px;
+    padding: 0 1rem;
+}
+#contacto span i {
+    margin-right: 3px;
+}
+
+
+/* === RESPONSIVE */
+@media (max-width: 768px) {
+    #form-contenedor {
+        max-width: 90%;
+        margin: 0 auto;
+    }
+    .home-icon {
+        width: 35px;
+        height: 35px;
+    }
+    .logo {
+        max-width: 200px;
+    }
+    input[type="email"],
+    input[type="password"] {
+        font-size: 16px;
+        padding: 0.8rem 1rem;
+    }
+    .submit-btn, .google-login-btn, .create-account-btn {
+        font-size: 16px;
+        padding: 0.8rem;
+    }
+    .google-login-btn {
+        width: 60%;
+    }
+    #footer {
+        padding: 0.5rem;
+    }
+    #social {
+        font-size: 16px;
+    }
+    #copyright, #contacto {
+        font-size: 11px;
+    }
+}

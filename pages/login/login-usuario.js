@@ -1,18 +1,24 @@
-function loginUsuario(event) {
+/**
+ * Maneja el inicio de sesión del usuario.
+ * @param {Event} event - El evento de envío del formulario.
+ */
+function iniciarSesion(event) {
   event.preventDefault();
 
-  const email = document.getElementById("loginEmail").value.trim();
-  const password = document.getElementById("loginPassword").value.trim();
+  // Variables locales 
+  const correo = document.getElementById("loginEmail").value.trim();
+  const clave = document.getElementById("loginPassword").value.trim();
+  const URL_DESTINO = "./pages/home-usuario/home-usuario.html"; 
 
-  if (!email || !password) {
+  if (!correo || !clave) {
     alert("Por favor completá todos los campos.");
     return;
   }
 
-  const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+  const listaUsuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
 
-  const usuarioValido = usuarios.find(
-    (u) => u.email === email && u.password === password
+  const usuarioValido = listaUsuarios.find(
+    (u) => u.email === correo && u.password === clave
   );
 
   if (usuarioValido) {
@@ -20,7 +26,7 @@ function loginUsuario(event) {
 
     localStorage.setItem("usuarioLogueado", JSON.stringify(usuarioValido));
 
-    window.location.href = "agenda.html";
+    window.location.href = URL_DESTINO;
   } else {
     alert("Email o contraseña incorrectos.");
   }
