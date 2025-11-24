@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mis Turnos - MiTurno</title>
-    <link rel="stylesheet" href="../../css/style-global.css">
+    <link rel="stylesheet" href="./home-usuario-d.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
@@ -58,27 +58,22 @@
         </div>
     </nav>
 
-    <main>
-        <h2 class="home-title" style="margin-bottom: 20px;">Mis Próximos Turnos</h2>
+<main>
+        <h2 class="home-title">Mis Próximos Turnos</h2>
 
-        <div class="search-container" style="max-width: 600px; margin: 0 auto 30px auto; flex-grow: 0;">
-            <input type="text" id="turnos-search-input" placeholder="Buscar por servicio o empresa..." class="nav-search-input"
-                style="height: 45px;">
+        <div class="search-container">
+            <input type="text" id="busquedaTurnos" placeholder="Buscar por servicio o empresa..." class="nav-search-input">
         </div>
 
-        <div id="filter-buttons" class="filter-buttons">
-            <button class="filter-btn active" data-estado="todos">Todos</button>
-            <button class="filter-btn" data-estado="confirmado">Confirmados</button>
-            <button class="filter-btn" data-estado="pendiente">Pendientes</button>
-            <button class="filter-btn" data-estado="vencido">Vencidos/Cumplidos</button>
+        <div class="filters">
+            <button class="filter-btn active" data-filter="todos">Todos</button>
+            <button class="filter-btn" data-filter="confirmados">Confirmados</button>
+            <button class="filter-btn" data-filter="pendientes">Pendientes</button>
+            <button class="filter-btn" data-filter="pasados">Pasados</button>
         </div>
 
-        <section id="turnos-container" class="turnos-container">
-            </section>
-        
-        <p id="no-turnos-message" style="text-align: center; color: #666; margin-top: 50px; font-size: 1.1rem; display: none;">
-            No tienes turnos que coincidan con los filtros.
-        </p>
+        <div class="cards-container" id="cardsContainer">
+            </div>
     </main>
 
     <footer class="footer">
@@ -100,9 +95,8 @@
             </p>
         </div>
     </footer>
-    <script src="../../js/main.js"></script>
-    <script src="./home.js"></script>
 
+    <script src="./home-dropdown.js"></script>
+    <script src="./turnos-card.js"></script>
 </body>
-
 </html>
