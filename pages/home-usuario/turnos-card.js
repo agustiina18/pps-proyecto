@@ -8,7 +8,11 @@ const datosTurnos = [
         estado: 'confirmado',
         servicio: 'Corte de Cabello',
         empresa: 'Studio de Belleza Premium',
-        ubicacion: 'Av. Principal 123'
+        ubicacion: 'Av. Principal 123',
+        profesional: 'Lucía Giménez',
+        duracion: '1:00 hs',
+        detallesCita: 'Llegar 10 minutos antes para la consulta. Se recomienda cabello seco.',
+        linkMaps: 'https://maps.app.goo.gl/EjemploStudio1'
     },
     {
         id: 2,
@@ -18,7 +22,11 @@ const datosTurnos = [
         estado: 'cancelado-usuario',
         servicio: 'Coloración',
         empresa: 'Salón de Belleza Centro',
-        ubicacion: 'Calle Mayor 456'
+        ubicacion: 'Calle Mayor 456',
+        profesional: 'Martín López',
+        duracion: '2:30 hs',
+        detallesCita: 'Traer imágenes de referencia para el color deseado.',
+        linkMaps: 'https://maps.app.goo.gl/EjemploSalon2'
     },
     {
         id: 3,
@@ -28,7 +36,11 @@ const datosTurnos = [
         estado: 'cumplido',
         servicio: 'Limpieza Facial',
         empresa: 'Centro Estético Deluxe',
-        ubicacion: 'Paseo del Centro 789'
+        ubicacion: 'Paseo del Centro 789',
+        profesional: 'Andrea Ruiz',
+        duracion: '0:45 hs',
+        detallesCita: 'No aplicar cremas o maquillaje antes de la limpieza.',
+        linkMaps: 'https://maps.app.goo.gl/EjemploCentro3'
     },
     {
         id: 4,
@@ -38,7 +50,11 @@ const datosTurnos = [
         estado: 'cancelado-empresa',
         servicio: 'Manicura',
         empresa: 'Nails & Beauty Studio',
-        ubicacion: 'Calle Nueva 321'
+        ubicacion: 'Calle Nueva 321',
+        profesional: 'Sofía Díaz',
+        duracion: '1:15 hs',
+        detallesCita: 'El servicio incluye esmaltado semipermanente. Traer uñas sin esmalte previo.',
+        linkMaps: 'https://maps.app.goo.gl/EjemploNails4'
     },
     {
         id: 5,
@@ -48,7 +64,11 @@ const datosTurnos = [
         estado: 'no-cumplido',
         servicio: 'Pedicura',
         empresa: 'Spa Relax Center',
-        ubicacion: 'Av. Spa 654'
+        ubicacion: 'Av. Spa 654',
+        profesional: 'Paula Vega',
+        duracion: '1:00 hs',
+        detallesCita: 'Usar ropa cómoda. Hay batas disponibles.',
+        linkMaps: 'https://maps.app.goo.gl/EjemploSpa5'
     },
     {
         id: 6,
@@ -58,7 +78,11 @@ const datosTurnos = [
         estado: 'vencido',
         servicio: 'Masaje Relajante',
         empresa: 'Wellness Pro Spa',
-        ubicacion: 'Carrera Bienestar 987'
+        ubicacion: 'Carrera Bienestar 987',
+        profesional: 'Juan Pérez',
+        duracion: '0:50 hs',
+        detallesCita: 'Se ofrece té de cortesía al finalizar el masaje. No cenar pesado antes.',
+        linkMaps: 'https://maps.app.goo.gl/EjemploWellness6'
     }
 ];
 
@@ -80,7 +104,6 @@ const configuracionEstado = {
 
 // Renderizar tarjetas
 function renderizarTarjetas() {
-    // CORRECCIÓN ID: Coincide con el ID del home-turnos.html
     const contenedor = document.getElementById('cardsContainer'); 
     if (!contenedor) return;
     
@@ -133,10 +156,11 @@ function renderizarTarjetas() {
     }
 }
 
-// Crear una tarjeta individual con el nuevo diseño
+// Tarjeta individual 
 function crearTarjeta(turno) {
     const tarjeta = document.createElement('div');
     tarjeta.className = `card ${turno.estado}`;
+    tarjeta.setAttribute('onclick', `mostrarDetalleTurno(${turno.id})`); 
 
     const estado = configuracionEstado[turno.estado];
 
@@ -164,7 +188,7 @@ function crearTarjeta(turno) {
         </div>
         
         <div class="card-footer">
-            <a href="#" class="card-link" onclick="return mostrarUbicacion('${turno.ubicacion}')">
+            <a href="#" class="card-link" onclick="event.stopPropagation(); return mostrarUbicacion('${turno.ubicacion}')">
                 <i class="fas fa-map-marker-alt"></i>
                 <span>Ver Dirección</span>
             </a>
@@ -214,4 +238,103 @@ function mostrarUbicacion(ubicacion) {
     return false;
 }
 
-// El archivo home-dropdown.js se encarga de la lógica de los menús (barras y perfil).
+
+// FUNCIONES PARA DETALLE Y CANCELACIÓN
+
+// Función: Abrir el modal de detalle del turno
+function mostrarDetalleTurno(id) {
+    const turno = datosTurnos.find(t => t.id === id);
+    const modal = document.getElementById('turnoDetailModal');
+    const modalBody = document.getElementById('modalBody');
+
+    if (!turno || !modal || !modalBody) return;
+
+    const estado = configuracionEstado[turno.estado];
+    let botonCancelar = '';
+
+    // Solo se muestra el botón de cancelar si el estado es 'confirmado'
+    if (turno.estado === 'confirmado') {
+        botonCancelar = `<button class="btn-cancelar-turno" onclick="cancelarTurno(${turno.id})">Cancelar Turno</button>`;
+    }
+    
+    // Contenido detallado del modal
+    modalBody.innerHTML = `
+        <h3 class="detail-title">${turno.servicio} - ${turno.empresa}</h3>
+        <div class="detail-status ${estado.class}">${estado.label}</div>
+        
+        <div class="detail-row">
+            <i class="fas fa-clock"></i>
+            <span>${turno.hora}, ${turno.fecha}</span>
+        </div>
+        
+        <div class="detail-row">
+            <i class="fas fa-user-tie"></i>
+            <span>Profesional: ${turno.profesional}</span>
+        </div>
+        
+        <div class="detail-row">
+            <i class="fas fa-hourglass-half"></i>
+            <span>Duración Estimada: ${turno.duracion}</span>
+        </div>
+
+        <div class="detail-row">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Dirección: ${turno.ubicacion}</span>
+            <a href="${turno.linkMaps}" target="_blank" class="detail-map-link">
+                <i class="fas fa-external-link-alt"></i> Ver en Maps
+            </a>
+        </div>
+        
+        <p class="detail-notes">Detalles a tener en cuenta en la cita: ${turno.detallesCita}</p>
+        
+        <div class="detail-actions">
+            ${botonCancelar}
+        </div>
+    `;
+
+    modal.style.display = 'flex'; 
+}
+
+// Función: Cerrar el modal de detalle del turno
+function cerrarDetalleTurno() {
+    const modal = document.getElementById('turnoDetailModal');
+    if (modal) {
+        modal.style.display = 'none';
+    }
+}
+
+// Función: Cancelación del turno
+function cancelarTurno(id) {
+    if (confirm('¿Está seguro de que desea cancelar este turno? Esta acción no se puede deshacer.')) {
+        const turnoIndex = datosTurnos.findIndex(t => t.id === id);
+        
+        if (turnoIndex !== -1) {
+            datosTurnos[turnoIndex].estado = 'cancelado-usuario';
+            
+            // Actualizar la etiqueta del estado y el tiempo restante
+            const fechaActual = new Date().toLocaleDateString('es-ES', { 
+                day: 'numeric', month: 'long', year: 'numeric' 
+            });
+            datosTurnos[turnoIndex].tiempoRestante = `Cancelado el ${fechaActual}`;
+            
+            // Cerrar el modal
+            cerrarDetalleTurno();
+            
+            // Refrescar la lista de tarjetas
+            renderizarTarjetas();
+            
+            alert('El turno ha sido cancelado exitosamente.');
+        } else {
+            alert('Error: Turno no encontrado.');
+        }
+    }
+    return false;
+}
+
+// ACierre del modal al hacer clic fuera 
+window.addEventListener('click', (event) => {
+    const modal = document.getElementById('turnoDetailModal');
+    if (event.target === modal) {
+        cerrarDetalleTurno();
+    }
+});
