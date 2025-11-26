@@ -1,4 +1,3 @@
-/* AJUSTES GLOBALES PARA CONSISTENCIA Y ELIMINAR SCROLL */
 * {
     box-sizing: border-box; 
     margin: 0; 
@@ -7,34 +6,46 @@
 
 :root{
     --rojo: #AC0505;
-    --gris-fondo: #ECF0F1;
-    --gris-input: #e5e5e5; /* ¡MODIFICADO! Usamos el gris claro consistente */
-    --sombra: rgba(0, 0, 0, 0.1); /* ¡MODIFICADO! Usamos la sombra sutil consistente */
+    --gris-fondo: #ecf0f1;
+    --gris-input: #e5e5e5; 
+    --sombra: rgba(0, 0, 0, 0.1); 
 }
 
-/*body (Configuración para Sticky Footer)*/
+/*body */
 #body {
     font-family: "Poppins", sans-serif;
     background: var(--gris-fondo);
-    /* padding: 2rem; <-- ELIMINADO para evitar scroll */
     min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
-/*icono home*/
+/* ICONO HOME */
+
 #icono-home {
     position: absolute;
     top: 2rem;
     left: 2rem;
+    z-index: 30;
+}
+
+#icono-home img {
+    width: 100px
+    height: 100px
     transition: 0.2s ease;
 }
-#icono-home img {
-    width: 120px; /* ¡AUMENTADO! Mismo tamaño que login/registro */
-    height: 120px; /* ¡AUMENTADO! Mismo tamaño que login/registro */
-}
-#icono-home:hover {
+
+#icono-home img:hover {
     transform: scale(1.05);
+}
+
+/* LOGO MITURNO  */
+
+#logo-registro {
+    display: block;
+    width: 300px;
+    height: auto;
+    margin: 2rem auto 2rem auto;
 }
 
 /*main*/
@@ -45,11 +56,6 @@
     justify-content: flex-start; /* ¡MODIFICADO! Alinea el logo en la parte superior */
     align-items: center;
     padding: 20px; /* Padding interno */
-}
-
-#logo-registro {
-    width: 500px; /* ¡AUMENTADO! Mismo tamaño que login/registro */
-    margin-top: 5rem; /* ¡NUEVO! Misma posición vertical que login/registro */
 }
 
 /*Formulario*/

@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -10,72 +9,123 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="./registro-usuario.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-     <link rel="icon" type="favicon" href="../../favicon.ico">
+    <link rel="icon" type="favicon" href="../../favicon.ico">
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 </head>
 
 <body id="body">
 
+    <!-- ICONO HOME -->
     <a href="../../index.html" id="icono-home">
         <img src="../../img/home.png" alt="Inicio" />
     </a>
 
     <main id="main-registro">
 
+        <!-- LOGO -->
         <img id="logo-registro" src="../../img/logo-miturno.png" alt="MiTurno logo" />
 
+        <!-- FORMULARIO -->
         <section id="formulario-registro">
             <div id="card-registro">
 
                 <form id="form-registro" onsubmit="registrarUsuario(event)">
 
+                    <!-- Nombre / Apellido -->
                     <div class="form-row-2col">
                         <input type="text" id="nombre" placeholder="Nombre" required class="sombra-input">
                         <input type="text" id="apellido" placeholder="Apellido" required class="sombra-input">
                     </div>
 
+                    <!-- DNI / Telefono -->
                     <div class="form-row-2col">
                         <input type="text" id="dni" placeholder="DNI" required class="sombra-input">
                         <input type="tel" id="telefono" placeholder="Teléfono" required class="sombra-input">
                     </div>
-                     <div class="form-row-2col">
-                        <input type="text" id="direccion" placeholder="Dirección" required class="sombra-input">
-                        <input type="text" id="datos adicionales" placeholder="Datos adicionales" class="sombra-input">
-                    </div>
-                    <input type="email" id="email" placeholder="Email" required class="sombra-input">
 
+                    <!-- Provincia / Municipio -->
+                    <div class="form-row-2col">
+                        <input type="text" id="provincia" placeholder="Provincia" required class="sombra-input">
+                        <input type="text" id="municipio" placeholder="Municipio" required class="sombra-input">
+                    </div>
+
+                    <!-- Localidad / Calle -->
+                    <div class="form-row-2col">
+                        <input type="text" id="localidad" placeholder="Localidad" required class="sombra-input">
+                        <input type="text" id="calle" placeholder="Calle" required class="sombra-input">
+                    </div>
+
+                    <!-- Altura / Datos adicionales -->
+                    <div class="form-row-2col">
+                        <input type="text" id="altura" placeholder="Altura" required class="sombra-input">
+                        <input type="text" id="datos_adicionales" placeholder="Datos adicionales" class="sombra-input">
+                    </div>
+
+                    <!-- Dirección Detectada (NO input editable) -->
+                    <div class="sombra-input" id="direccion_detectada" style="opacity:0.8;">
+                        Dirección detectada: <span id="direccion-auto">—</span>
+                    </div>
+
+                    <!-- MAPA -->
+                    <div id="map-container" class="sombra-input">
+                        <h3 class="map-title"><i class="fas fa-map-marker-alt"></i> Verifica y ajusta tu ubicación:</h3>
+                        <div id="map" style="height: 300px; width: 100%;"></div>
+                        <input type="hidden" name="latitud" id="latitud" value="">
+                        <input type="hidden" name="longitud" id="longitud" value="">
+                        <p id="coords-display" class="coords-display">
+                            Ubicación seleccionada: 
+                            <span id="lat-display">N/A</span>, 
+                            <span id="lng-display">N/A</span>
+                        </p>
+                    </div>
+
+                    <!-- Email / Clave -->
+                    <input type="email" id="email" placeholder="Email" required class="sombra-input">
                     <input type="password" id="clave" placeholder="Contraseña" required class="sombra-input">
 
+                    <!-- Botón Crear Cuenta -->
                     <button id="btn-registro" class="btn-rojo" type="submit">Crear Cuenta</button>
+
                 </form>
 
-                <p id="ya-tienes-cuenta">Ya tienes cuenta, <a href="../login/login-usuario.html">Inicia sesión</a></p>
+                <p id="ya-tienes-cuenta">Ya tienes cuenta,
+                    <a href="../login/login-usuario.html">Inicia sesión</a>
+                </p>
 
-                <button id="btn-iniciar-sesion" class="btn-borde" onclick="window.location.href='../login/login-usuario.html'">Iniciar
-                    Sesión</button>
+                <button id="btn-iniciar-sesion" class="btn-borde"
+                    onclick="window.location.href='../login/login-usuario.html'">
+                    Iniciar Sesión
+                </button>
 
             </div>
         </section>
 
     </main>
 
+    <!-- FOOTER -->
     <footer id="footer">
         <div id="social">
-            <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.tiktok.com/" target="_blank""><i class=" fab fa-tiktok"></i></a>
-            <a href="https://www.facebook.com/" target="_blank""><i class=" fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-tiktok"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
         </div>
 
-        <p id="copyright">© 2025 MiTurno. Todos los derechos reservados.</p>
+        <p id="copyright">© 2025 MiTurno — Todos los derechos reservados.</p>
 
         <div id="contacto">
             <span><i class="fas fa-phone"></i> +54 9 11 4444-4444</span>
             <span><i class="fas fa-envelope"></i> miturno.pps.443@gmail.com</span>
-            <span><i class="fas fa-map-marker-alt"></i> Av. Corrientes 1353, Bs. As.</span>
-            <span><i class="fas fa-users"></i> Sobre nosotros</span>
+            <span><i class="fas fa-map-marker-alt"></i> Av. Corrientes 1353</span>
         </div>
     </footer>
 
+    <!-- JS -->
     <script src="./script-registro-d.js"></script>
-</body>
+    <script src="../registro-empresa/map.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
+</body>
 </html>

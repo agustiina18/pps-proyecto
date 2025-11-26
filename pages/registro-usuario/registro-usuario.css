@@ -1,236 +1,280 @@
-* {
-    box-sizing: border-box; 
-    margin: 0; 
-    padding: 0;
-}
-
-:root {
+:root{
     --rojo: #AC0505;
-    --gris-fondo: #ECF0F1;
+    --gris-fondo: #ecf0f1;
     --gris-input: #e5e5e5; 
     --sombra: rgba(0, 0, 0, 0.1); 
 }
 
-#body {
-    font-family: "Poppins", sans-serif;
-    background: var(--gris-fondo);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column; 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* HOME ICONO*/
+body {
+    background: #ecf0f1;
+    font-family: "Poppins", sans-serif;
+    color: #333;
+}
+
+/* ICONO HOME */
+
 #icono-home {
     position: absolute;
     top: 2rem;
     left: 2rem;
+    z-index: 30;
+}
+
+#icono-home img {
+    width: 100px
+    height: 100px
     transition: 0.2s ease;
 }
-#icono-home img {
-    width: 120px;
-    height: 120px;
-}
-#icono-home:hover {
+
+#icono-home img:hover {
     transform: scale(1.05);
 }
 
-/*main*/
-#main-registro {
-    flex: 1; 
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start; 
-    align-items: center;
-    padding: 20px; 
-}
+/* LOGO MITURNO  */
 
 #logo-registro {
-    width: 500px;
-    margin-top: 5rem; 
-}
-
-/*Formulario de registro*/
-#form-registro {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 1.8rem; 
-    width: 100%;
-}
-
-/* ESTILOS DE DOS COLUMNAS */
-.form-row-2col {
-    display: flex;
-    gap: 1.8rem; 
-    width: 100%;
-}
-
-.form-row-2col input {
-    width: 50% !important; 
-}
-
-/* Inputs ocupan todo el ancho del card */
-#form-registro > input {
-    width: 100% !important;
-}
-
-#card-registro {
-    max-width: 900px !important; 
-    width: 100%;
-    padding: 4.5rem; 
-    margin: 0 auto;
-
-}
-
-/*inputs*/
-.sombra-input {
-    background: var(--gris-input);
-    border: none;
-    padding: 1.8rem 1.8rem; 
-    border-radius: 15px;
-    font-size: 20px;
-    outline: none;
-    box-shadow: 0 8px 5px var(--sombra); 
-}
-.sombra-input::placeholder {
-    color: #989898;
-    font-weight: 600; 
-    font-size: 20px;
-}
-
-/*botones*/
-.btn-rojo {
-    background: var(--rojo);
-    color: white;
-    padding: 1.8rem; 
-    border-radius: 15px;
-    font-size: 20px;
-    font-weight: 600;
-    border: none;
-    cursor: pointer;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.18);
-    transition: 0.25s ease;
-}
-.btn-rojo:hover {
-    transform: translateY(-3px);
-    background: #920303;
-}
-
-.btn-borde {
-    padding: 1.5rem;
-    border-radius: 15px;
-    border: 4px solid var(--rojo);
-    background: transparent;
-    font-size: 20px;
-    color: var(--rojo);
-    transition: 0.25s ease;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1); 
-}
-.btn-borde:hover {
-    background: var(--rojo);
-    color: white;
-}
-
-#ya-tienes-cuenta {
-    text-align: center;
-    font-size: 18px;
-    color: #444;
-    margin-top: 2rem; 
-    margin-bottom: 0.8rem; 
-}
-#ya-tienes-cuenta a {
-    color: var(--rojo);
-    font-weight: 600;
-}
-
-#btn-iniciar-sesion {
     display: block;
-    width: 100%;
-    max-width: 300px; 
-    margin: 0.8rem auto 0 auto; 
-}
-
-/* Footer */
-#footer {
-    text-align: center;
-    padding-top: 2rem;
-    padding-bottom: 1rem;
-    font-size: 14px;
-}
-
-#social {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-    font-size: 22px;
-}
-
-#contacto {
-    margin-top: 1rem;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1.5rem;
-    font-size: 14px;
-    padding: 0 1rem;
-}
-#contacto span i {
-    margin-right: 3px;
-}
-
-/* RESPONSIVE*/
-@media (max-width: 992px) {
-    #card-registro {
-        max-width: 700px !important; 
-    }
-    #icono-home {
-        top: 1.5rem; 
-        left: 1.5rem;
-    }
-    #icono-home img {
-        width: 80px;
-        height: 80px;
-    }
-    #logo-registro {
-        width: 400px;
-        margin-top: 3rem; 
-    }
+    width: 300px;
+    height: auto;
+    margin: 2rem auto 2rem auto;
 }
 
 @media (max-width: 600px) {
+    #icono-home img {
+        width: 35px;
+    }
+    #logo-registro {
+        width: 180px;
+        margin-top: 5rem;
+    }
+}
+
+/* CONTENEDOR PRINCIPAL*/
+
+#main-registro {
+    max-width: 900px;
+    width: 100%;
+    margin: auto;
+    padding: 1rem;
+}
+
+/* FORMULARIO*/
+
+#form-registro {
+    width: 100%;
+    margin-top: 1.5rem;
+}
+
+/* INPUTS */
+.sombra-input {
+    width: 100%;
+    background: var(--gris-input);
+    border: none;
+    border-radius: 15px;
+    padding: 15px;
+    font-size: 15px;
+    outline: none;
+    margin-bottom: 18px;
+    box-shadow: 0 8px 5px var(--sombra);
+    transition: 0.25s ease;
+}
+
+.sombra-input::placeholder {
+    color: #989898;
+    font-weight: 600;
+}
+
+#direccion_detectada {
+    margin-bottom: 18px !important;
+    border: none !important;
+    background: var(--gris-input) !important;
+    border-radius: 15px !important;
+    box-shadow: 0 8px 5px var(--sombra) !important;
+    padding: 15px !important;
+}
+
+#direccion_detectada span {
+    color: var(--rojo);
+    font-weight: 700;
+}
+
+/* FORMULARIO */
+
+.form-row-2col {
+    display: flex;
+    gap: 1.3rem;
+}
+
+.form-row-2col input {
+    width: 50%;
+}
+
+/* Mobile → 1 columna */
+@media (max-width: 600px) {
     .form-row-2col {
         flex-direction: column;
-        gap: 1.5rem;
     }
     .form-row-2col input {
-        width: 100% !important; 
+        width: 100%;
     }
+}
 
-    #card-registro {
-        width: 95%;
-        padding: 1.8rem;
-        max-width: 100% !important;
-    }
-    
-    #icono-home {
-        top: 1rem;
-        left: 1rem;
-    }
-    #icono-home img {
-        width: 45px;
-        height: 45px;
-    }
-    
-    #logo-registro {
-        width: 280px;
-        margin-bottom: 2rem;
-        margin-top: 4rem;
-    }
-    .sombra-input {
-        padding: 1.2rem 1.5rem; 
-        font-size: 18px; 
-    }
+/* DIRECCIÓN DETECTADA */
+#direccion_detectada {
+    padding: 13px;
+    margin-bottom: 18px;
+    border-radius: 10px;
+    border: 2px solid #ddd;
+    background: white;
+    font-size: 15px;
+    transition: 0.25s;
+}
 
-    #btn-iniciar-sesion {
-        max-width: 100%;
-    }
+#direccion_detectada span#direccion-auto {
+    font-weight: 500;
+}
+
+/* MAPA  */
+#map-container {
+    background: var(--gris-input);
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 8px 5px var(--sombra);
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.map-title {
+    margin-bottom: 12px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+#map {
+    width: 100%;
+    height: 320px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #d9d9d9;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+
+/* Coordenadas debajo del mapa */
+#coords-display {
+    margin-top: 5px;
+    padding: 10px;
+    border-radius: 12px;
+    text-align: center;
+
+}
+
+#coords-display span {
+    font-weight: 700;
+    color: var(--rojo);
+}
+#coords-display span {
+    font-weight: 700;
+    color: var(--rojo);
+}
+/* BOTONES*/
+
+.btn-rojo {
+    width: 100%;
+    background: #AC0505;
+    color: white;
+    padding: 15px;
+    border-radius: 12px;
+    border: none;
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.btn-rojo:hover {
+    background: #7D0000;
+}
+
+.btn-borde {
+    width: 100%;
+    padding: 14px;
+    border-radius: 12px;
+    border: 2px solid #AC0505;
+    background: transparent;
+    color: #AC0505;
+    font-size: 17px;
+    font-weight: 600;
+    margin-top: 12px;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.btn-borde:hover {
+    background: #AC0505;
+    color: white;
+}
+
+/* YA TIENES CUENTA*/
+
+#ya-tienes-cuenta {
+    text-align: center;
+    margin-top: 1.2rem;
+    font-size: 15px;
+}
+
+#ya-tienes-cuenta a {
+    color: #AC0505;
+    font-weight: bold;
+}
+
+
+/* Footer */
+#footer {
+    width: 100%;
+    text-align: center;  
+    padding: 25px 0;
+    margin-top: 3rem;
+    border-top: none; 
+}
+
+#footer * {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+/* Contenedor de iconos */
+#social {
+    display: flex;
+    justify-content: center;   
+    gap: 20px;
+    margin-bottom: 12px;
+}
+
+/* Íconos */
+#social a {
+    font-size: 22px;
+}
+
+/* Texto de contacto */
+#contacto {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 14px;
+    line-height: 1.2;
+    gap: 4px;
+}
+
+/* Derechos reservados */
+#copyright {
+    text-align: center;
+    margin-top: 12px;
+    font-size: 14px;
+    color: #555;
 }

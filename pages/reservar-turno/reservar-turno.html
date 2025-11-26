@@ -1,147 +1,178 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MiTurno - Reserva de Turno</title>
+    <link rel="stylesheet" href="./reservar-turno.css">
+    <script src="https://cdn.tailwindcss.com"></script> 
     
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="../css/style-global.css"> 
-    <link rel="stylesheet" href="reserva-turno.css"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="icon" type="favicon" href="../../favicon.ico">
 </head>
-<body class="bg-[#f2f4f5] font-sans">
-    
-    <header class="main-nav">
-        <div class="flex items-center gap-2">
-            <div class="icon-container">📅</div>
-            <h2>Reserva tu Turno</h2>
+
+<body>
+
+    <nav class="main-nav">
+
+    <div class="user-menu-container">
+        <button class="menu-toggle-btn user-menu-dropdown-btn">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <div class="user-dropdown-content">
+            <a href="../home-turnos/home-turnos.html">Mis Turnos</a>
+            <a href="../home-usuario/home-usuario.html">Categorías</a>
+            <a href="#">Contacto</a>
+            <a href="#">Configuración</a>
         </div>
-        <div class="w-10"></div>
-    </header>
+    </div>
+
+    <div class="nav-logo-container">
+        <a href="../../index.html">
+            <img src="../../img/logo-miturno2.png" alt="Mi Turno Logo">
+        </a>
+    </div>
+
+    <div class="nav-icons" style="display: flex; align-items: center;">
+        <button class="menu-toggle-btn">
+            <i class="fas fa-bell"></i>
+        </button>
+
+        <div class="dropdown-menu-container">
+            <button class="menu-toggle-btn profile-dropdown-btn">
+                <i class="fas fa-user-circle"></i>
+                <i class="fas fa-caret-down dropdown-arrow"></i>
+            </button>
+
+            <div class="dropdown-content">
+                <a href="../registro-empresa/crear-empresa.html">Crear Perfil de Empresa</a>
+                <a href="#">Ver perfil</a>
+                <a href="#">Configurar mi cuenta</a>
+                <a href="#">Seguridad</a>
+                <a href="#">Términos y condiciones</a>
+                <a href="#" class="logout-link">Cerrar sesión</a>
+            </div>
+        </div>
+    </div>
+
+</nav>
 
     <main class="max-w-4xl mx-auto px-4 py-8">
         
         <div class="flex justify-between items-center mb-8" id="indicadorPasos">
             <div class="flex-1 text-center">
                 <div class="inline-block w-8 h-8 bg-[#AC0505] text-white rounded-full flex items-center justify-center font-bold text-sm">1</div>
+                <p class="text-xs mt-1 text-gray-700">Servicio</p>
             </div>
-            <div class="linea-indicadora activo" data-paso="1"></div>
+            <div class="linea-indicadora activo"></div>
             <div class="flex-1 text-center">
                 <div class="inline-block w-8 h-8 bg-gray-300 text-gray-600 rounded-full flex items-center justify-center font-bold text-sm">2</div>
+                <p class="text-xs mt-1 text-gray-500">Profesional</p>
             </div>
-            <div class="linea-indicadora" data-paso="2"></div>
+            <div class="linea-indicadora"></div>
             <div class="flex-1 text-center">
                 <div class="inline-block w-8 h-8 bg-gray-300 text-gray-600 rounded-full flex items-center justify-center font-bold text-sm">3</div>
+                <p class="text-xs mt-1 text-gray-500">Fecha/Hora</p>
             </div>
-            <div class="linea-indicadora" data-paso="3"></div>
+            <div class="linea-indicadora"></div>
             <div class="flex-1 text-center">
                 <div class="inline-block w-8 h-8 bg-gray-300 text-gray-600 rounded-full flex items-center justify-center font-bold text-sm">4</div>
+                <p class="text-xs mt-1 text-gray-500">Resumen</p>
             </div>
         </div>
-
-        <div class="fade-in" id="paso-servicio">
-            <div class="bg-white rounded-lg shadow-md p-8">
-                <h1 class="text-3xl font-bold text-gray-800 mb-2">¿Qué servicio necesitas?</h1>
-                <p class="text-gray-600 mb-6">Busca y selecciona el servicio que deseas</p>
-                
-                <div class="mb-6">
-                    <input 
-                        type="text" 
-                        id="busquedaServicio" 
-                        placeholder="Buscar servicio (ej: Corte de cabello, Limpieza, etc.)" 
-                        class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-0 focus:border-[#AC0505] transition"
-                    >
+        
+        <input type="text" id="busquedaServicio" placeholder="Buscar servicio..." class="hidden"> 
+        <div id="servicioSeleccionadoDisplay" class="hidden"></div>
+        <div id="profesionalSeleccionadoDisplay" class="hidden"></div>
+        <section id="paso-servicio" class="fade-in">
+            <h1 class="text-3xl font-semibold text-[#AC0505] text-center mb-6">Selecciona el Servicio</h1>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="listaServicios">
                 </div>
-                
-                <div id="listaServicios" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+            <div class="flex justify-end mt-6">
+                <button onclick="siguientePaso()" class="btn-rojo px-6 py-3 rounded-xl disabled:opacity-50" id="btnSiguienteServicio" disabled>Siguiente</button>
             </div>
-        </div>
+        </section>
 
-        <div id="paso-profesional" class="hidden fade-in">
-            <div class="bg-white rounded-lg shadow-md p-8">
-                <h1 class="text-3xl font-bold text-gray-800 mb-2">Selecciona un profesional</h1>
-                <p class="text-gray-600 mb-6" id="servicioSeleccionadoDisplay"></p>
-                
-                <div id="listaProfesionales" class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6"></div>
-                
-                <div class="flex gap-3 justify-end">
-                    <button onclick="volverAtras()" class="px-6 py-3 bg-white border-2 border-gray-300 text-gray-800 rounded-lg hover:bg-gray-50 hover:border-[#AC0505] transition font-semibold">
-                        ← Atrás
-                    </button>
-                    <button onclick="siguientePaso()" id="siguiente-profesional" disabled class="px-6 py-3 bg-[#AC0505] text-white rounded-lg hover:bg-[#8b0404] disabled:bg-gray-400 disabled:cursor-not-allowed transition font-semibold">
-                        Continuar →
-                    </button>
+        <section id="paso-profesional" class="hidden">
+            <h1 class="text-3xl font-semibold text-[#AC0505] text-center mb-6">Selecciona un Profesional</h1>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="listaProfesionales">
                 </div>
+            <div class="flex justify-between mt-6">
+                <button onclick="pasoAnterior()" class="bg-gray-400 text-white px-6 py-3 rounded-xl font-medium">Anterior</button>
+                <button onclick="siguientePaso()" class="btn-rojo px-6 py-3 rounded-xl disabled:opacity-50" id="btnSiguienteProfesional" disabled>Siguiente</button>
             </div>
-        </div>
+        </section>
 
-        <div id="paso-hora" class="hidden fade-in">
-            <div class="bg-white rounded-lg shadow-md p-8">
-                <h1 class="text-3xl font-bold text-gray-800 mb-2">Selecciona fecha y hora</h1>
-                <p class="text-gray-600 mb-6" id="profesionalSeleccionadoDisplay"></p>
-                
-                <div class="mb-6">
-                    <label class="block text-gray-700 font-semibold mb-4">Selecciona una fecha:</label>
-                    <div id="listaFechas" class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6"></div>
-                </div>
+        <section id="paso-hora" class="hidden">
+            <h1 class="text-3xl font-semibold text-[#AC0505] text-center mb-6">Selecciona Fecha y Hora</h1>
+            
+            <div class="bg-white p-8 rounded-2xl shadow-lg">
+                <h2 class="text-xl font-bold mb-4 text-[#AC0505]">Fecha</h2>
+                <div class="flex space-x-3 overflow-x-auto pb-4" id="listaFechas">
+                    </div>
 
-                <div class="mb-6">
-                    <label class="block text-gray-700 font-semibold mb-4">Horarios disponibles:</label>
-                    <div id="listaHoras" class="grid grid-cols-2 md:grid-cols-4 gap-3"></div>
-                </div>
-                
-                <div class="flex gap-3 justify-end">
-                    <button onclick="volverAtras()" class="px-6 py-3 bg-white border-2 border-gray-300 text-gray-800 rounded-lg hover:bg-gray-50 hover:border-[#AC0505] transition font-semibold">
-                        ← Atrás
-                    </button>
-                    <button onclick="siguientePaso()" id="siguiente-hora" disabled class="px-6 py-3 bg-[#AC0505] text-white rounded-lg hover:bg-[#8b0404] disabled:bg-gray-400 disabled:cursor-not-allowed transition font-semibold">
-                        Continuar →
-                    </button>
-                </div>
+                <h2 class="text-xl font-bold mb-4 mt-6 text-[#AC0505]">Hora</h2>
+                <p class="text-gray-600 mb-4" id="mensaje-disponibilidad">Selecciona una fecha para ver los horarios disponibles.</p>
+                <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-3" id="listaHoras">
+                    </div>
             </div>
-        </div>
 
-        <div id="paso-resumen" class="hidden fade-in">
-            <div class="bg-white rounded-lg shadow-md p-8">
-                <h1 class="text-3xl font-bold text-gray-800 mb-2">Confirma tu reserva</h1>
-                <p class="text-gray-600 mb-8">Revisa los detalles de tu turno</p>
+            <div class="flex justify-between mt-6">
+                <button onclick="pasoAnterior()" class="bg-gray-400 text-white px-6 py-3 rounded-xl font-medium">Anterior</button>
+                <button onclick="siguientePaso()" class="btn-rojo px-6 py-3 rounded-xl disabled:opacity-50" id="btnSiguienteHora" disabled>Siguiente</button>
+            </div>
+        </section>
+
+        <section id="paso-resumen" class="hidden">
+            <h1 class="text-3xl font-semibold text-[#AC0505] text-center mb-6">Confirma tu Reserva</h1>
+            
+            <div class="bg-white p-8 rounded-2xl shadow-lg border-2 border-gray-100">
+                <h2 class="text-2xl font-bold mb-4 text-[#AC0505] border-b pb-2">Detalles de la Cita</h2>
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                    <div class="border-l-4 border-[#AC0505] bg-gray-50 p-6 rounded-lg">
-                        <p class="text-gray-600 text-sm font-semibold mb-2">EMPRESA</p>
-                        <p class="text-gray-800 font-bold">Studio de Belleza Premium</p>
-                        <p class="text-gray-600 text-sm mt-3">Calle Principal 123, Ciudad</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-lg">
+                    <div class="p-3 bg-gray-50 rounded-lg">
+                        <strong class="text-[#AC0505] block mb-1">Servicio:</strong> 
+                        <span id="resumen-servicio"></span>
+                    </div>
+                    <div class="p-3 bg-gray-50 rounded-lg">
+                        <strong class="text-[#AC0505] block mb-1">Profesional:</strong> 
+                        <span id="resumen-profesional"></span>
+                    </div>
+                    <div class="p-3 bg-gray-50 rounded-lg">
+                        <strong class="text-[#AC0505] block mb-1">Fecha:</strong> 
+                        <span id="resumen-fecha"></span>
+                    </div>
+                    <div class="p-3 bg-gray-50 rounded-lg">
+                        <strong class="text-[#AC0505] block mb-1">Hora:</strong> 
+                        <span id="resumen-hora"></span>
                     </div>
                     
-                    <div class="border-l-4 border-[#AC0505] bg-gray-50 p-6 rounded-lg">
-                        <p class="text-gray-600 text-sm font-semibold mb-2">PROFESIONAL</p>
-                        <p class="text-gray-800 font-bold" id="resumen-profesional"></p>
-                        <p class="text-gray-600 text-sm mt-3" id="resumen-especialidad"></p>
+                    <div class="p-3 bg-gray-50 rounded-lg hidden">
+                        <strong class="text-[#AC0505] block mb-1">Especialidad:</strong> 
+                        <span id="resumen-especialidad"></span>
                     </div>
-                    
-                    <div class="border-l-4 border-[#AC0505] bg-gray-50 p-6 rounded-lg">
-                        <p class="text-gray-600 text-sm font-semibold mb-2">SERVICIO</p>
-                        <p class="text-gray-800 font-bold" id="resumen-servicio"></p>
-                        <p class="text-gray-600 text-sm mt-3" id="resumen-duracion"></p>
+                    <div class="p-3 bg-gray-50 rounded-lg hidden">
+                        <strong class="text-[#AC0505] block mb-1">Duración:</strong> 
+                        <span id="resumen-duracion"></span>
                     </div>
-                    
-                    <div class="border-l-4 border-[#AC0505] bg-gray-50 p-6 rounded-lg">
-                        <p class="text-gray-600 text-sm font-semibold mb-2">FECHA Y HORA</p>
-                        <p class="text-gray-800 font-bold" id="resumen-fecha"></p>
-                        <p class="text-gray-800 font-bold text-lg mt-1" id="resumen-hora"></p>
                     </div>
-                </div>
-                
-                <div class="flex gap-3">
-                    <button onclick="volverAtras()" class="px-6 py-3 bg-white border-2 border-gray-300 text-gray-800 rounded-lg hover:bg-gray-50 hover:border-[#AC0505] transition font-semibold">
-                        ← Atrás
-                    </button>
-                    <button onclick="confirmarReserva()" class="flex-1 px-6 py-3 bg-[#AC0505] text-white rounded-lg hover:bg-[#8b0404] transition font-bold text-lg">
-                        Reservar Turno
-                    </button>
-                </div>
+
+                <p class="text-sm text-gray-600 mt-6 pt-4 border-t">
+                    Al confirmar, aceptas nuestros Términos y Condiciones. 
+                </p>
             </div>
-        </div>
+
+            <div class="flex justify-between mt-6">
+                <button onclick="pasoAnterior()" class="bg-gray-400 text-white px-6 py-3 rounded-xl font-medium">Anterior</button>
+                <button onclick="mostrarModalReserva()" class="btn-rojo px-6 py-3 rounded-xl font-medium" id="btnConfirmarReserva">Confirmar Reserva</button>
+            </div>
+        </section>
+        
     </main>
 
     <footer class="footer">
@@ -158,11 +189,12 @@
                 <span><i class="contact"></i>Atención al cliente:</span>
                 <span><i class="fas fa-phone"></i> +54 9 11 4444-4444</span> |
                 <span><i class="fas fa-envelope"></i> miturno.pps.443@gmail.com</span> |
-                <span><i class="fas fa-map-marker-alt"></i> Av. Corrientes 1353, Bs. As. (Argentina)</span>
+                <span><i class="fas fa-map-marker-alt"></i> Av. Corrientes 1353, Bs. As. (Argentina)</span> |
+                <span><a href="#">Términos y Condiciones</a></span> |
+                <span><a href="#">Política de Privacidad</a></span>
             </p>
         </div>
     </footer>
-
     <div id="modalReserva" class="modal-overlay">
         <div class="modal-content">
             <div class="modal-header">
@@ -176,13 +208,15 @@
                     <p><strong>Profesional:</strong> <span id="modal-resumen-profesional"></span></p>
                     <p><strong>Fecha y Hora:</strong> <span id="modal-resumen-fechahora"></span></p>
                 </div>
-                <p class="modal-footer-text">Recibirás un recordatorio por correo electrónico.</p>
+                <p class="modal-footer-text"></p>
             </div>
             <div class="modal-footer">
-                <button class="btn-rojo" onclick="cerrarModalReserva(true)">Aceptar y Finalizar</button>
+                <button class="btn-rojo" onclick="cerrarModalReserva(true)">Ir a Mis Turnos</button>
             </div>
         </div>
     </div>
-    <script src="reserva-turno.js"></script>
+
+    <script src="./reservar-turno.js"></script>
+    <script src="./home-dropdown.js"></script> 
 </body>
 </html>

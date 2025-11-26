@@ -5,57 +5,92 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login</title>
+
   <link rel="stylesheet" href="./login-usuario.css">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <link rel="icon" type="favicon" href="../../favicon.ico">
 </head>
 
 <body>
 
-    <a href="../../index.html" class="home-icon-link">
-      <img src="../../img/home.png" alt="Inicio" class="home-icon">
-    </a>
-    
-    <div id="form-contenedor">
-        <img src="../../img/logo-miturno.png" alt="Mi Turno Logo" class="logo">
-        
-        <form onsubmit="iniciarSesion(event)" id="form-login">
-          <div>
-            <input type="email" id="loginEmail" placeholder="Email" required>
-          </div>
-          <div class="">
-            <input type="password" id="loginPassword" placeholder="Contraseña" required>
-          </div>
-          <button type="submit" class="submit-btn">Iniciar Sesión</button>
-          <a href="#" class="olvido-clave">¿Olvidaste tu contraseña?</a>
-          <button type="button" class="google-login-btn">
-            <span>Entrar con</span> <img src="../../img/icono-google.png" alt="Google Icon">
-          </button>
-          <a href="../registro-usuario/registro-usuario.html" class="no-account">¿No tienes cuenta? <span>Regístrate</span></a>
-          <a href="../registro-usuario/registro-usuario.html" class="create-account-btn">Crea una cuenta</a>
-        </form>
+  <!-- ========== HEADER ========== -->
+  <header>
+    <nav>
+      <a href="../../index.html" class="icono-home" aria-label="Volver al inicio">
+        <img src="../../img/home.png" alt="Inicio">
+      </a>
+    </nav>
+
+    <figure>
+      <img src="../../img/logo-miturno.png" alt="Logo MiTurno" class="logo">
+    </figure>
+  </header>
+
+
+  <!-- ========== CONTENIDO PRINCIPAL (si luego agregás el formulario, irá aquí) ========== -->
+  <main>
+    <section>
+<form class="form-login">
+
+    <!-- EMAIL -->
+    <input type="email" placeholder="Email" class="input-login" required>
+
+    <!-- CONTRASEÑA -->
+    <input type="password" placeholder="Contraseña" class="input-login" required>
+
+    <!-- BOTÓN INICIAR SESIÓN -->
+    <button type="submit" class="btn-iniciar">Iniciar sesión</button>
+
+    <!-- OLVIDASTE TU CONTRASEÑA -->
+    <a href="../restablecer-password/forgot-password.html" class="link-olvido">¿Olvidaste la contraseña?</a>
+
+    <!-- BOTÓN ENTRAR CON -->
+    <button type="button" class="btn-entrar-con">
+        Entrar con <img src="../../img/icono-google.png" alt="Google">
+    </button>
+
+    <!-- REGISTRO -->
+    <p class="texto-registro">
+        ¿No tienes cuenta?
+        <a href="../registro-usuario/registro-usuario.html" class="link-registrate">Regístrate</a>
+    </p>
+
+    <!-- BOTÓN CREAR CUENTA -->
+    <button type="button" class="btn-crear-cuenta">Crear una cuenta</button>
+
+</form>
+    </section>
+  </main>
+
+
+  <!-- ========== FOOTER ========== -->
+  <footer>
+    <div id="social">
+      <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+
+      <a href="https://www.tiktok.com/" target="_blank"><i class="fab fa-tiktok"></i></a>
+
+      <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook"></i></a>
     </div>
-    
-    <footer id="footer">
-        <div id="social">
-            <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.tiktok.com/" target="_blank""><i class=" fab fa-tiktok"></i></a>
-            <a href="https://www.facebook.com/" target="_blank""><i class=" fab fa-facebook"></i></a>
-        </div>
 
-        <p id="copyright">© 2025 MiTurno. Todos los derechos reservados.</p>
+    <p id="copyright">© 2025 MiTurno. Todos los derechos reservados.</p>
 
-        <div id="contacto">
-            <span><i class="fas fa-phone"></i> +54 9 11 4444-4444</span>
-            <span><i class="fas fa-envelope"></i> miturno.pps.443@gmail.com</span>
-            <span><i class="fas fa-map-marker-alt"></i> Av. Corrientes 1353, Bs. As.</span>
-            <span><i class="fas fa-users"></i> Sobre nosotros</span>
-        </div>
-    </footer>
-    <script src="../login/login-usuario.js"></script>
+    <div id="contacto">
+      <span><i class="fas fa-phone"></i> +54 9 11 4444-4444</span>
+      <span><i class="fas fa-envelope"></i> miturno.pps.443@gmail.com</span>
+      <span><i class="fas fa-map-marker-alt"></i> Av. Corrientes 1353, Bs. As.</span>
+      <span><i class="fas fa-users"></i> Sobre nosotros</span>
+    </div>
+  </footer>
+
+<script src="./login-usuario.js"></script>
+
 </body>
 
 </html>
