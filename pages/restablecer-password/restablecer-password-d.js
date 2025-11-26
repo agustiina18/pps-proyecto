@@ -29,7 +29,7 @@ estiloModal.innerHTML = `
 #modal-btn {
     margin-top: 1.5rem;
     /* Usando la variable CSS --rojo-principal de password.css */
-    background: var(--rojo-principal); 
+    background: #AC0505 
     color: white;
     border: none;
     padding: 0.8rem 1.5rem;
@@ -41,7 +41,7 @@ estiloModal.innerHTML = `
 
 #modal-btn:hover {
     /* Usando la variable CSS --rojo-hover de password.css */
-    background: var(--rojo-hover); 
+    background: #AC0505; 
     transform: translateY(-2px);
 }
 
