@@ -72,7 +72,7 @@ function resetearClave(event) {
     }
     
     // Simulación de restablecimiento exitoso
-    const urlRedireccion = '../login/login-usuario.html';
+    const urlRedireccion = '../../index.html'; // Cambiar según la ruta real
     
     
     mostrarModal(
