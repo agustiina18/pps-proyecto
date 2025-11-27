@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MiTurno - Registro Usuario</title>
+
+    <link rel="stylesheet" href="./registro-usuario.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <!-- Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+      <link rel="icon" type="favicon" href="../../../favicon.ico">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <nav>
+            <a href="../../../index.html" class="icono-inicio">
+                <img src="../../img/home.png" alt="Ir al inicio" />
+            </a>
+        </nav>
+
+        <figure>
+            <img src="../../img/logo-miturno.png" alt="Logo Mi Turno" class="logo" />
+        </figure>
+    </header>
+
+    <!-- MAIN -->
+    <main>
+        <form id="formulario-usuario">
+
+            <!-- ========== SECCIÓN 1 ========== -->
+            <section id="seccion-usuario" class="seccion-formulario activa">
+                <h2>Datos Personales</h2>
+
+
+                <div class="grid-2">
+                    <input type="text" placeholder="Nombre" class="input-formulario" required />
+                    <input type="text" placeholder="Apellido" class="input-formulario" required />
+                </div>
+
+                <div class="grid-2">
+                    <input type="text" placeholder="DNI" class="input-formulario" required />
+                    <input type="text" placeholder="Teléfono" class="input-formulario" />
+                </div>
+
+                <div class="grid-2">
+                    <input type="email" placeholder="Email" class="input-formulario" required />
+                    <input type="password" placeholder="Password" class="input-formulario" required />
+                </div>
+
+                <button type="button" id="btn-siguiente" class="btn-rojo pequeño">Siguiente</button>
+            </section>
+
+            <!-- ========== SECCIÓN 2 ========== -->
+            <section id="seccion-domicilio" class="seccion-formulario">
+
+                <h2>Datos de domicilio</h2>
+
+                <div class="grid-2">
+                    <input type="text" id="input-provincia" placeholder="Provincia" class="input-formulario" required />
+                    <input type="text" id="input-municipio" placeholder="Municipio" class="input-formulario" required />
+                </div>
+
+                <div class="grid-2">
+                    <input type="text" id="input-localidad" placeholder="Localidad" class="input-formulario" required />
+                    <input type="text" id="input-calle" placeholder="Calle" class="input-formulario" required />
+                </div>
+
+                <div class="grid-2">
+                    <input type="text" id="input-altura" placeholder="Altura" class="input-formulario" required />
+                    <input type="text" placeholder="Datos adicionales" class="input-formulario" />
+                </div>
+
+                <button type="button" id="btn-buscar" class="btn-rojo pequeño">Buscar dirección</button>
+
+                <h3 class="subtitulo">📍 Selecciona la ubicación en el mapa:</h3>
+
+                <div id="mapa"></div>
+
+                <p id="texto-coordenadas"></p>
+
+                <!-- Hidden FastAPI -->
+                <input type="hidden" id="latitud" name="latitud" />
+                <input type="hidden" id="longitud" name="longitud" />
+
+                <div class="fila-botones">
+                    <button type="button" id="btn-anterior" class="btn-gris">Anterior</button>
+                    <button type="submit" class="btn-rojo">Crear Cuenta</button>
+                </div>
+
+            </section>
+
+        </form>
+    </main>
+
+
+    <!-- MODAL -->
+    <div id="modal-overlay" class="modal-overlay">
+        <div class="modal-card">
+            <p id="modal-mensaje"></p>
+            <button id="modal-btn">Aceptar</button>
+        </div>
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    <!-- JS -->
+    <script src="./registro-usuario-d.js"></script>
+
+</body>
+
+</html>

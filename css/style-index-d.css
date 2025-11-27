@@ -151,41 +151,42 @@
     font-weight: 600;
 }   
 
-/* Footer */
-#footer {
+footer {
+    padding: 10px;
     text-align: center;
-    padding-top: 2rem;
-    padding-bottom: 1rem;
-    font-size: 14px;
-    
-}
-
-#social {
     display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-    font-size: 22px;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
 }
 
 #social a {
-    color: var(--gris-oscuro); 
-    transition: color 0.2s ease;
+    margin: 0 5px;
+    font-size: 15px;
+    color: #333;
+    transition: 0.2s ease;
 }
 
 #social a:hover {
-    color: var(--rojo-principal);
+    color: #b71c1c;
 }
+
+#copyright {
+    font-size: 12px;
+    color: #444;
+}
+
 #contacto {
-    margin-top: 1rem;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 1.5rem;
-    font-size: 14px;
-    padding: 0 1rem;
+    gap: 10px;
+    font-size: 13px;
+    color: #444;
 }
+
 #contacto span i {
-    margin-right: 3px;
+    margin-right: 5px;
 }
 
 /* === RESPONSIVE COMPLETO === */

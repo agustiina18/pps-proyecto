@@ -45,7 +45,7 @@ function iniciarSesion(event) {
 // ==== Olvido de clave ==== 
 function olvidoClave(event) {
     event.preventDefault();
-    window.location.href = './pages/restablecer-password/forgot-password.html';
+    window.location.href = './pages/usuario/restablecer-password/forgot-password.html';
 }
 
 // ==== Login con Google ==== 
@@ -55,7 +55,7 @@ function entrarConGoogle() {
 
 // ==== Crear cuenta ==== 
 function crearCuenta() {
-    window.location.href = './pages/registro-usuario/registro-usuario.html';
+    window.location.href = './pages/usuario/registro-usuario/registro-usuario.html';
 }
 
 //SISTEMA DE MODALES (Eliminado)
