@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mis Turnos - MiTurno</title>
+    <title>MiTurno</title>
     <link rel="stylesheet" href="./home-usuario-d.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,10 +22,11 @@
             </button>
 
             <div class="user-dropdown-content">
-                <a href="./home-turnos.html">Mis Turnos</a>
-                <a href="./home-usuario.html">Categorías</a>
+                <a href="./home-turnos.html">Historial de turnos</a>
+                <a href="#">Favoritos</a>
+                <a href="#">Mis Empresas</a>
                 <a href="#">Contacto</a>
-                <a href="#">Configuración</a>
+                
             </div>
         </div>
 
@@ -37,7 +38,6 @@
 
         <div class="nav-icons" style="display: flex; align-items: center;">
             <button class="menu-toggle-btn">
-                <i class="fas fa-bell"></i>
             </button>
 
             <div class="dropdown-menu-container">
@@ -47,11 +47,8 @@
                 </button>
 
                 <div class="dropdown-content">
-                    <a href="../registro-empresa/crear-empresa.html">Crear Perfil de Empresa</a>
+                    <a href="../registro-empresa/crear-empresa.html">Crear Empresa</a>
                     <a href="#">Ver perfil</a>
-                    <a href="#">Configurar mi cuenta</a>
-                    <a href="#">Seguridad</a>
-                    <a href="#">Términos y condiciones</a>
                     <a href="#" class="logout-link">Cerrar sesión</a>
                 </div>
             </div>
@@ -59,7 +56,7 @@
     </nav>
 
 <main>
-        <h2 class="home-title">Mis Próximos Turnos</h2>
+        <h2 class="home-title">¿Qué servicio necesitas hoy?</h2>
 
         <div class="search-container">
             <input type="text" id="busquedaTurnos" placeholder="Buscar por servicio o empresa..." class="nav-search-input">
@@ -83,25 +80,6 @@
         </div>
     </div>
 
-    <footer class="footer">
-        <div class="footer-top">
-            <div class="social-icons">
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-tiktok"></i></a>
-                <a href="#"><i class="fab fa-facebook"></i></a>
-            </div>
-            <p>© 2025 MiTurno. Todos los derechos reservados</p>
-        </div>
-        <div class="footer-bottom">
-            <p>
-                <span><i class="contact"></i>Atención al cliente:</span>
-                <span><i class="fas fa-phone"></i> +54 9 11 4444-4444</span> |
-                <span><i class="fas fa-envelope"></i> miturno.pps.443@gmail.com</span> |
-                <span><i class="fas fa-map-marker-alt"></i> Av. Corrientes 1353, Bs. As. (Argentina)</span> |
-                <span><i class="fas fa-users"></i> Sobre nosotros</span>
-            </p>
-        </div>
-    </footer>
 
     <script src="./home-dropdown.js"></script>
     <script src="./turnos-card.js"></script>
