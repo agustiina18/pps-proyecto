@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MiTurno - Reserva de Turno</title>
+    <link rel="stylesheet" href="./reservar-turno.css">
+    <script src="https://cdn.tailwindcss.com"></script> 
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="icon" type="favicon" href="../../../favicon.ico">
+</head>
+
+<body>
+
+    <nav class="main-nav">
+
+    <div class="user-menu-container">
+        <button class="menu-toggle-btn user-menu-dropdown-btn">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <div class="user-dropdown-content">
+            <a href="../home-turnos/home-turnos.html">Mis Turnos</a>
+            <a href="../home-usuario/home-usuario.html">Categorías</a>
+            <a href="#">Contacto</a>
+            <a href="#">Configuración</a>
+        </div>
+    </div>
+
+    <div class="nav-logo-container">
+        <a href="../../index.html">
+            <img src="../../img/logo-miturno2.png" alt="Mi Turno Logo">
+        </a>
+    </div>
+
+    <div class="nav-icons" style="display: flex; align-items: center;">
+        <button class="menu-toggle-btn">
+            <i class="fas fa-bell"></i>
+        </button>
+
+        <div class="dropdown-menu-container">
+            <button class="menu-toggle-btn profile-dropdown-btn">
+                <i class="fas fa-user-circle"></i>
+                <i class="fas fa-caret-down dropdown-arrow"></i>
+            </button>
+
+            <div class="dropdown-content">
+                <a href="../registro-empresa/crear-empresa.html">Crear Perfil de Empresa</a>
+                <a href="#">Ver perfil</a>
+                <a href="#">Configurar mi cuenta</a>
+                <a href="#">Seguridad</a>
+                <a href="#">Términos y condiciones</a>
+                <a href="#" class="logout-link">Cerrar sesión</a>
+            </div>
+        </div>
+    </div>
+
+</nav>
+
+    <main class="max-w-4xl mx-auto px-4 py-8">
+        
+        <div class="flex justify-between items-center mb-8" id="indicadorPasos">
+            <div class="flex-1 text-center">
+                <div class="inline-block w-8 h-8 bg-[#AC0505] text-white rounded-full flex items-center justify-center font-bold text-sm">1</div>
+                <p class="text-xs mt-1 text-gray-700">Servicio</p>
+            </div>
+            <div class="linea-indicadora activo"></div>
+            <div class="flex-1 text-center">
+                <div class="inline-block w-8 h-8 bg-gray-300 text-gray-600 rounded-full flex items-center justify-center font-bold text-sm">2</div>
+                <p class="text-xs mt-1 text-gray-500">Profesional</p>
+            </div>
+            <div class="linea-indicadora"></div>
+            <div class="flex-1 text-center">
+                <div class="inline-block w-8 h-8 bg-gray-300 text-gray-600 rounded-full flex items-center justify-center font-bold text-sm">3</div>
+                <p class="text-xs mt-1 text-gray-500">Fecha/Hora</p>
+            </div>
+            <div class="linea-indicadora"></div>
+            <div class="flex-1 text-center">
+                <div class="inline-block w-8 h-8 bg-gray-300 text-gray-600 rounded-full flex items-center justify-center font-bold text-sm">4</div>
+                <p class="text-xs mt-1 text-gray-500">Resumen</p>
+            </div>
+        </div>
+        
+        <input type="text" id="busquedaServicio" placeholder="Buscar servicio..." class="hidden"> 
+        <div id="servicioSeleccionadoDisplay" class="hidden"></div>
+        <div id="profesionalSeleccionadoDisplay" class="hidden"></div>
+        <section id="paso-servicio" class="fade-in">
+            <h1 class="text-3xl font-semibold text-[#AC0505] text-center mb-6">Selecciona el Servicio</h1>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="listaServicios">
+                </div>
+            <div class="flex justify-end mt-6">
+                <button onclick="siguientePaso()" class="btn-rojo px-6 py-3 rounded-xl disabled:opacity-50" id="btnSiguienteServicio" disabled>Siguiente</button>
+            </div>
+        </section>
+
+        <section id="paso-profesional" class="hidden">
+            <h1 class="text-3xl font-semibold text-[#AC0505] text-center mb-6">Selecciona un Profesional</h1>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="listaProfesionales">
+                </div>
+            <div class="flex justify-between mt-6">
+                <button onclick="pasoAnterior()" class="bg-gray-400 text-white px-6 py-3 rounded-xl font-medium">Anterior</button>
+                <button onclick="siguientePaso()" class="btn-rojo px-6 py-3 rounded-xl disabled:opacity-50" id="btnSiguienteProfesional" disabled>Siguiente</button>
+            </div>
+        </section>
+
+        <section id="paso-hora" class="hidden">
+            <h1 class="text-3xl font-semibold text-[#AC0505] text-center mb-6">Selecciona Fecha y Hora</h1>
+            
+            <div class="bg-white p-8 rounded-2xl shadow-lg">
+                <h2 class="text-xl font-bold mb-4 text-[#AC0505]">Fecha</h2>
+                <div class="flex space-x-3 overflow-x-auto pb-4" id="listaFechas">
+                    </div>
+
+                <h2 class="text-xl font-bold mb-4 mt-6 text-[#AC0505]">Hora</h2>
+                <p class="text-gray-600 mb-4" id="mensaje-disponibilidad">Selecciona una fecha para ver los horarios disponibles.</p>
+                <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-3" id="listaHoras">
+                    </div>
+            </div>
+
+            <div class="flex justify-between mt-6">
+                <button onclick="pasoAnterior()" class="bg-gray-400 text-white px-6 py-3 rounded-xl font-medium">Anterior</button>
+                <button onclick="siguientePaso()" class="btn-rojo px-6 py-3 rounded-xl disabled:opacity-50" id="btnSiguienteHora" disabled>Siguiente</button>
+            </div>
+        </section>
+
+        <section id="paso-resumen" class="hidden">
+            <h1 class="text-3xl font-semibold text-[#AC0505] text-center mb-6">Confirma tu Reserva</h1>
+            
+            <div class="bg-white p-8 rounded-2xl shadow-lg border-2 border-gray-100">
+                <h2 class="text-2xl font-bold mb-4 text-[#AC0505] border-b pb-2">Detalles de la Cita</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-lg">
+                    <div class="p-3 bg-gray-50 rounded-lg">
+                        <strong class="text-[#AC0505] block mb-1">Servicio:</strong> 
+                        <span id="resumen-servicio"></span>
+                    </div>
+                    <div class="p-3 bg-gray-50 rounded-lg">
+                        <strong class="text-[#AC0505] block mb-1">Profesional:</strong> 
+                        <span id="resumen-profesional"></span>
+                    </div>
+                    <div class="p-3 bg-gray-50 rounded-lg">
+                        <strong class="text-[#AC0505] block mb-1">Fecha:</strong> 
+                        <span id="resumen-fecha"></span>
+                    </div>
+                    <div class="p-3 bg-gray-50 rounded-lg">
+                        <strong class="text-[#AC0505] block mb-1">Hora:</strong> 
+                        <span id="resumen-hora"></span>
+                    </div>
+                    
+                    <div class="p-3 bg-gray-50 rounded-lg hidden">
+                        <strong class="text-[#AC0505] block mb-1">Especialidad:</strong> 
+                        <span id="resumen-especialidad"></span>
+                    </div>
+                    <div class="p-3 bg-gray-50 rounded-lg hidden">
+                        <strong class="text-[#AC0505] block mb-1">Duración:</strong> 
+                        <span id="resumen-duracion"></span>
+                    </div>
+                    </div>
+
+                <p class="text-sm text-gray-600 mt-6 pt-4 border-t">
+                    Al confirmar, aceptas nuestros Términos y Condiciones. 
+                </p>
+            </div>
+
+            <div class="flex justify-between mt-6">
+                <button onclick="pasoAnterior()" class="bg-gray-400 text-white px-6 py-3 rounded-xl font-medium">Anterior</button>
+                <button onclick="mostrarModalReserva()" class="btn-rojo px-6 py-3 rounded-xl font-medium" id="btnConfirmarReserva">Confirmar Reserva</button>
+            </div>
+        </section>
+        
+    </main>
+
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+            </div>
+            <p>© 2025 MiTurno. Todos los derechos reservados</p>
+        </div>
+        <div class="footer-bottom">
+            <p>
+                <span><i class="contact"></i>Atención al cliente:</span>
+                <span><i class="fas fa-phone"></i> +54 9 11 4444-4444</span> |
+                <span><i class="fas fa-envelope"></i> miturno.pps.443@gmail.com</span> |
+                <span><i class="fas fa-map-marker-alt"></i> Av. Corrientes 1353, Bs. As. (Argentina)</span> |
+                <span><a href="#">Términos y Condiciones</a></span> |
+                <span><a href="#">Política de Privacidad</a></span>
+            </p>
+        </div>
+    </footer>
+    <div id="modalReserva" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-booking-titulo">¡Turno Confirmado! ✅</h2>
+                <button class="modal-close" onclick="cerrarModalReserva()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p class="modal-intro-text">Tu reserva ha sido procesada con éxito. ¡Te esperamos!</p>
+                <div class="modal-summary-detail">
+                    <p><strong>Servicio:</strong> <span id="modal-resumen-servicio"></span></p>
+                    <p><strong>Profesional:</strong> <span id="modal-resumen-profesional"></span></p>
+                    <p><strong>Fecha y Hora:</strong> <span id="modal-resumen-fechahora"></span></p>
+                </div>
+                <p class="modal-footer-text"></p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-rojo" onclick="cerrarModalReserva(true)">Ir a Mis Turnos</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="./reservar-turno.js"></script>
+    <script src="./home-dropdown.js"></script> 
+</body>
+</html>

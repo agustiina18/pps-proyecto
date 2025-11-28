@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MiTurno</title>
+    <link rel="stylesheet" href="./home-usuario-d.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="icon" type="favicon" href="../../favicon.ico">
+</head>
+
+<body>
+
+    <nav class="main-nav">
+        <div class="user-menu-container">
+            <button class="menu-toggle-btn user-menu-dropdown-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <div class="user-dropdown-content">
+                <a href="./home-turnos.html">Historial de turnos</a>
+                <a href="#">Favoritos</a>
+                <a href="#">Mis Empresas</a>
+                <a href="#">Contacto</a>
+                
+            </div>
+        </div>
+
+        <div class="nav-logo-container">
+            <a href="../../index.html">
+                <img src="../../img/logo-miturno2.png" alt="Mi Turno Logo">
+            </a>
+        </div>
+
+        <div class="nav-icons" style="display: flex; align-items: center;">
+            <button class="menu-toggle-btn">
+            </button>
+
+            <div class="dropdown-menu-container">
+                <button class="menu-toggle-btn profile-dropdown-btn">
+                    <i class="fas fa-user-circle"></i>
+                    <i class="fas fa-caret-down dropdown-arrow"></i>
+                </button>
+
+                <div class="dropdown-content">
+                    <a href="../registro-empresa/crear-empresa.html">Crear Empresa</a>
+                    <a href="#">Ver perfil</a>
+                    <a href="#" class="logout-link">Cerrar sesión</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+<main>
+        <h2 class="home-title">¿Qué servicio necesitas hoy?</h2>
+
+        <div class="search-container">
+            <input type="text" id="busquedaTurnos" placeholder="Buscar por servicio o empresa..." class="nav-search-input">
+        </div>
+
+        <div class="filters">
+            <button class="filter-btn active" data-filter="todos">Todos</button>
+            <button class="filter-btn" data-filter="confirmados">Confirmados</button>
+            <button class="filter-btn" data-filter="pendientes">Pendientes</button>
+            <button class="filter-btn" data-filter="pasados">Pasados</button>
+        </div>
+
+        <div class="cards-container" id="cardsContainer">
+            </div>
+    </main>
+
+        <div id="turnoDetailModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="cerrarDetalleTurno()">&times;</span>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+
+    <script src="./home-dropdown.js"></script>
+    <script src="./turnos-card.js"></script>
+</body>
+</html>

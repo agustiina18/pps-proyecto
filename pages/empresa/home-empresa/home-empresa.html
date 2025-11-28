@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - MiTurno</title>
+    <link rel="stylesheet" href="../../css/style-global.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="icon" type="favicon" href="../../favicon.ico">
+</head>
+
+<body>
+
+    <nav class="main-nav">
+        <button class="menu-toggle-btn">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <div class="nav-logo-container">
+            <a href="../../index.html">
+                <img src="../../img/logo-miturno2.png" alt="Mi Turno Logo">
+            </a>
+        </div>
+
+        <div class="nav-icons" style="display: flex; align-items: center;">
+            <button class="menu-toggle-btn" style="background-color: transparent; color: white; padding: 5px 10px;">
+                <i class="fas fa-bell"></i>
+            </button>
+
+            <div class="dropdown-menu-container">
+                <button class="menu-toggle-btn profile-dropdown-btn">
+                    <i class="fas fa-user-circle"></i>
+                    <i class="fas fa-caret-down dropdown-arrow"></i>
+
+
+                    <div class="dropdown-content">
+                        <a href="../home-empresa/perfil-empresa.html">Ver perfil</a>
+                        <a href="../home-empresa/perfil-empresa.html">Configurar mi cuenta</a>
+                        <a href="#">Seguridad</a>
+                        <a href="#">Términos y condiciones</a>
+                        <a href="#" class="logout-link">Cerrar sesión</a>
+                    </div>
+            </div>
+        </div>
+    </nav>
+
+
+    <main>
+        <h2 class="home-title" style="margin-bottom: 20px;">Qué servicio necesitas hoy?</h2>
+
+        <div class="search-container" style="max-width: 400px; margin: 0 auto 40px auto; flex-grow: 0;">
+            <input type="text" placeholder="Busca un servicio o empresa..." class="nav-search-input"
+                style="height: 45px;">
+        </div>
+
+  
+
+</body>
+
+</html>

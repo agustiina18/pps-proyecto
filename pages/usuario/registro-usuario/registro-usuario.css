@@ -1,0 +1,590 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+
+}
+
+body {
+    background: #f2f4f5;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+
+/* ------------------------------------------------------ */
+/* ---------------- HEADER + ICONO INICIO --------------- */
+/* ------------------------------------------------------ */
+
+.icono-inicio {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+}
+
+.icono-inicio img {
+    width: 80px;
+    height: 80px;
+    transition: .2s ease;
+}
+
+.icono-inicio img:hover {
+    transform: scale(1.1);
+}
+
+header figure {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.logo {
+    width: 320px;
+    max-width: 70%;
+    margin-top: 25px;
+    height: auto;
+}
+
+
+
+/* ---------------------- MAIN -------------------------- */
+
+
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+
+
+/* ------------- FORMULARIO PRINCIPAL ------------------- */
+
+
+#formulario-usuario {
+    width: 100%;
+    max-width: 900px;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/* ------------------- TÍTULOS ------------------------- */
+
+h2 {
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 25px;
+    font-size: 26px;
+}
+
+.subtitulo {
+    margin-top: 15px;
+    text-align: left;
+    font-weight: 500;
+}
+
+
+/* ---------------- SECCIONES DEL FORM ------------------ */
+
+.seccion-formulario {
+    width: 100%;
+    display: none;
+    
+}
+
+.seccion-formulario.activa {
+    display: block;
+
+}
+
+
+/* ------------------------------------------------------ */
+/* ---------------- GRID DE 2 COLUMNAS ------------------ */
+/* ------------------------------------------------------ */
+
+.grid-2 {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin-bottom: 20px;
+}
+
+.columna {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+/* ------------------------------------------------------ */
+/* ------- INPUT FAKE + BOTÓN SUBIR IMAGEN -------------- */
+/* ------------------------------------------------------ */
+
+.caja-archivo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.input-falso {
+    padding: 12px 20px;
+    background: #e5e5e5;
+    border-radius: 10px;
+    font-size: 15px;
+    width: 180px;
+    box-shadow: 0 4px 4px rgba(0,0,0,0.15);
+}
+
+.btn-subir {
+    background: #AC0505;
+    color: white;
+    border: none;
+    padding: 10px 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.btn-subir:hover {
+    background: #880404;
+}
+
+
+/* ------------------------------------------------------ */
+/* ----------------- INPUTS DEL FORM -------------------- */
+/* ------------------------------------------------------ */
+
+.input-formulario {
+    width: 100%;
+    padding: 15px 20px;
+    background: #E5E5E5;
+    border: none;
+    border-radius: 12px;
+    outline: none;
+    font-size: 15px;
+    font-weight: 500;
+    color: #000;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.input-formulario::placeholder {
+    color: #989898;
+    font-weight: 500;
+}
+
+
+
+/* ------------------ BOTONES ROJOS --------------------- */
+
+
+.btn-rojo {
+    background: #AC0505;
+    color: #fff;
+    padding: 13px 25px;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 15px;
+    width: 100%;
+    max-width: 300px;
+}
+
+.btn-rojo:hover {
+    background: #880404;
+}
+
+.pequeño {
+    max-width: 180px;
+    padding: 10px 15px;
+}
+
+/* ================= BOTONES ANTERIOR + CREAR ================= */
+
+.fila-botones {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.btn-gris {
+    background: #d6d6d6;
+    color: #333;
+    padding: 13px 25px;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 15px;
+    width: 100%;
+    max-width: 300px;
+}
+
+.btn-gris:hover {
+    background: #bfbfbf;
+}
+
+.fila-botones .btn-rojo {
+    width: 40%;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .fila-botones {
+        flex-direction: column;
+        gap: 12px;
+        align-items: center;
+    }
+
+    .fila-botones .btn-gris,
+    .fila-botones .btn-rojo {
+        width: 100%;
+        max-width: 260px;
+    }
+}
+
+
+
+/* ------------------------------------------------------ */
+/* ------------------------ MAPA ------------------------ */
+/* ------------------------------------------------------ */
+
+#mapa {
+    width: 100%;
+    height: 350px;
+    margin-top: 15px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+}
+
+#texto-coordenadas {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 15px;
+    font-weight: 500;
+    display: none;
+}
+/* -------------------- MODAL ---------------------- */
+
+.modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    backdrop-filter: blur(2px);
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.modal-overlay.mostrar {
+    display: flex;
+}
+
+.modal-card {
+    background: white;
+    padding: 25px 30px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 350px;
+    text-align: center;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+#modal-btn {
+    margin-top: 15px;
+    background: #AC0505;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#modal-btn:hover {
+    background: #8a0404;
+}
+@keyframes entradaModal {
+    from {
+        opacity: 0;
+        transform: translateY(-12px) scale(0.96);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.modal-card h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.modal-card p {
+    font-size: 15px;
+    color: #444;
+    line-height: 1.4;
+    margin-bottom: 20px;
+}
+
+#modal-btn {
+    background: #AC0505;
+    color: white;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    width: 100%;
+    max-width: 200px;
+    margin: 0 auto;
+    transition: 0.2s ease-in-out;
+}
+
+#modal-btn:hover {
+    background: #8c0404;
+}
+
+
+
+
+/* ---------------------- RESPONSIVE -------------------- */
+
+/* ======================== TABLET (≤ 768px) ======================== */
+@media (max-width: 768px) {
+
+    /* Icono Home */
+    .icono-inicio img {
+        width: 45px;
+        height: 45px;
+    }
+
+    /* Logo Miturno */
+    .logo {
+        width: 230px;
+        margin-top: 60px;
+    }
+
+    /* Formulario principal */
+    #formulario-usuario {
+        max-width: 700px;
+    }
+
+    .grid-2 {
+        grid-template-columns: 1fr;  /* columnas en una sola columna */
+        gap: 15px;
+    }
+
+    .caja-archivo {
+        flex-direction: column;
+    }
+
+    /* Inputs */
+    .input-formulario {
+        padding: 13px 18px;
+        font-size: 15px;
+    }
+
+    /* Botones */
+    .btn-rojo {
+        max-width: 260px;
+        font-size: 15px;
+    }
+
+    /* Mapa */
+    #mapa {
+        height: 300px;
+    }
+
+
+}
+
+/* ======================== MOBILE (≤ 480px) ======================== */
+@media (max-width: 480px) {
+
+    /* Icono Home */
+    .icono-inicio img {
+        width: 40px;
+        height: 40px;
+    }
+
+    /* Logo Miturno */
+    .logo {
+        width: 200px;
+        margin-top: 55px;
+    }
+
+    /* Formulario */
+    #formulario-usuario {
+        max-width: 340px;
+    }
+
+    h2 {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+
+    /* Inputs */
+    .input-formulario {
+        padding: 12px 15px;
+        font-size: 14px;
+    }
+
+    /* Botones */
+    .btn-rojo {
+        max-width: 230px;
+        font-size: 15px;
+        padding: 11px 14px;
+    }
+
+    .pequeño {
+        max-width: 150px;
+        padding: 8px 12px;
+    }
+
+    /* Logo  */
+    .contenedor-logo {
+        width: 120px;
+        height: 120px;
+    }
+
+    /* Subir imagen */
+    .input-falso {
+        width: 150px;
+        font-size: 14px;
+    }
+
+    .btn-subir {
+        padding: 8px 10px;
+        font-size: 13px;
+    }
+
+    /* Mapa */
+    #mapa {
+        height: 250px;
+    }
+
+  
+
+}
+
+/* =================== SMALL MOBILE (≤ 360px) =================== */
+@media (max-width: 360px) {
+
+    /* Icono Home */
+    .icono-inicio img {
+        width: 36px;
+        height: 36px;
+    }
+
+    /* Logo MiTurno */
+    .logo {
+        width: 180px;
+    }
+
+    /* Formulario */
+    #formulario-usuario {
+        max-width: 260px;
+    }
+
+    .input-formulario,
+    .btn-rojo {
+        max-width: 260px;
+        font-size: 13px;
+        padding: 10px 12px;
+    }
+
+    .contenedor-logo {
+        width: 110px;
+        height: 110px;
+    }
+
+
+}
+
+/* RESPONSIVE MODAL */
+
+
+/* Tablet */
+@media (max-width: 768px) {
+    .modal-card {
+        max-width: 330px;
+        padding: 26px 24px;
+    }
+
+    .modal-card h3 {
+        font-size: 18px;
+    }
+
+    #modal-btn {
+        font-size: 14px;
+        padding: 10px 20px;
+        max-width: 180px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .modal-card {
+        max-width: 300px;
+        padding: 22px 20px;
+    }
+
+    .modal-card h3 {
+        font-size: 17px;
+    }
+
+    .modal-card p {
+        font-size: 14px;
+    }
+
+    #modal-btn {
+        font-size: 14px;
+        max-width: 170px;
+        padding: 10px 18px;
+    }
+}
+
+/* Pantallas muy pequeñas (≤ 360px) */
+@media (max-width: 360px) {
+    .modal-card {
+        max-width: 260px;
+        padding: 20px 16px;
+    }
+
+    .modal-card h3 {
+        font-size: 16px;
+    }
+
+    .modal-card p {
+        font-size: 13px;
+    }
+
+    #modal-btn {
+        font-size: 13px;
+        max-width: 150px;
+        padding: 9px 14px;
+    }
+}
