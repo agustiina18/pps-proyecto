@@ -1,4 +1,14 @@
-// Estilos del modal 
+// ==============================================
+//  CÓDIGO DE VALIDACIÓN – TOKEN ENVIADO POR WSP
+//  (Simulado — en producción vendrá del backend)
+// ==============================================
+const CODIGO_VALIDO = "123456"; 
+// Cambiar por el token real que retorna el backend
+
+
+// ==============================================
+// ESTILOS DEL MODAL (AUTO-INYECTADOS)
+// ==============================================
 const estiloModal = document.createElement('style');
 estiloModal.innerHTML = `
 .modal-overlay {
@@ -26,7 +36,7 @@ estiloModal.innerHTML = `
     animation: fadeIn 0.25s ease;
 }
 
-/* #modal-btn */
+/* Botón del modal */
 #modal-btn { 
     margin-top: 1.5rem;
     background: #AC0505; 
@@ -40,7 +50,7 @@ estiloModal.innerHTML = `
 }
 
 #modal-btn:hover {
-    background: #AC0505; 
+    background: #8c0404; 
     transform: translateY(-2px);
 }
 
@@ -51,61 +61,79 @@ estiloModal.innerHTML = `
 `;
 document.head.appendChild(estiloModal);
 
-/**
- * Función principal de llamada para enviar el formulario.
- * @param {Event} event - Envío del formulario.
- */
+
+
+// ==============================================
+// FUNCIÓN PRINCIPAL: RESTABLECER CONTRASEÑA
+// ==============================================
 function resetearClave(event) {
     event.preventDefault();
 
-    const nuevaClave = document.getElementById('nueva-clave').value;
-    const confirmacionClave = document.getElementById('confirmacion-clave').value;
+    // Campos
+    const codigoIngresado = document.getElementById('codigo-recibido').value.trim();
+    const nuevaClave = document.getElementById('nueva-clave').value.trim();
+    const confirmacionClave = document.getElementById('confirmacion-clave').value.trim();
 
+
+    // ==========================
+    // 1. VALIDAR CÓDIGO
+    // ==========================
+    if (codigoIngresado === "") {
+        mostrarModal("❌ Debes ingresar el código recibido.", "Aceptar");
+        return;
+    }
+
+    if (codigoIngresado !== CODIGO_VALIDO) {
+        mostrarModal("❌ Código incorrecto.<br>Verifica el código enviado por WhatsApp.", "Reintentar");
+        return;
+    }
+
+
+    // ==========================
+    // 2. VALIDAR CONTRASEÑA
+    // ==========================
     if (nuevaClave.length < 6) {
-        mostrarModal("❌ Error:<br>La contraseña debe tener al menos 6 caracteres.", "Aceptar"); 
+        mostrarModal("❌ La contraseña debe tener al menos 6 caracteres.", "Aceptar");
         return;
     }
 
     if (nuevaClave !== confirmacionClave) {
-        mostrarModal("❌ Error:<br>Las contraseñas no coinciden.", "Aceptar");
+        mostrarModal("❌ Las contraseñas no coinciden.", "Aceptar");
         return;
     }
-    
-    // Simulación de restablecimiento exitoso
-    const urlRedireccion = '../../../index.html'; // Cambiar según la ruta real
-    
-    
+
+
+    // ==========================
+    // 3. SIMULACIÓN DE ÉXITO
+    // ==========================
+    const urlRedireccion = '../../../index.html';
+
     mostrarModal(
-        "✅ Éxito:<br>Tu contraseña ha sido restablecida exitosamente. Ahora puedes iniciar sesión.", 
-        "Ir a Iniciar Sesión", 
+        "✅ Éxito:<br>Tu contraseña ha sido restablecida correctamente.",
+        "Ir a Iniciar Sesión",
         urlRedireccion
     );
 }
 
-/**
- * Muestra el modal 
- * @param {string} mensajeHTML - Mensaje a mostrar 
- * @param {string} textoBoton - Texto del botón de cierre.
- * @param {string} [urlDestino] - URL para redirigir al cerrar el modal (si es que se usa).
- */
-function mostrarModal(mensajeHTML, textoBoton, urlDestino) {
-    const overlay = document.getElementById('modal-overlay');
-    //  Se busca el ID correcto en el HTML: 'modal-mensaje'
-    const mensajeElemento = document.getElementById('modal-mensaje'); 
-    //  Se busca el ID correcto en el HTML: 'modal-btn'
-    const boton = document.getElementById('modal-btn'); 
 
-    // innerHTML para permitir el tag <br>
-    mensajeElemento.innerHTML = mensajeHTML; 
+
+// ==============================================
+// FUNCIÓN DEL MODAL
+// ==============================================
+function mostrarModal(mensajeHTML, textoBoton, urlDestino) {
+
+    const overlay = document.getElementById('modal-overlay');
+    const mensajeElemento = document.getElementById('modal-mensaje');
+    const boton = document.getElementById('modal-btn');
+
+    mensajeElemento.innerHTML = mensajeHTML;
     boton.textContent = textoBoton;
 
     overlay.classList.add('mostrar');
 
-    // Limpiar 
-    boton.onclick = null; 
-
     boton.onclick = () => {
         overlay.classList.remove('mostrar');
+
         if (urlDestino) {
             window.location.href = urlDestino;
         }

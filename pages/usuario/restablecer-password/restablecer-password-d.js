@@ -58,17 +58,18 @@ document.head.appendChild(estiloModal);
 function restablecerClave(event) {
     event.preventDefault();
 
-    const emailInput = document.getElementById('resetEmail');
-    const email = emailInput.value.trim();
+    const numberInput = document.getElementById('resetNumber');
+    const number = numberInput.value.trim();
+    
 
-    if (!email) {
+    if (!number) {
         // 🎯 Ahora la función existe
-        mostrarModalError('Por favor, ingresa tu email.');
+        mostrarModalError('Por favor, ingresa tu número de celular.');
         return;
     }
     
     // Simulación de éxito
-    const mensajeExito = "✅ Se ha enviado un enlace de restablecimiento a " + email + ". Revisa tu correo.";
+    const mensajeExito = "✅ Se ha enviado un enlace de restablecimiento a " + number + ". Revisa tu WhastApp.";
     
     mostrarModalExito(mensajeExito); 
 
