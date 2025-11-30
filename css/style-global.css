@@ -660,7 +660,7 @@ input::placeholder {
 /* ========= ESTILOS PERFIL USUARIO ========== */
 /* fondo general */
 body {
-    background: #eef3f5;
+    background: #fff;
     font-family: 'Poppins', sans-serif;
 }
 
@@ -673,7 +673,7 @@ body {
 
 /* cuadrado gris */
 .perfil-container {
-    background: #f3f6f7;
+    background: transparent;
     padding: 30px 35px;
     max-width: 950px;
     width: 100%;
@@ -691,13 +691,15 @@ body {
     text-align: center;  /* CENTRA EL TITULO */
     font-weight: 600;
     width: 100%;
+    font-style: normal;
 }
 
 /* grid de 2 columnas */
 .fila {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 25px;
+    grid-template-columns: 5fr 5fr;
+    justify-content: center;
+    gap: 80px;
     margin-bottom: 25px;
 }
 
@@ -717,13 +719,14 @@ body {
     border-radius: 10px;
     padding-right: 10px;
     box-shadow: 0px 2px 6px rgba(0,0,0,0.15);
+    width: 110%;
 }
 
 /* inputs */
 .campo-contenedor input {
     width: 100%;
-    padding: 12px;
-    font-size: 15px;
+    padding: 20px;
+    font-size: 16px;
     border: none;
     outline: none;
     background: transparent;
@@ -733,8 +736,11 @@ body {
     margin-top: 25px;
     margin-bottom: 15px;
     font-size: 1.3rem;
-    font-weight: 600;
+    font-weight: 700;
     color: #333;
+    text-align: left;
+    margin-left: -10px;
+    font-style: normal;
 }
 
 /* boton de editar */
@@ -764,11 +770,60 @@ body {
     background: #8b0000;
 }
 
+/* Quitar cuadro blanco SOLO en la página de perfil */
+.perfil-container {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+/* Mapa */
+.bloque-mapa {
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.titulo-mapa {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.titulo-mapa i {
+    color: #b30000; /* color del icono */
+    font-size: 22px;
+}
+
+/* Contenedor del mapa */
+.mapa-contenedor {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.mapa-contenedor iframe {
+    width: 80%;      /* ✔ el mapa queda al medio y más chico */
+    height: 300px;
+    border-radius: 12px;
+    border: none;
+    box-shadow: 0px 3px 10px rgba(0,0,0,0.25);
+}
+
 /* responsive */
 @media (max-width: 768px) {
     .fila {
         grid-template-columns: 1fr;
     }
+}
+
+/* ========== ESTILOS PERFIL EMPRESA ========== */
+.titulo-perfil-empresa {
+    text-align: left !important;
+    margin-left: 0 !important;
 }
 
 /* Pie de página */
