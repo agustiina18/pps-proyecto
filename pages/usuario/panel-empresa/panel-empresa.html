@@ -4,9 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MiTurno - Contacto</title>
-    <link rel="stylesheet" href="./contacto.css"></script>
-
+    <title>MiTurno</title>
+    <link rel="stylesheet" href="./panel-empresa.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
@@ -23,7 +22,7 @@
             </button>
 
             <div class="user-dropdown-content">
-                <a href="../home-usuario/home-usuario.html">Historial de turnos</a>
+                <a href="../historial/historial-usuario.html">Historial de turnos</a>
                 <a href="../favoritos/favoritos.html">Favoritos</a>
                 <a href="../mis-empresas/mis-empresas.html">Mis Empresas</a>
                 <a href="../contacto/contacto.html">Contacto</a>
@@ -56,30 +55,58 @@
         </div>
     </nav>
 
-    <main class="contacto-main">
-        
-        <div class="contacto-container">
-            <h2 class="contacto-titulo">Contáctanos</h2>
-            
-            <form class="contacto-form">
-                <input type="text" class="input-chico" placeholder="Nombre" required>
-            
-                <input type="email" class="input-chico" placeholder="Email" required>
-                
-                <textarea class="input-grande" placeholder="Motivo" required></textarea>
-            
-                <button type="submit" class="btn-enviar">Enviar</button>
-            
-            </form>
-        
+    <main>
+        <div class="empresa-perfil-container">
+
+            <div class="empresa-perfil-header">
+                <img id="empresaLogo" class="empresa-perfil-logo" src="../../img/icono-perfil.png">
+                <div>
+                    <h2 id="empresaNombre" class="empresa-perfil-nombre">Nombre de Empresa</h2>
+                    <p id="empresaRubro" class="empresa-perfil-rubro">Rubro</p>
+                </div> 
+            </div>
+
+            <div class="empresa-perfil-info">
+
+                <div class="empresa-info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span id="empresaDireccion">Dirección aquí</span>
+                    <a id="empresaLinkMaps" class="empresa-ver-maps" target="_blank">Ver en Maps</a>
+                </div>
+
+                <!--<div class="empresa-info-item">
+                    <i class="fas fa-building"></i>
+                    <span id="empresaRubro2">Tipo de negocio</span>
+                </div>-->
+
+                <div class="empresa-info-item">
+                    <i class="fas fa-phone"></i>
+                    <span id="empresaTelefono">—</span>
+                </div>
+                <p class="empresa-info">
+                    Calificación: <span id="empresaCalificacion"></span>
+                </p>
+
+            </div>
+
+            <button class="btn-reservar" id="btnReservar">
+                Reservar turno
+            </button>
+
+            <button class="btn-favorito" id="btnFavorito">
+                ★ Agregar a Favoritos
+            </button>
+
         </div>
-    
+
     </main>
 
 
 
-    <script src="../../js/main.js"></script>
+    <script src="../home-usuario/empresas-data.js"></script>
+    <script src="./panel-empresa.js"></script>
     <script src="../home-usuario/home-dropdown.js"></script>
+
 
 </body>
 

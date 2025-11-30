@@ -41,3 +41,37 @@ function actualizarPerfilUsuario(event) {
     alert("Perfil actualizado con éxito ✓");
 }
 
+let mapa;
+let marcador;
+
+function iniciarMapa() {
+    const latInicial = -34.6037;
+    const lngInicial = -58.3816;
+
+    mapa = L.map("mapa").setView([latInicial, lngInicial], 13);
+
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(mapa);
+
+    marcador = L.marker([latInicial, lngInicial], { draggable: true }).addTo(mapa);
+
+    actualizarCoordenadas(latInicial, lngInicial);
+
+    mapa.on("click", (e) => {
+        marcador.setLatLng(e.latlng);
+        actualizarCoordenadas(e.latlng.lat, e.latlng.lng);
+    });
+
+    marcador.on("dragend", () => {
+        const pos = marcador.getLatLng();
+        actualizarCoordenadas(pos.lat, pos.lng);
+    });
+
+    setTimeout(() => mapa.invalidateSize(), 300);
+}
+
+function actualizarCoordenadas(lat, lng) {
+    document.getElementById("latitud").value = lat;
+    document.getElementById("longitud").value = lng;
+}
+
+document.addEventListener("DOMContentLoaded", iniciarMapa);

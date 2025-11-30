@@ -1,0 +1,112 @@
+/* ==========================================
+   CATÁLOGO DE EMPRESAS (Marketplace)
+========================================== */
+
+.empresas-container {
+    display: none; /* se activa con JS */
+    width: 100%;
+    min-height: 200px; /* PREVIENE COLAPSO cuando desaparecen filtros */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 10px 0;
+}
+
+/* Card de empresa */
+.empresa-card {
+    background: white;
+    border-radius: 16px;
+    padding: 18px;
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.empresa-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 16px rgba(0,0,0,0.18);
+}
+
+/* Logo */
+.empresa-logo {
+    width: 65px;
+    height: 65px;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+/* Información de la empresa */
+.empresa-info h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: #333;
+}
+
+.empresa-rubro {
+    margin-top: 4px;
+    font-size: 14px;
+    color: #777;
+}
+
+/* Rating */
+.empresa-rating {
+    margin-top: 6px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.star-full {
+    color: #FFD700;
+}
+
+.star-empty {
+    color: #ccc;
+}
+
+.rating-num {
+    font-size: 13px;
+    color: #555;
+}
+
+/* Mensaje */
+.no-resultados {
+    grid-column: 1/-1;
+    text-align: center;
+    color: #999;
+    padding: 25px;
+    font-size: 16px;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .empresa-card {
+        padding: 14px;
+        gap: 10px;
+        margin: 30px;
+    }
+
+    .empresas-container{
+        gap: 5px;
+    }
+
+    .empresa-logo {
+        width: 55px;
+        height: 55px;
+    }
+
+    .empresa-info h3 {
+        font-size: 16px;
+    }
+
+    .empresa-rubro {
+        font-size: 13px;
+    }
+
+    .rating-num {
+        font-size: 12px;
+    }
+}

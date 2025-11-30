@@ -1,21 +1,42 @@
-/* --- ESTILOS GENERALES --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 body {
+    background: #ecf0f1;
+    color: #333;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    background-color: #f2f4f5;
     overflow-y: scroll;
 }
 
-main {
-    flex-grow: 1;
-    max-width: 1200px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 0 20px;
+
+main h2 {
+    max-width: 800px;
+    width: 90%;
+    margin: 0 auto 30px auto;
+
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-style: italic;
+    font-size: 20px;
+    line-height: 1.2;
+    letter-spacing: 0;
+    text-align: center;
+    color: #333;
+
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-/* --- NAV --- */
+
+/* NAV */
 .main-nav {
     width: 100%;
     background-color: #AC0505;
@@ -25,9 +46,9 @@ main {
     padding: 15px 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     position: relative;
-    z-index: 50;
 }
 
+/* Botón del Menú Desplegable  */
 .menu-toggle-btn {
     background-color: transparent;
     color: white;
@@ -39,6 +60,7 @@ main {
     border-radius: 5px;
 }
 
+/* Barra lateral */
 .user-dropdown-content {
     position: fixed;
     top: 0;
@@ -47,29 +69,51 @@ main {
     height: 100vh;
     transform: translateX(-100%);
     transition: transform 0.3s ease-in-out;
+    /* Estilos Visuales */
     background-color: #7D0000;
-    box-shadow: 2px 0 5px rgba(0,0,0,0.5);
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
     z-index: 1000;
     overflow-y: auto;
     padding-top: 60px;
+    text-align: left;
 }
 
 .user-dropdown-content.show-user-menu {
     transform: translateX(0);
 }
 
+/* Estilos de los enlaces */
 .user-dropdown-content a {
-    color: white;
-    display: block;
     padding: 15px 20px;
-    font-size: 20px;
     text-decoration: none;
+    display: block;
+    font-size: 20px;
+    background-color: transparent;
+    font-weight: 500;
+    color: white;
 }
 
 .user-dropdown-content a:hover {
     background-color: #AC0505;
+    color: white;
 }
 
+/* Estilo para el campo de búsqueda " */
+.nav-search-input {
+    width: 100%;
+    height: 40px;
+    padding: 0 20px;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    outline: none;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    color: #333;
+    margin-top: 5px;
+}
+
+/* Loguito del nav*/
 .nav-logo-container {
     position: absolute;
     left: 50%;
@@ -78,7 +122,29 @@ main {
 
 .nav-logo-container img {
     height: 60px;
+    width: auto;
 }
+
+
+
+main {
+    width: 100%;
+    max-width: 1300px; 
+    margin: 0 auto;
+}
+
+
+
+.home-title {
+    margin: 20px auto 10px auto;
+    font-size: 2rem;
+    font-weight: 500;
+    color: #333;
+}
+
+
+
+/* Perfil */
 
 .dropdown-menu-container {
     position: relative;
@@ -93,6 +159,7 @@ main {
     cursor: pointer;
     padding: 0;
     margin-left: 5px;
+
 }
 
 .dropdown-content {
@@ -103,304 +170,246 @@ main {
     border: 1px solid #941616;
     background-color: #AC0505;
     min-width: 200px;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-    z-index: 1500;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    z-index: 101;
     border-radius: 5px;
     overflow: hidden;
-}
-
-.dropdown-content.show {
-    display: block !important;
+    text-align: left;
 }
 
 .dropdown-content a {
     color: white;
     padding: 12px 16px;
-    display: block;
     text-decoration: none;
+    display: block;
+    font-size: 16px;
 }
 
 .dropdown-content a:hover {
     background-color: #7D0000;
 }
 
-/* Botón rojo estilo MiTurno */
-.btn-rojo {
-    background-color: #AC0505;
-    color: white;
-    padding: 12px 20px;
-    border-radius: 10px;
+.dropdown-content .logout-link {
     font-weight: 600;
-    border: none;
-    font-size: 16px;
-    transition: 0.2s ease-in-out;
-    cursor: pointer;
 }
 
-.btn-rojo:hover {
-    background-color: #7D0000;
-    transform: scale(1.03);
-}
-
-.btn-rojo:disabled {
-    background-color: #b8b8b8;
-    color: #666;
-    cursor: not-allowed;
-    transform: none;
-}
-
-/* --- MODAL --- */
-.modal-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.7);
-    backdrop-filter: blur(4px);
-    z-index: 2000;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.modal-content {
-    background: white;
-    padding: 30px;
-    border-radius: 20px;
-    max-width: 500px;
-    width: 90%;
+.show {
+    display: block;
 }
 
 
-.nav-logo-container {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-}
 
-.nav-logo-container img {
-    height: 60px;
-    width: auto;
-}
-
-/* STEPPER */
+/* ============================================================
+   STEPPER
+============================================================ */
 
 .stepper-container {
-    width: 100%;
     display: flex;
     justify-content: center;
-    margin: 35px 0 45px 0;
+    margin: 30px 0 40px 0;
 }
 
 .stepper {
     display: flex;
     align-items: center;
-    gap: 30px;
+    gap: 32px;
 }
 
-/* Línea entre pasos */
-.stepper .line {
-    flex-grow: 1;
-    height: 3px;
-    background: #d9d9d9;
-    border-radius: 3px;
-    transition: background-color 0.3s ease;
+/* línea indicadora (las que están entre los circulitos) */
+.linea-indicadora {
+    flex: 1;
+    height: 2px;
+    background-color: #e5e7eb;
+}
+.linea-indicadora.activo {
+    background-color: #AC0505;
 }
 
-/* Paso */
-.step {
-    text-align: center;
-    cursor: pointer;
+
+/* ============================================================
+   FORMULARIO Y CAMPOS
+============================================================ */
+
+.form-section {
+    background: #fff;
+    padding: 22px;
+    border-radius: 18px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.18);
+    margin-bottom: 25px;
 }
 
-.step span {
-    display: block;
+.form-section h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    font-weight: 600;
     font-size: 14px;
-    font-weight: 500;
-    margin-top: 8px;
-    color: #4d4d4d;
+    display: block;
+    margin-bottom: 6px;
 }
 
-/* Círculo base */
-.step .circle {
-    width: 38px;
-    height: 38px;
-    margin: 0 auto;
-    border-radius: 50%;
-    background: #e5e7eb;
-    color: #374151;
-    font-weight: 600;
-    font-size: 16px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    border: 2px solid transparent;
-    box-shadow: 0px 2px 4px rgba(0,0,0,0.10);
-
-    transition: 0.25s ease;
-}
-
-/* Paso activo */
-.step.active .circle {
-    background: #AC0505;
-    color: white;
-    border-color: #7D0000;
-    transform: scale(1.15);
-    box-shadow: 0px 4px 8px rgba(172, 5, 5, 0.35);
-}
-
-.step.active span {
-    color: #AC0505;
-    font-weight: 600;
-}
-
-/* Paso completado */
-.step.completed .circle {
-    background-color: #4CAF50;
-    border-color: #3D8B40;
-    color: white;
-    transform: scale(1.10);
-    box-shadow: 0px 4px 10px rgba(0, 128, 0, 0.30);
-}
-
-.step.completed span {
-    color: #3D8B40;
-    font-weight: 600;
-}
-
-/* Línea coloreada cuando el paso previo está completo */
-.step.completed + .line {
-    background-color: #4CAF50;
-}
-
-/* Footer */
-.footer {
+.form-group input,
+.form-group select {
     width: 100%;
-    margin-top: auto;
-    padding: 20px 0;
-    text-align: center;
-    background-color: #f2f4f5;
-    color: #333;
+    background: #fafafa;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 15px;
 }
 
-.footer-top {
-    margin-bottom: 10px;
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #AC0505;
+    box-shadow: 0 0 3px rgba(172,5,5,0.3);
+    outline: none;
 }
 
-.footer-top .social-icons a {
-    margin: 0 8px;
-    font-size: 20px;
-    color: #000;
-    text-decoration: none;
+/* base para botones sin pisar Tailwind */
+button {
+    font-family: inherit;
 }
 
-.footer-bottom {
-    display: flex;
-    flex-wrap: wrap;
+
+/* ============================================================
+   TARJETAS (servicios, profesionales, fechas, horas)
+============================================================ */
+
+.tarjeta-servicio,
+.tarjeta-profesional,
+.boton-fecha,
+.boton-hora {
+    transition: 0.2s ease;
+}
+
+.seleccionado {
+    border-color: #AC0505 !important;
+    transform: scale(1.02);
+}
+
+
+/* ============================================================
+   BOTÓN ROJO GENERAL (btn-rojo)
+   (Confirmar, Siguiente, Ir a Mis Turnos)
+============================================================ */
+
+.btn-rojo {
+    background: #AC0505;
+    color: #fff;
+    border: none;
+    font-weight: 600;
+    transition: 0.2s ease;
+}
+
+.btn-rojo:hover {
+    background: #7D0000;
+}
+
+
+/* ============================================================
+   MODAL – ESTILO COMPLETO
+============================================================ */
+
+.modal-overlay {
+    display: none;              /* JS cambia a flex cuando abre */
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.60);
+    backdrop-filter: blur(4px);
+    z-index: 2000;
+
     justify-content: center;
     align-items: center;
-    gap: 6px;
 }
 
-.footer-bottom p,
-.footer-bottom span {
+/* CONTENEDOR DEL MODAL */
+.modal-content {
+    width: 90%;
+    max-width: 480px;
+    background: #ffffff;
+    border-radius: 18px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.25);
+    padding: 20px 22px 22px 22px;
+}
+
+/* HEADER DEL MODAL */
+.modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #e5e7eb;
+    padding-bottom: 8px;
+    margin-bottom: 12px;
+}
+
+#modal-booking-titulo {
+    font-size: 20px;
+    font-weight: 600;
+    color: #16a34a; /* verde éxito */
+}
+
+/* BOTÓN X */
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 26px;
+    color: #888;
+    cursor: pointer;
+    line-height: 1;
+}
+.modal-close:hover {
+    color: #000;
+}
+
+/* BODY DEL MODAL */
+.modal-body {
     font-size: 15px;
     color: #444;
 }
 
-/* Selecciones */
-.boton-fecha.seleccionado,
-.boton-hora.seleccionado,
-.tarjeta-profesional.seleccionado,
-.tarjeta-servicio.seleccionado {
-    background-color: #d1d5db !important;
-    color: white !important;
-    border-color: #AC0505 !important;
-    box-shadow: 0 4px 8px rgba(172, 5, 5, 0.3);
-    transform: scale(1.02);
+.modal-intro-text {
+    margin-bottom: 10px;
 }
 
-.tarjeta-servicio:hover,
-.tarjeta-profesional:hover {
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+.modal-summary-detail {
+    background: #f3f4f6;
+    border-radius: 12px;
+    padding: 10px 12px;
+    margin-bottom: 10px;
+}
+.modal-summary-detail p {
+    margin-bottom: 4px;
+    font-size: 14px;
 }
 
-/* --- MODAL (CORREGIDO) --- */
-
-.modal-overlay {
-    display: none; 
-    position: fixed;
-    z-index: 2000; 
-    left: 0;
-    top: 0;
-    width: 100%; 
-    height: 100%; 
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.7); 
-    backdrop-filter: blur(4px);
-    align-items: center; 
-    justify-content: center;
-}
-
-.modal-content {
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 20px;
-    width: 90%;
-    max-width: 500px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-}
-
-.modal-header {
+/* FOOTER DEL MODAL */
+.modal-footer {
+    margin-top: 10px;
     display: flex;
-    justify-content: space-between;
-    border-bottom: 2px solid #AC0505;
-    margin-bottom: 20px;
+    justify-content: flex-end;
 }
 
-.modal-close {
-    background: none;
-    border: none;
-    font-size: 36px;
-    color: #999;
-    cursor: pointer;
+/* “Ir a Mis Turnos” usa .btn-rojo desde el HTML */
+.modal-footer .btn-rojo {
+    padding: 10px 18px;
+    border-radius: 12px;
+    font-size: 15px;
 }
 
-.modal-close:hover {
-    color: #333;
-}
 
-/* --- MEDIA QUERIES --- */
+/* ============================================================
+   BOTÓN “Confirmar reserva”
+   (usa .btn-rojo en el HTML)
+============================================================ */
 
-@media (max-width: 768px) {
-    .nav-icons {
-        display: none !important;
-    }
-    .nav-logo-container {
-        position: static;
-        transform: none;
-        flex-grow: 1;
-        text-align: center;
-    }
-    .footer-bottom p {
-        font-size: 12px;
-    }
-}
-
-@media (max-width: 700px) {
-    .stepper {
-        gap: 20px;
-    }
-
-    .step .circle {
-        width: 32px;
-        height: 32px;
-        font-size: 14px;
-    }
-
-    .step span {
-        font-size: 12px;
-    }
+/* Acá solo ajustamos tamaño y no el color, que viene de .btn-rojo */
+#btnConfirmarReserva {
+    min-width: 180px;
 }

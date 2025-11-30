@@ -4,9 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MiTurno - Contacto</title>
-    <link rel="stylesheet" href="./contacto.css"></script>
-
+    <title>MiTurno - Mis Empresas</title>
+    <link rel="stylesheet" href="./mis-empresas.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
@@ -23,9 +22,9 @@
             </button>
 
             <div class="user-dropdown-content">
-                <a href="../home-usuario/home-usuario.html">Historial de turnos</a>
+                <a href="../historial/historial-usuario.html">Historial de turnos</a>
                 <a href="../favoritos/favoritos.html">Favoritos</a>
-                <a href="../mis-empresas/mis-empresas.html">Mis Empresas</a>
+                <a href="./mis-empresas.html">Mis Empresas</a>
                 <a href="../contacto/contacto.html">Contacto</a>
 
             </div>
@@ -56,30 +55,19 @@
         </div>
     </nav>
 
-    <main class="contacto-main">
-        
-        <div class="contacto-container">
-            <h2 class="contacto-titulo">Contáctanos</h2>
-            
-            <form class="contacto-form">
-                <input type="text" class="input-chico" placeholder="Nombre" required>
-            
-                <input type="email" class="input-chico" placeholder="Email" required>
-                
-                <textarea class="input-grande" placeholder="Motivo" required></textarea>
-            
-                <button type="submit" class="btn-enviar">Enviar</button>
-            
-            </form>
-        
-        </div>
-    
+    <main>
+        <h2 class="home-title">Mis Empresas</h2>
+
+        <div class="empresas-container" id="empresasContainer"></div>
+
+
+
     </main>
 
 
 
-    <script src="../../js/main.js"></script>
     <script src="../home-usuario/home-dropdown.js"></script>
+    <script src="./mis-empresas.js"></script>
 
 </body>
 

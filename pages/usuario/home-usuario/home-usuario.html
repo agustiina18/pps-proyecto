@@ -6,11 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MiTurno</title>
     <link rel="stylesheet" href="./home-usuario-d.css">
+    <link rel="stylesheet" href="./empresa-catalogo.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="icon" type="favicon" href="../../favicon.ico">
+    <link rel="icon" type="favicon" href="../../../favicon.ico">
 </head>
 
 <body>
@@ -22,16 +23,16 @@
             </button>
 
             <div class="user-dropdown-content">
-                <a href="./home-turnos.html">Historial de turnos</a>
-                <a href="#">Favoritos</a>
-                <a href="#">Mis Empresas</a>
-                <a href="#">Contacto</a>
-                
+                <a href="../historial/historial-usuario.html">Historial de turnos</a>
+                <a href="../favoritos/favoritos.html">Favoritos</a>
+                <a href="../mis-empresas/mis-empresas.html">Mis Empresas</a>
+                <a href="../contacto/contacto.html">Contacto</a>
+
             </div>
         </div>
 
         <div class="nav-logo-container">
-            <a href="../../index.html">
+            <a href="../home-usuario/home-usuario.html">
                 <img src="../../img/logo-miturno2.png" alt="Mi Turno Logo">
             </a>
         </div>
@@ -47,41 +48,113 @@
                 </button>
 
                 <div class="dropdown-content">
-                    <a href="../registro-empresa/crear-empresa.html">Crear Empresa</a>
-                    <a href="#">Ver perfil</a>
+                    <a href="../../empresa/registro-empresa/crear-empresa.html">Crear Empresa</a>
+                    <a href="../perfil-usuario/perfil-usuario.html">Ver perfil</a>
                     <a href="#" class="logout-link">Cerrar sesión</a>
                 </div>
             </div>
         </div>
     </nav>
 
-<main>
+    <main>
         <h2 class="home-title">¿Qué servicio necesitas hoy?</h2>
 
         <div class="search-container">
-            <input type="text" id="busquedaTurnos" placeholder="Buscar por servicio o empresa..." class="nav-search-input">
+            <input type="text" id="busquedaTurnos" placeholder="Buscar por servicio o empresa..."
+                class="nav-search-input">
         </div>
 
         <div class="filters">
             <button class="filter-btn active" data-filter="todos">Todos</button>
-            <button class="filter-btn" data-filter="confirmados">Confirmados</button>
-            <button class="filter-btn" data-filter="pendientes">Pendientes</button>
-            <button class="filter-btn" data-filter="pasados">Pasados</button>
+            <button class="filter-btn" data-filter="Hoy">Hoy</button>
         </div>
 
-        <div class="cards-container" id="cardsContainer">
-            </div>
+        <div id="cardsContainer" class="cards-container"></div>
+
+        <!-- CATÁLOGO DE EMPRESAS (BUSCADOR) -->
+        <div id="empresasContainer" class="empresas-container"></div>
+
+
     </main>
 
-        <div id="turnoDetailModal" class="modal">
+    <div id="turnoDetailModal" class="modal">
         <div class="modal-content">
             <span class="close-button" onclick="cerrarDetalleTurno()">&times;</span>
             <div id="modalBody"></div>
         </div>
     </div>
 
+    <!--Modal de recordatorio-->
+    <div id="recordatorioModal" class="mini-modal">
+        <div class="mini-modal-content recordatorio-modal">
+
+            <span class="mini-close" onclick="cerrarRecordatorio()">&times;</span>
+
+            <h3 style="margin-bottom: 15px;">Configurar recordatorio</h3>
+
+            <p style="color:#555; margin-bottom: 12px;">
+                Seleccione cuántas horas y minutos antes del comienzo del turno desea recibir el recordatorio por
+                SMS:
+            </p>
+
+            <!-- Fila Horas -->
+            <div class="recordatorio-row">
+                <label class="record-label">Horas</label>
+                <input id="horasRecordatorio" type="number" min="0" max="23" value="0" class="record-input">
+            </div>
+
+            <!-- Fila Minutos -->
+            <div class="recordatorio-row">
+                <label class="record-label">Minutos</label>
+                <select id="minutosRecordatorio" class="record-select">
+                    <option value="0">0</option>
+                    <option value="30">30</option>
+                </select>
+            </div>
+
+            <button class="mini-btn" onclick="guardarRecordatorioNuevo()">Guardar recordatorio</button>
+
+        </div>
+    </div>
+
+    <!-- MODAL DE CONFIRMAR ENVÍO A HISTORIAL -->
+    <div id="historialModal" class="mini-modal">
+        <div class="mini-modal-content">
+            <span class="mini-close" onclick="cerrarHistorialModal()">&times;</span>
+
+            <h3>Enviar al historial</h3>
+            <p>¿Queres transferir esta tarjeta al historial?</p>
+
+            <div style="margin-top: 20px; display:flex; gap:10px; justify-content:center;">
+                <button class="mini-btn" onclick="confirmarHistorial(true)">Sí</button>
+                <button class="mini-btn" style="background:#777" onclick="confirmarHistorial(false)">No</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL CALIFICACIÓN -->
+    <div id="calificacionModal" class="mini-modal">
+        <div class="mini-modal-content">
+            <span class="mini-close" onclick="cerrarCalificacion()">&times;</span>
+
+            <h3>Califica la atención</h3>
+
+            <p style="margin:10px 0; color:#555;">
+                Selecciona un puntaje del 1 al 10
+            </p>
+
+            <div class="calificacion-numeros">
+                <!-- Botones 1 al 10 generados por JS -->
+            </div>
+
+            <button class="mini-btn" onclick="guardarCalificacion()">Guardar</button>
+        </div>
+    </div>
 
     <script src="./home-dropdown.js"></script>
     <script src="./turnos-card.js"></script>
+    <script src="./empresas-data.js"></script>
+    <script src="./empresas-buscador.js"></script>
 </body>
+
 </html>

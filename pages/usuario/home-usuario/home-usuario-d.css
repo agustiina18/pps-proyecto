@@ -6,7 +6,7 @@
     box-sizing: border-box;
 }
 body {
-    background: #f2f4f5;
+    background: #ecf0f1;
     color: #333;
     font-family: 'Poppins', sans-serif;
     margin: 0;
@@ -101,7 +101,7 @@ main h2 {
 /* Estilo para el campo de búsqueda " */
 .nav-search-input {
     width: 100%;
-    height: 60px;
+    height: 40px;
     padding: 0 20px;
     border: 1px solid #ddd;
     border-radius: 15px;
@@ -144,7 +144,6 @@ main {
     width: 100%;
     max-width: 1300px; 
     margin: 0 auto;
-    padding: 0 20px; 
 }
 
 .search-container {
@@ -161,60 +160,7 @@ main {
     color: #333;
 }
 
-.categories-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr); 
-    justify-content: center;
-    gap: 25px 20px; 
-    width:100%;
-    max-width: 1250px; 
-    margin: 10px auto 60px auto;
-}
 
-.category-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 10px 0;
-    font-size: 14px;
-    color: #333;
-    text-decoration: none;
-    order: 0;
-}
-
-.category-item span {
-    order: 1;
-    font-size: 20px; 
-    font-weight: 500;
-    margin-bottom: 15px; 
-}
-
-.category-icon {
-    order: 2;
-    width: 100%; 
-    height: 180px; 
-    background-color: transparent;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-}
-
-.category-icon:hover {
-    opacity: 0.9;
-    transform: scale(1.02);
-}
-
-.category-icon img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
-
-.category-icon i {
-    display: none;
-}
 
 /* Perfil */
 
@@ -290,8 +236,8 @@ main {
 .filters {
     display: flex;
     justify-content: center;
-    gap: 12px;
-    margin-bottom: 40px;
+    gap: 8px;
+    margin-bottom: 10px;
     flex-wrap: wrap;
 }
 
@@ -319,140 +265,154 @@ main {
 
 /* CARDS CONTAINER*/
 .cards-container {
-    /* Por defecto, 1 columna (para móviles y tablets) */
     display: grid;
-    grid-template-columns: 1fr; 
-    gap: 24px;
-    margin-bottom: 60px;
-    width: 90%; 
-    margin-left: auto;
-    margin-right: auto;
+    grid-template-columns: 1fr;
+    width: 90%;
+    max-width: 750px;
+    margin: 0 auto 60px auto;
 }
 
+/* Card base */
 .card {
-    background-color: white;
-    border-radius: 8px;
-    overflow: hidden;
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 22px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border-left: 5px solid #AC0505; 
+    transition: 0.25s ease;
+    border-left: 8px solid transparent;
     display: flex;
     flex-direction: column;
-    padding: 15px; 
-    justify-content: space-between;
+    cursor: pointer;
 }
 
 .card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transform: translateY(-3px);
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.16);
 }
 
-/* Colores del borde izquierdo por estado */
-.card.confirmado { border-left-color: #4CAF50; } /* Verde */
-.card.cancelado-usuario { border-left-color: #F44336; } /* Rojo */
-.card.cumplido { border-left-color: #2196F3; } /* Azul */
-.card.no-cumplido { border-left-color: #FF9800; } /* Naranja */
-.card.vencido { border-left-color: #9C27B0; } /* Morado (simula "pasado" o "vencido") */
-.card.cancelado-empresa { border-left-color: #FFC107; } /* Amarillo */
+/* Colores del borde según estado */
+.card.confirmado { border-left-color: #4CAF50; }
+.card.cancelado-usuario { border-left-color: #E53935; }
+.card.cumplido { border-left-color: #2196F3; }
+.card.no-cumplido { border-left-color: #fb4700b7; }
+.card.cancelado-empresa { border-left-color: #660aa3dc; }
+
+/* HEADER (logo + empresa + estado) */
 
 
-/* --- HEADER TOP (Hora, Fecha, Status) --- */
-.card-header-top {
+/* ⬆ Estado arriba a la derecha */
+.card-header-status {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start; 
-    margin-bottom: 10px;
+    justify-content: flex-end;  /* Estado a la derecha */
+    margin-bottom: 5px;
+    border-radius: 25px; 
 }
 
-.card-time-info {
-    flex-grow: 1; 
+/* ⬇ Logo + empresa en su propia fila */
+.card-header-main {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+        margin-bottom: 5px;
+
 }
 
+/* Empresa alineada verticalmente con el logo */
+.card-header-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+/* Logo circular */
+.card-logo {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: #e5e5e5;
+
+}
+
+.card-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+}
+
+/* Empresa */
+.card-empresa {
+    font-size: 16px;
+    font-weight: 600;
+    color: #111;
+}
+
+/* Badge de estado */
+.card-status {
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* Estado: colores */
+.status-confirmado { background: #e8f5e9; color: #4CAF50; }
+.status-cancelado-usuario { background: #ffebee; color: #E53935; }
+.status-cumplido { background: #e3f2fd; color: #2196F3; }
+.status-no-cumplido { background: #fff3e0; color: #FB8C00; }
+.status-cancelado-empresa { background: #dd9bee59; color: #8615c7ff; }
+
+/* Hora */
 .card-time {
-    font-size: 26px; 
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 2px;
+    font-size: 20px;
+    font-weight: 700;
 }
 
+/* Fecha + tiempo restante */
 .card-date {
-    font-size: 15px; 
-    color: #666;
+    font-size: 17px;
+    font-weight: 600;
+    color: #333;
+    margin-top: 3px;
 }
 
 .card-time-left {
-    font-size: 15px; 
-    margin-bottom: 15px; 
+    font-size: 14px;
+    color: #666;
 }
 
-.card-status {
-    display: inline-block;
-    padding: 4px 10px;
-    border-radius: 25px; 
-    font-size: 11px;
-    font-weight: 600;
-    text-transform: capitalize;
-}
-
-/* Colores de estado (badges) */
-.status-confirmado { background-color: #e8f5e9; color: #4CAF50; }
-.status-cancelado-usuario { background-color: #ffebee; color: #F44336; }
-.status-cumplido { background-color: #e3f2fd; color: #2196F3; }
-.status-no-cumplido { background-color: #fff3e0; color: #FF9800; } /* Naranja para no cumplido */
-.status-vencido { background-color: #f3e5f5; color: #9C27B0; } /* Morado para vencido/pasado */
-.status-cancelado-empresa { background-color: #fffde7; color: #FFC107; } /* Amarillo para cancelado por empresa */
-
-
-
-/* --- DETALLES (Servicio, Empresa) --- */
-.card-details {
-    flex-grow: 1; 
-    margin-bottom: 15px;
-}
-
-.card-detail-item {
-    margin-bottom: 12px;
-}
-
+/* Servicio */
 .card-detail-label {
-    font-size: 13px; 
+    font-size: 15px;
     color: #999;
-    font-weight: 500;
-    margin-bottom: 2px;
+    margin-top: 3px;
 }
 
 .card-detail-value {
-    font-size: 17px; 
+    font-size: 17px;
     font-weight: 600;
-    color: #333;
+    color: #222;
 }
 
-
-/* --- FOOTER (Ver Dirección) --- */
+/* Footer */
 .card-footer {
-    padding-top: 10px; 
-    border-top: none; 
-    background-color: transparent; 
-    text-align: right; 
+    text-align: right;
+    margin-top: 10px;
 }
 
 .card-link {
-    display: inline-flex; 
+    display: inline-flex;
     align-items: center;
     gap: 6px;
-    color: #1a73e8; 
-    text-decoration: none;
     font-size: 14px;
     font-weight: 500;
-    cursor: pointer;
-    transition: color 0.3s ease;
+    color: #1a73e8;
+    text-decoration:none;
 }
 
 .card-link:hover {
-    color: #1a73e8; 
-    text-decoration: underline;
+    text-decoration:underline;
 }
-
 
 
 /* ESTILOS DEL MODAL DE DETALLE DE TURNO */
@@ -510,137 +470,281 @@ main {
 
 /* Estilos de los detalles dentro del Modal */
 
-.detail-title {
-    color: #AC0505;
-    font-size: 24px;
-    font-weight: 600;
+.modal-content {
+    background: #fff;
+    padding: 25px;
+    border-radius: 16px;
+    max-width: 500px;
+    width: 92%;
+    position: relative;
+}
+
+.modal-header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
     margin-bottom: 15px;
-    border-bottom: 2px solid #ddd;
-    padding-bottom: 10px;
 }
 
-.detail-status {
-    display: inline-block;
-    padding: 6px 15px;
-    border-radius: 25px;
+.modal-logo-nombre {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.modal-logo {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+}
+
+.modal-empresa {
+    font-size: 19px;
+    font-weight: 600;
+}
+
+.modal-right {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+}
+
+.modal-right .modal-status {
+    margin-right: 15px; 
+}
+.modal-status {
+    padding: 5px 15px;
+    border-radius: 12px;
     font-size: 13px;
-    font-weight: 700;
-    text-transform: uppercase;
-    margin-bottom: 20px;
+    margin-bottom: 8px;
+    font-weight: 600;
 }
 
-.detail-row {
+.modal-reminder-icon {
+    font-size: 20px;
+    cursor: pointer;
+    color: #AC0505;
+}
+
+.modal-row {
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-bottom: 15px;
-    font-size: 16px;
-    color: #333;
+    margin-bottom: 12px;
+    font-size: 15px;
 }
 
-.detail-row i {
-    color: #AC0505; 
-    font-size: 18px;
-    width: 20px; 
-    text-align: center;
+.modal-row.spacing {
+    margin-top: 10px;
 }
 
-.detail-map-link {
-    color: #1a73e8;
-    text-decoration: none;
-    font-weight: 500;
+.modal-hora {
+    font-weight: 700;
+}
+
+.modal-fecha {
+    font-weight: 600;
+}
+
+.modal-tiempo {
+    color: #777;
+    font-size: 14px;
+}
+
+.modal-ver-direccion {
     margin-left: auto;
-    display: flex;
-    align-items: center;
-    gap: 5px;
+    color: #1a73e8;
+    font-weight: 500;
+    text-decoration: none;
 }
 
-.detail-notes {
-    background-color: #f9f9f9;
+.modal-ver-direccion:hover {
+    text-decoration: underline;
+}
+
+.modal-detalle {
+    background: #f9f9f9;
     border-left: 4px solid #AC0505;
     padding: 15px;
-    margin-top: 25px;
     font-size: 14px;
-    line-height: 1.5;
-    color: #555;
-}
-
-.detail-notes strong {
-    font-weight: 600;
-    color: #333;
-}
-
-.detail-actions {
-    margin-top: 30px;
-    text-align: right;
-}
-
-.btn-cancelar-turno {
-    background-color: #AC0505;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: 600;
-    transition: background-color 0.3s ease;
-}
-
-.btn-cancelar-turno:hover {
-    background-color: #7D0000;
-}
-
-/* Pie de página */
-.footer {
-    width: 100%;
-    margin-top: auto;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    text-align: center;
-    font-size: 15px;
-    color: #333;
-    background-color: #f2f4f5;
-}
-
-.footer-top {
-    margin-bottom: 10px;
-}
-
-.footer-top .social-icons a {
-    margin: 0 8px;
-    color: #000;
-    font-size: 20px;
-    text-decoration: none;
-}
-
-.footer-top p {
-    margin: 10px 0;
-    font-weight: 500;
-}
-
-.footer-bottom {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    margin-top: 5px;
-}
-
-.footer-bottom p {
-    margin: 0;
-    font-size: 15px;
+    margin-top: 15px;
     color: #444;
 }
 
-.footer-bottom span {
-    margin: 5px 6px;
-    display: inline-block;
+/* BOTONES DEL MODAL */
+.modal-buttons {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: space-evenly; 
 }
 
-.footer-bottom i {
-    margin-right: 5px;
+/* Tamaño uniforme */
+.btn-small {
+    padding: 10px 0 !important;  /* misma altura */
+    width: 120px !important;     /* mismo ancho */
+    text-align: center;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    color: white;
 }
+
+/* Botón grande (Cancelar Turno) igualado al resto */
+.btn-cancelar-turno {
+    width: 120px !important;
+    padding: 10px 0 !important;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+/* Base */
+.btn-small {
+    padding: 8px 10px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    color: white;
+    transition: 0.25s ease;
+}
+
+/* CUMPLIDO (AZUL) */
+.btn-cumplido {
+    background: #e3f2fd;
+    color: #2196f3; 
+}
+.btn-cumplido:hover {
+    background: #a0ccf8ff;
+
+}
+
+/* NO CUMPLIDO (NARANJA) */
+.btn-no-cumplido {
+    background: #fff3e0;
+    color: #fb9000;
+}
+.btn-no-cumplido:hover {
+    background: #f8d5adff;
+}
+
+/* ELIMINAR (ROJO) */
+.btn-eliminar {
+    background: #f5dedeff;
+    color: #f86d6dff;
+}
+.btn-eliminar:hover {
+    background: #fad1d1ff;
+}
+
+/* WHATSAPP (VERDE) */
+.btn-whatsapp {
+    background: #1FAF38;
+}
+.btn-whatsapp:hover {
+    background: #148A2C;
+}
+
+/* CANCELAR TURNO (ROJO MITURNO) */
+.btn-cancelar-turno {
+    background: #AC0505;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: 700;
+    border: none;
+}
+.btn-cancelar-turno:hover {
+    background: #7D0000;
+}
+
+/* SOMBRA OPCIONAL */
+.btn-small, .btn-cancelar-turno {
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.15);
+}
+.btn-small:hover, .btn-cancelar-turno:hover {
+    box-shadow: 0px 4px 14px rgba(0,0,0,0.25);
+}
+
+.btn-enviar-historial {
+    background: #1976D2;
+    color: white;
+}
+.btn-enviar-historial:hover {
+    background: #155FA9;
+}
+
+.calificacion-numeros {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin: 15px 0;
+}
+
+.cal-btn {
+    width: 40px;
+    height: 40px;
+    background: #eee;
+    border-radius: 8px;
+    font-size: 17px;
+    font-weight: 600;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+.cal-btn:hover {
+    background: #ddd;
+}
+
+.cal-btn.selected {
+    background: #AC0505;
+    color: white;
+    border-color: #7D0000;
+}
+
+
+
+/* RESPONSIVE DEL MODAL */
+@media (max-width: 480px) {
+
+    .modal-content {
+        padding: 18px;
+    }
+
+    .modal-logo {
+        width: 48px;
+        height: 48px;
+    }
+
+    .modal-empresa {
+        font-size: 17px;
+    }
+
+    .modal-row {
+        font-size: 14px;
+    }
+
+    .modal-buttons {
+        justify-content: center;
+    }
+
+    .btn-small,
+    .btn-cancelar-turno {
+        width: 50% !important;
+    }
+}
+
 
 
 /* Media Query */
@@ -696,33 +800,7 @@ main {
     }
 
 
-    /* CATEGORÍAS*/
-    .categories-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px 5px;
-        max-width: 100%;
-        width: 90%;
-        margin: 0 auto 40px auto;
-    }
 
-    .category-span {
-        font-size: 11px;
-    }
-
-    .category-icon {
-        width: 50px;
-        height: 50px;
-        border-radius: 8px;
-    }
-
-
-    /* Cards Container: 1 columna en móvil */
-    .cards-container {
-        grid-template-columns: 1fr;
-        gap: 15px;
-        width: 90%;
-        margin: 0 auto 40px auto;
-    }
 
     .modal-content {
         width: 100%;
@@ -731,39 +809,301 @@ main {
     }
 }
 
-/* Media Query para pantallas medianas  */
-@media (min-width: 769px) and (max-width: 1299px) {
-
-    /* Categorías a 4 columnas en pantallas medianas */
-    .categories-grid {
-        grid-template-columns: repeat(4, 1fr); 
-        max-width: 1000px;
-        gap: 20px 15px;
-    }
-
-    .category-icon {
-        height: 120px; /* Ajustado para pantallas medianas */
-    }
+/* MINI MODAL RECORDATORIO */
+.mini-modal {
+    display: none;
+    position: fixed;
+    z-index: 3000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
 }
 
-/* Media Query para pantallas grandes  */
-@media (min-width: 901px) {
-    .cards-container {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr); 
-        max-width: 1200px; 
-        width: 100%;
-        margin: 0 auto 60px auto;
-    }
-    
+.modal-recordatorio {
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.modal-recordatorio:hover {
+    background: #f3f3f3;
+    border-radius: 8px;
+}
+
+.recordatorio-label {
+    font-weight: 600;
+    font-size: 15px;
+    color: #881a1a;
+}
+
+.recordatorio-label:hover {
+    color: #c22c2cff;
+}
+
+.recordatorio-opciones {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.opcion-recordatorio {
+    width: 100%;
+}
+
+/*dentro del modal Recordatorio*/
+.recordatorio-modal {
+    max-width: 330px;
+}
+
+.recordatorio-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    background: #f5f5f5;
+    padding: 12px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.record-select,
+.record-input {
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    background: #eef0f4;
+    border-radius: 8px;
+    font-size: 15px;
+    outline: none;
+    cursor: pointer;
+}
+
+.record-input {
+    width: 80px;
+    text-align: center;
+}
+
+.record-select:hover,
+.record-input:hover {
+    background: #e6e8eb;
+}
+
+.modal-precio-recordatorio {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-precio-left {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+
+
+.modal-recordatorio-right:hover {
+    text-decoration: underline;
+}
+
+.mini-modal-content {
+    background: white;
+    width: 85%;
+    max-width: 340px;
+    padding: 20px;
+    border-radius: 14px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    position: relative;
+    animation: fadeIn 0.25s ease-in-out;
+}
+
+.mini-close {
+    position: absolute;
+    right: 12px;
+    top: 8px;
+    cursor: pointer;
+    font-size: 24px;
+    color: #666;
+}
+
+.mini-btn {
+    margin-top: 15px;
+    padding: 8px 14px;
+    background: #AC0505;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.mini-btn:hover {
+    background: #7D0000;
+}
+
+.detail-reminder-icon {
+    font-size: 20px;
+    cursor: pointer;
+    color: #AC0505;
+    margin-top: 6px;
+}
+
+.detail-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.detail-header-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.detail-header-right {
+    text-align: right;
+}
+
+.detail-logo {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+}
+
+.detail-empresa {
+    font-size: 17px;
+    font-weight: 600;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0; transform: scale(0.9);}
+    to   {opacity: 1; transform: scale(1);}
+}
+
+/* Estilo base */
+.record-select {
+    position: relative;
+    max-height: 120px !important;    /* Altura visible máxima (~3 ítems) */
+    overflow-y: auto !important;     /* Scroll interno */
+}
+
+/* Opciones del menú */
+.record-select option {
+    padding: 6px 8px;
+    font-size: 14px;
+}
+
+/* Barra de scroll */
+.record-select::-webkit-scrollbar {
+    width: 6px;
+}
+.record-select::-webkit-scrollbar-thumb {
+    background: #bbb;
+    border-radius: 10px;
+}
+.record-select::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* Cuando se abre el select */
+.record-select:focus {
+    outline: none;
+}
+
+/* Para que tenga espacio suficiente debajo y NO abra hacia arriba */
+.recordatorio-row {
+    margin-bottom: 25px;
+}
+
+/* ============================================
+   📱 RESPONSIVE SOLO PARA CARDS
+============================================ */
+
+/* --- MÓVIL (hasta 480px) --- */
+@media (max-width: 480px) {
+
     .card {
-        padding: 20px;
-        min-height: 180px;
+        padding: 18px;
+        border-radius: 14px;
+    }
+
+    .cards-container {
+        max-width: 650px;
+        gap: 20px;
+    }
+
+
+    .card-logo {
+        width: 46px;
+        height: 46px;
+    }
+
+    .card-empresa {
+        font-size: 15px;
+    }
+
+    .card-time {
+        font-size: 24px;
+    }
+
+    .card-date {
+        font-size: 16px;
+    }
+
+    .card-time-left {
+        font-size: 13px;
+    }
+
+    .card-detail-value {
+        font-size: 16px;
+    }
+
+    .card-footer {
+        text-align: left;
     }
 }
 
-@media (min-width: 769px) and (max-width: 900px) {
+/* --- TABLET (481 a 900px) --- */
+@media (min-width: 481px) and (max-width: 900px)    {
+.cards-container {
+        max-width: 650px;
+        gap: 20px;
+    }
+
+    .card-header-main {
+        gap: 12px;
+    }
+
+    .card-logo {
+        width: 48px;
+        height: 48px;
+    }
+
+    .card-empresa {
+        font-size: 16px;
+    }
+
+    .card-time {
+        font-size: 24px;
+    }
+}
+
+
+/* --- DESKTOP (900px en adelante) --- */
+@media (min-width: 900px) {
+
     .cards-container {
-        grid-template-columns: 1fr; 
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+        max-width: 1200px;
+    }
+
+    .card {
+        padding: 22px;
     }
 }

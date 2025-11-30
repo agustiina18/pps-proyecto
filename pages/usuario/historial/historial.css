@@ -1,0 +1,353 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background: #ecf0f1;
+    color: #333;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+}
+
+
+main h2 {
+    max-width: 800px;
+    width: 90%;
+    margin: 0 auto 30px auto;
+
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-style: italic;
+    font-size: 20px;
+    line-height: 1.2;
+    letter-spacing: 0;
+    text-align: center;
+    color: #333;
+
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+
+/* NAV */
+.main-nav {
+    width: 100%;
+    background-color: #AC0505;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+/* Botón del Menú Desplegable  */
+.menu-toggle-btn {
+    background-color: transparent;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 30px;
+    padding: 5px 10px;
+    transition: background-color 0.2s ease;
+    border-radius: 5px;
+}
+
+/* Barra lateral */
+.user-dropdown-content {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100vh;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+    /* Estilos Visuales */
+    background-color: #7D0000;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    overflow-y: auto;
+    padding-top: 60px;
+    text-align: left;
+}
+
+.user-dropdown-content.show-user-menu {
+    transform: translateX(0);
+}
+
+/* Estilos de los enlaces */
+.user-dropdown-content a {
+    padding: 15px 20px;
+    text-decoration: none;
+    display: block;
+    font-size: 20px;
+    background-color: transparent;
+    font-weight: 500;
+    color: white;
+}
+
+.user-dropdown-content a:hover {
+    background-color: #AC0505;
+    color: white;
+}
+
+/* Estilo para el campo de búsqueda " */
+.nav-search-input {
+    width: 100%;
+    height: 40px;
+    padding: 0 20px;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    outline: none;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    color: #333;
+    margin-top: 5px;
+}
+
+/* Loguito del nav*/
+.nav-logo-container {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.nav-logo-container img {
+    height: 60px;
+    width: auto;
+}
+
+
+
+main {
+    width: 100%;
+    max-width: 1300px; 
+    margin: 0 auto;
+}
+
+
+
+.home-title {
+    margin: 20px auto 10px auto;
+    font-size: 2rem;
+    font-weight: 500;
+    color: #333;
+}
+
+
+
+/* Perfil */
+
+.dropdown-menu-container {
+    position: relative;
+    display: inline-block;
+    background: #7D0000;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.profile-dropdown-btn {
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 5px;
+
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    border: 1px solid #941616;
+    background-color: #AC0505;
+    min-width: 200px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    z-index: 101;
+    border-radius: 5px;
+    overflow: hidden;
+    text-align: left;
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+}
+
+.dropdown-content a:hover {
+    background-color: #7D0000;
+}
+
+.dropdown-content .logout-link {
+    font-weight: 600;
+}
+
+.show {
+    display: block;
+}
+
+
+/* TARJETAS DEL HISTORIAL  */
+
+.historial-container {
+    display: grid;
+    gap: 15px;
+    width: 95%;
+    max-width: 1200px;
+    margin: 0 auto 40px;
+    grid-template-columns: repeat(3, 1fr); /* Mobile */
+}
+
+.turno-card {
+    background: #ffffff;
+    border-radius: 22px;
+    padding: 18px;
+    box-shadow: 0px 3px 6px rgba(0,0,0,0.15);
+    margin-bottom: 15px;
+}
+
+/* Header de la card */
+.turno-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.turno-header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Logo */
+.turno-logo {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background: #eee;
+    object-fit: cover;
+    border: 2px solid #ddd;
+}
+
+/* Empresa */
+.turno-empresa {
+    margin: 0;
+    font-size: 17px;
+    font-weight: 600;
+    color: #333;
+}
+
+/* Estado */
+.turno-estado {
+    font-size: 13px;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 12px;
+}
+
+
+.turno-estado.cumplido {
+    background-color: #e3f2fd; 
+    color: #2796f3;
+}
+
+.turno-estado.no-cumplido {
+    background-color: #fff3e0;
+    color: #fb8c00;
+}
+
+.turno-estado.cancelado-usuario {
+    background-color: #ffebee;  
+    color: #e73935;
+}
+
+.turno-estado.cancelado-empresa {
+    background-color: #f3dcf9;
+    color: #8615c7;
+}
+
+/* Info de la card */
+.turno-info {
+    margin-top: 12px;
+}
+
+.turno-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #444;
+    margin: 5px 0;
+}
+
+
+/* Responsive */
+@media (max-width: 480px) {
+    .turno-header {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .turno-header-left {
+        flex-direction: column;
+        text-align: center;
+    }
+
+        .historial-container {
+        grid-template-columns: repeat(1, 1fr);
+
+    }
+}
+/* Media Query */
+@media (min-width: 769px) {
+    .logo {
+        width: 383px;
+        height: 138px;
+        max-width: none;
+    }
+}
+
+
+/* Media Query para móviles*/
+@media (max-width: 768px) {
+    header img {
+        width: 200px;
+    }
+
+    .main-nav {
+        flex-wrap: wrap;
+        padding: 10px;
+    }
+
+    .nav-logo-container {
+        position: static;
+        transform: none;
+        order: 1;
+        flex-grow: 1;
+        text-align: center;
+    }
+
+    .menu-toggle-btn:first-child {
+        order: 0;
+    }
+
+    .nav-icons {
+        order: 2;
+    }
+    .historial-container {
+    grid-template-columns: repeat(1, 1fr);
+
+    }
+
+}
+

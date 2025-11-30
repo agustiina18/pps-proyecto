@@ -3,23 +3,24 @@
 ============================================================ */
 const datosPrueba = {
     servicios: [
-        { id: 1, nombre: 'Corte de Cabello', descripcion: 'Corte y peinado profesional', duracion: '30 min' },
-        { id: 2, nombre: 'Coloración', descripcion: 'Tinte y tratamiento de color', duracion: '90 min' },
-        { id: 3, nombre: 'Limpieza Facial', descripcion: 'Tratamiento completo de limpieza', duracion: '45 min' },
-        { id: 4, nombre: 'Manicura', descripcion: 'Manicura y esmaltado', duracion: '45 min' },
-        { id: 5, nombre: 'Pedicura', descripcion: 'Pedicura completa y esmaltado', duracion: '45 min' },
-        { id: 6, nombre: 'Masaje Relajante', descripcion: 'Masaje corporal relajante', duracion: '60 min' },
+        { id: 1, nombre: 'Corte de Cabello', descripcion: 'Corte y peinado profesional', duracion: '30 min', precio: 3500 },
+        { id: 2, nombre: 'Coloración', descripcion: 'Tinte y tratamiento de color', duracion: '90 min', precio: 9000 },
+        { id: 3, nombre: 'Limpieza Facial', descripcion: 'Tratamiento completo de limpieza', duracion: '45 min', precio: 5000 },
+        { id: 4, nombre: 'Manicura', descripcion: 'Manicura y esmaltado', duracion: '45 min', precio: 4500 },
+        { id: 5, nombre: 'Pedicura', descripcion: 'Pedicura completa y esmaltado', duracion: '45 min', precio: 4800 },
+        { id: 6, nombre: 'Masaje Relajante', descripcion: 'Masaje corporal relajante', duracion: '60 min', precio: 6000 },
     ],
     profesionales: [
         { id: 1, nombre: 'María García', especialidad: 'Estilista', avatar: 'M' },
         { id: 2, nombre: 'Juan López', especialidad: 'Barbero', avatar: 'J' },
-        { id: 3, nombre: 'Ana Martínez', especialidad: 'Esteticien', avatar: 'A' },
+        { id: 3, nombre: 'Ana Martínez', especialidad: 'Estetilista', avatar: 'A' },
+        { id: 4, nombre: 'Otro', especialidad: 'A convenir por empresa', avatar: 'A' },
     ],
     fechas: [
-        '2025-01-24','2025-01-25','2025-01-26','2025-01-27',
-        '2025-01-28','2025-01-29','2025-01-30'
+        '2025-01-24', '2025-01-25', '2025-01-26', '2025-01-27',
+        '2025-01-28', '2025-01-29', '2025-01-30'
     ],
-    horas: ['08:00','09:00','10:00','11:00','14:00','15:00','16:00','17:00']
+    horas: ['08:00', '09:00', '10:00', '11:00', '14:00', '15:00', '16:00', '17:00']
 };
 
 /* VARIABLES DE SELECCIÓN */
@@ -34,12 +35,12 @@ let pasoActual = 1;
 /* Actualizar indicador superior */
 function actualizarIndicadorPasos() {
     const indicadores = document.querySelectorAll("#indicadorPasos .flex-1 div");
-    
+
     indicadores.forEach((indi, index) => {
         if (index === pasoActual - 1) {
             indi.classList.remove("bg-gray-300", "text-gray-600");
             indi.classList.add("bg-[#AC0505]", "text-white");
-        } 
+        }
         else if (index < pasoActual - 1) {
             indi.classList.remove("bg-gray-300", "text-gray-600");
             indi.classList.add("bg-green-600", "text-white");
@@ -105,12 +106,21 @@ function renderizarServicios() {
     cont.innerHTML = datosPrueba.servicios.map(s => `
         <div class="tarjeta-servicio bg-white border-2 border-gray-200 rounded-lg p-5 cursor-pointer hover:shadow-lg hover:border-[#AC0505]" 
              onclick="seleccionarServicio(${s.id}, event)">
+
             <h3 class="font-bold text-gray-800 text-lg">${s.nombre}</h3>
+
             <p class="text-sm text-gray-600 mt-2">${s.descripcion}</p>
+
             <p class="text-sm text-gray-500 mt-3">⏱ ${s.duracion}</p>
+
+            <p class="text-base font-semibold text-[#AC0505] mt-3">
+                $ ${s.precio} ARS
+            </p>
+
         </div>
     `).join('');
 }
+
 
 window.seleccionarServicio = (id, e) => {
     document.querySelectorAll(".tarjeta-servicio").forEach(c => c.classList.remove("seleccionado"));
@@ -152,7 +162,7 @@ function renderizarFechasYHoras() {
     fechas.innerHTML = datosPrueba.fechas.map(f =>
         `<button class="boton-fecha border-2 px-4 py-3 rounded-lg" 
                  onclick="seleccionarFecha('${f}', event)">
-            ${new Date(f).toLocaleDateString('es-ES', { month: 'short', day:'numeric' })}
+            ${new Date(f).toLocaleDateString('es-ES', { month: 'short', day: 'numeric' })}
         </button>`
     ).join('');
 
@@ -192,6 +202,7 @@ function habilitarSiguienteHora() {
 /* RESUMEN FINAL*/
 function renderizarResumen() {
     document.getElementById('resumen-servicio').textContent = servicioSeleccionado.nombre;
+    document.getElementById('resumen-precio').textContent = servicioSeleccionado.precio + " ARS";
     document.getElementById('resumen-profesional').textContent = profesionalSeleccionado.nombre;
     document.getElementById('resumen-fecha').textContent = fechaSeleccionada;
     document.getElementById('resumen-hora').textContent = horaSeleccionada;
@@ -203,15 +214,15 @@ window.mostrarModalReserva = function () {
 
     document.getElementById("modal-resumen-servicio").textContent = servicioSeleccionado.nombre;
     document.getElementById("modal-resumen-profesional").textContent = profesionalSeleccionado.nombre;
-    document.getElementById("modal-resumen-fechahora").textContent =
-        `${fechaSeleccionada} - ${horaSeleccionada}`;
+    document.getElementById("modal-resumen-fechahora").textContent = `${fechaSeleccionada} - ${horaSeleccionada}`;
+    document.getElementById("precioConfirmado").textContent = servicioSeleccionado.precio + " ARS";
 };
 
 window.cerrarModalReserva = function (irAMisTurnos = false) {
     document.getElementById("modalReserva").style.display = "none";
 
     if (irAMisTurnos) {
-        window.location.href = "../home-usuario/home-turnos.html";
+        window.location.href = '../../usuario/home-usuario/home-usuario.html';
     }
 };
 

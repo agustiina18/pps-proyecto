@@ -4,35 +4,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil de Usuario - MiTurno</title>
-
-    <link rel="stylesheet" href="../../../css/style-global.css">
-    <link rel="stylesheet" href="./css/perfil-usuario.css">
+    <title>MiTurno - Perfil</title>
+    <link rel="stylesheet" href="./perfil-usuario.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="icon" type="favicon" href="../../favicon.ico">
+    <link rel="icon" type="favicon" href="../../../favicon.ico">
 </head>
 
 <body>
 
     <nav class="main-nav">
-         <button class="menu-toggle-btn">
-            <i class="fas fa-bars"></i>
-        </button>
-        
+        <div class="user-menu-container">
+            <button class="menu-toggle-btn user-menu-dropdown-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <div class="user-dropdown-content">
+                <a href="../home-usuario/home-usuario.html">Historial de turnos</a>
+                <a href="../favoritos/favoritos.html">Favoritos</a>
+                <a href="../mis-empresas/mis-empresas.html">Mis Empresas</a>
+                <a href="../contacto/contacto.html">Contacto</a>
+
+            </div>
+        </div>
+
         <div class="nav-logo-container">
-            <a href="../../index.html">
+            <a href="../home-usuario/home-usuario.html">
                 <img src="../../img/logo-miturno2.png" alt="Mi Turno Logo">
             </a>
         </div>
 
-        <div class="nav-icons">
-            <button class="menu-toggle-btn" style="background: transparent; color: white;">
-                <i class="fas fa-bell"></i>
+        <div class="nav-icons" style="display: flex; align-items: center;">
+            <button class="menu-toggle-btn">
             </button>
 
             <div class="dropdown-menu-container">
@@ -42,169 +50,179 @@
                 </button>
 
                 <div class="dropdown-content">
-                    <a href="#">Ver perfil</a>
-                    <a href="#">Seguridad</a>
-                    <a href="#">Términos y condiciones</a>
+                    <a href="../../empresa/registro-empresa/crear-empresa.html">Crear Empresa</a>
+                    <a href="../perfil-usuario/perfil-usuario.html">Ver perfil</a>
                     <a href="#" class="logout-link">Cerrar sesión</a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <main class="perfil-main">
+
+    <main>
 
         <!-- COLUMNA + CONTENIDO -->
         <div class="perfil-container">
 
-        <!-- TITULOS -->
-         <h2 class="perfil-titulo">Mi Perfil</h2>
+            <!-- TITULOS -->
+            <h2>Mi Perfil</h2>
 
-         <form class="perfil-form" onsubmit="actualizarPerfilUsuario(event)">
+            <form class="perfil-form" onsubmit="actualizarPerfilUsuario(event)">
 
-            <div class="fila">
-                <div class="campo-grupo">
-                    <label>Nombre</label>
-                    <div class="campo-contenedor">
-                        <input type="text" id="nombreUsuario" value="EJEMPLO" disabled>
-                        <button type="button" class="btn-editar" data-campo="nombreUsuario">
-                            <i class="fas fa-pencil-alt"></i>
-                        </button>
+                <div class="grid-2">
+                    <div class="campo-grupo">
+                        <label>Nombre</label>
+                        <div class="campo-contenedor">
+                            <input type="text" id="nombreUsuario" placeholder="EJEMPLO" class="input-formulario" disabled>
+                            <button type="button" class="btn-editar" data-campo="nombreUsuario">
+                                <i class="fas fa-pencil-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="campo-grupo">
+                        <label>Apellido</label>
+                        <div class="campo-contenedor">
+                            <input type="text" id="apellidoUsuario" placeholder="EJEMPLO" class="input-formulario" disabled>
+                            <button type="button" class="btn-editar" data-campo="apellidoUsuario">
+                                <i class="fas fa-pencil-alt"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
 
-                <div class="campo-grupo">
-                    <label>Apellido</label>
-                    <div class="campo-contenedor">
-                    <input type="text" id="apellidoUsuario" value="EJEMPLO" disabled>
-                    <button type="button" class="btn-editar" data-campo="apellidoUsuario">
-                        <i class="fas fa-pencil-alt"></i>
-                    </button>
+                <div class="grid-2">
+                    <div class="campo-grupo">
+                        <label>DNI</label>
+                        <div class="campo-contenedor">
+                            <input type="text" id="dniUsuario" placeholder="EJEMPLO" class="input-formulario" disabled>
+                            <button type="button" class="btn-editar" data-campo="dniUsuario">
+                                <i class="fas fa-pencil-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="campo-grupo">
+                        <label>Teléfono</label>
+                        <div class="campo-contenedor">
+                            <input type="text" id="telefonoUsuario" placeholder="EJEMPLO" class="input-formulario" disabled>
+                            <button type="button" class="btn-editar" data-campo="telefonoUsuario">
+                                <i class="fas fa-pencil-alt"></i>
+                            </button>
+                        </div>
+                    </div>
                 </div>
-            </div>
+
+                <div class="grid-2">
+                    <div class="campo-grupo">
+                        <label>Email</label>
+                        <div class="campo-contenedor">
+                            <input type="email" id="emailUsuario" placeholder="EJEMPLO" class="input-formulario" disabled>
+                            <button type="button" class="btn-editar" data-campo="emailUsuario">
+                                <i class="fas fa-pencil-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="campo-grupo">
+                        <label>Contraseña</label>
+                        <div class="campo-contenedor">
+                            <input type="password" id="direccionUsuario" placeholder="EJEMPLO" class="input-formulario"
+                                disabled>
+                            <button type="button" class="btn-editar" data-campo="direccionUsuario">
+                                <i class="fas fa-pencil-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <h2>Datos de domicilio</h2>
+
+                <div class="grid-2">
+                    <div class="campo-grupo">
+                        <label>Provincia</label>
+                        <div class="campo-contenedor">
+                            <input type="text" id="provinciaUsuario" placeholder="EJEMPLO" class="input-formulario" disabled>
+                            <button type="button" class="btn-editar" data-campo="provinciaUsuario">
+                                <i class="fas fa-pencil-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="campo-grupo">
+                        <label>Municipio</label>
+                        <div class="campo-contenedor">
+                            <input type="text" id="municipioUsuario" placeholder="EJEMPLO" class="input-formulario" disabled>
+                            <button type="button" class="btn-editar" data-campo="municipioUsuario">
+                                <i class="fas fa-pencil-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid-2">
+                    <div class="campo-grupo">
+                        <label>Localidad</label>
+                        <div class="campo-contenedor">
+                            <input type="text" id="localidadUsuario" placeholder="EJEMPLO" class="input-formulario" disabled>
+                            <button type="button" class="btn-editar" data-campo="localidadUsuario">
+                                <i class="fas fa-pencil-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="campo-grupo">
+                        <label>Calle</label>
+                        <div class="campo-contenedor">
+                            <input type="text" id="calleUsuario" placeholder="EJEMPLO" class="input-formulario" disabled>
+                            <button type="button" class="btn-editar" data-campo="calleUsuario">
+                                <i class="fas fa-pencil-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid-2">
+                    <div class="campo-grupo">
+                        <label>Altura</label>
+                        <div class="campo-contenedor">
+                            <input type="text" id="alturaUsuario" placeholder="EJEMPLO" class="input-formulario" disabled>
+                            <button type="button" class="btn-editar" data-campo="alturaUsuario">
+                                <i class="fas fa-pencil-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="campo-grupo">
+                        <label>Datos adicionales</label>
+                        <div class="campo-contenedor">
+                            <input type="text" id="adicionalUsuario" placeholder="EJEMPLO" class="input-formulario" disabled>
+                            <button type="button" class="btn-editar" data-campo="adicionalUsuario">
+                                <i class="fas fa-pencil-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <h3 class="subtitulo">📍 Selecciona la ubicación en el mapa:</h3>
+
+                <div id="mapa"></div>
+                <p id="texto-coordenadas"></p>
+
+                <input type="hidden" id="latitud">
+                <input type="hidden" id="longitud">
+
+                <button type="submit" class="btn btn-actualizar-perfil btn-guardar-perfil">
+                    Actualizar perfil
+                </button>
+
+            </form>
         </div>
 
-        <div class="fila">
-                <div class="campo-grupo">
-                    <label>DNI</label>
-                    <div class="campo-contenedor">
-                        <input type="text" id="dniUsuario" value="EJEMPLO" disabled>
-                        <button type="button" class="btn-editar" data-campo="dniUsuario">
-                            <i class="fas fa-pencil-alt"></i>
-                        </button>
-                    </div>
-                </div>
+    </main>
 
-                <div class="campo-grupo">
-                    <label>Teléfono</label>
-                    <div class="campo-contenedor">
-                        <input type="text" id="telefonoUsuario" value="EJEMPLO" disabled>
-                        <button type="button" class="btn-editar" data-campo="telefonoUsuario">
-                            <i class="fas fa-pencil-alt"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
+    <script src="../home-usuario/home-dropdown.js"></script>
+    <script src="./perfil-usuario.js"></script>
 
-            <div class="fila">
-                <div class="campo-grupo">
-                    <label>Email</label>
-                    <div class="campo-contenedor">
-                        <input type="email" id="emailUsuario" value="EJEMPLO" disabled>
-                        <button type="button" class="btn-editar" data-campo="emailUsuario">
-                            <i class="fas fa-pencil-alt"></i>
-                        </button>
-                    </div>
-                </div>
 
-                <div class="campo-grupo">
-                    <label>Dirección</label>
-                    <div class="campo-contenedor">
-                        <input type="text" id="direccionUsuario" value="EJEMPLO" disabled>
-                        <button type="button" class="btn-editar" data-campo="direccionUsuario">
-                            <i class="fas fa-pencil-alt"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <h2 class="perfil-subtitulo">Datos de domicilio</h2>
-            
-            <div class="fila">
-                <div class="campo-grupo">
-                    <label>Provincia</label>
-                    <div class="campo-contenedor">
-                        <input type="text" id="provinciaUsuario" value="EJEMPLO" disabled>
-                        <button type="button" class="btn-editar" data-campo="provinciaUsuario">
-                            <i class="fas fa-pencil-alt"></i>
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="campo-grupo">
-                    <label>Municipio</label>
-                    <div class="campo-contenedor">
-                        <input type="text" id="municipioUsuario" value="EJEMPLO" disabled>
-                        <button type="button" class="btn-editar" data-campo="municipioUsuario">
-                            <i class="fas fa-pencil-alt"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="fila">
-                <div class="campo-grupo">
-                    <label>Localidad</label>
-                    <div class="campo-contenedor">
-                        <input type="text" id="localidadUsuario" value="EJEMPLO" disabled>
-                        <button type="button" class="btn-editar" data-campo="localidadUsuario">
-                            <i class="fas fa-pencil-alt"></i>
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="campo-grupo">
-                    <label>Calle</label>
-                    <div class="campo-contenedor">
-                        <input type="text" id="calleUsuario" value="EJEMPLO" disabled>
-                        <button type="button" class="btn-editar" data-campo="calleUsuario">
-                            <i class="fas fa-pencil-alt"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="fila">
-                <div class="campo-grupo">
-                    <label>Altura</label>
-                    <div class="campo-contenedor">
-                        <input type="text" id="alturaUsuario" value="EJEMPLO" disabled>
-                        <button type="button" class="btn-editar" data-campo="alturaUsuario">
-                            <i class="fas fa-pencil-alt"></i>
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="campo-grupo">
-                    <label>Datos adicionales</label>
-                    <div class="campo-contenedor">
-                        <input type="text" id="adicionalUsuario" value="EJEMPLO" disabled>
-                        <button type="button" class="btn-editar" data-campo="adicionalUsuario">
-                            <i class="fas fa-pencil-alt"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            
-            <button type="submit" class="btn btn-actualizar-perfil btn-guardar-perfil">
-                Actualizar perfil
-            </button>
-
-        </form>
-    </div>
-
-</main>
-
-<script src="../../js/main.js"></script>
-<script src="../../js/perfil-usuario.js"></script>
 
 </body>
 

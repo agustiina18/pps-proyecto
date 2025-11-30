@@ -5,32 +5,42 @@
     padding: 0;
     box-sizing: border-box;
 }
-
 body {
     background: #ecf0f1;
     color: #333;
     font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    
+    overflow-y: scroll;
 }
 
-/* Título principal (igual que home) */
-main h2 {
-    max-width: 800px;
-    width: 90%;
-    margin: 20px auto 30px auto;
+
+.perfil-container h2{
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
     font-weight: 500;
     font-style: italic;
     font-size: 20px;
     line-height: 1.2;
+    letter-spacing: 0;
     text-align: center;
     color: #333;
+    margin: 20px 0 25px 0;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-/* ====== NAV IGUAL QUE HOME ====== */
+.perfil-container h2 {
+    text-align: center;
+    width: 100%;
+    font-size: 26px;
+    margin: 20px 0 25px 0;
+    font-weight: 600;
+}
+
+/* NAV */
 .main-nav {
     width: 100%;
     background-color: #AC0505;
@@ -42,7 +52,7 @@ main h2 {
     position: relative;
 }
 
-/* Botón menú lateral */
+/* Botón del Menú Desplegable  */
 .menu-toggle-btn {
     background-color: transparent;
     color: white;
@@ -54,11 +64,7 @@ main h2 {
     border-radius: 5px;
 }
 
-.menu-toggle-btn:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-}
-
-/* Menú lateral (user-dropdown) */
+/* Barra lateral */
 .user-dropdown-content {
     position: fixed;
     top: 0;
@@ -67,6 +73,7 @@ main h2 {
     height: 100vh;
     transform: translateX(-100%);
     transition: transform 0.3s ease-in-out;
+    /* Estilos Visuales */
     background-color: #7D0000;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
     z-index: 1000;
@@ -79,6 +86,7 @@ main h2 {
     transform: translateX(0);
 }
 
+/* Estilos de los enlaces */
 .user-dropdown-content a {
     padding: 15px 20px;
     text-decoration: none;
@@ -94,7 +102,9 @@ main h2 {
     color: white;
 }
 
-/* Logo centrado en el nav */
+
+
+/* Loguito del nav*/
 .nav-logo-container {
     position: absolute;
     left: 50%;
@@ -106,7 +116,27 @@ main h2 {
     width: auto;
 }
 
-/* Perfil / dropdown derecho */
+
+
+main {
+    width: 100%;
+    max-width: 1300px; 
+    margin: 0 auto;
+}
+
+
+
+.home-title {
+    margin: 20px auto 10px auto;
+    font-size: 2rem;
+    font-weight: 500;
+    color: #333;
+}
+
+
+
+/* Perfil */
+
 .dropdown-menu-container {
     position: relative;
     display: inline-block;
@@ -120,12 +150,7 @@ main h2 {
     cursor: pointer;
     padding: 0;
     margin-left: 5px;
-    background: transparent;
-    color: white;
-}
 
-.dropdown-arrow {
-    margin-left: 4px;
 }
 
 .dropdown-content {
@@ -163,41 +188,7 @@ main h2 {
     display: block;
 }
 
-/* MAIN CENTRADO (como home) */
-main {
-    width: 100%;
-    max-width: 1300px;
-    margin: 0 auto 40px auto;
-    
-}
-/* CONTENEDOR */
-.contacto-main {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-    padding: 40px 20px;
-}
-
-.contacto-container {
-    background: #d9d9d9;
-    padding: 35px 28px;
-    border-radius: 20px;
-    width: 100%;
-    max-width: 650px;
-    box-shadow: 0px 4px 15px rgba(0,0,0,0.18);
-    text-align: center;
-}
-
-/* TÍTULO */
-.contacto-titulo {
-    font-size: 24px;
-    font-weight: 600;
-    margin-bottom: 25px;
-}
-
-/* FORMULARIO */
-.contacto-form input,
-.contacto-form textarea {
+.input-formulario {
     width: 100%;
     padding: 15px 20px;
     background: #E5E5E5;
@@ -208,56 +199,64 @@ main {
     font-weight: 500;
     color: #000;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-    font-family: 'Poppins', sans-serif;
 }
 
-.contacto-form input::placeholder,
-.contacto-form textarea::placeholder {
+.input-formulario::placeholder {
     color: #989898;
     font-weight: 500;
 }
 
-.input-chico {
-    height: 34px;
-    padding: 10px;
+#mapa {
     width: 100%;
-    margin: 0 auto 15px auto;
-}
-
-.input-grande {
-    width: 100%;         
-    height: 200px;      
-    padding: 15px;
-    border-radius: 12px;
-    background: #ffffff;
-    font-family: 'Poppins', sans-serif;
-    font-size: 23px;
-    color: #000;
-    box-shadow: 0px 2px 6px rgba(0,0,0,0.18);
-    border: none;
-    resize: none;
-}
-
-/* BOTÓN */
-.btn-enviar {
-    background: #AC0505;
-    color: #fff;
-    padding: 13px 25px;
-    border: none;
-    border-radius: 12px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
+    height: 350px;
     margin-top: 15px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+}
+
+#texto-coordenadas {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 15px;
+    font-weight: 500;
+    display: none;
+}
+
+.grid-2 {
     width: 100%;
-    max-width: 300px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin-bottom: 20px;
+}
+/* === ALINEAR INPUT + BOTÓN DE EDITAR === */
+.campo-contenedor {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
 }
 
-.btn-enviar:hover {
-    background: #8b0000;
+/* tamaño uniforme del botón */
+.btn-editar {
+    background: #AC0505;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.contacto-form .campo {
-    width: 45%;   
-    margin: 0 auto 16px auto;
+.btn-editar i {
+    font-size: 16px;
+}
+
+@media (max-width: 768px) {
+    .grid-2 {
+        grid-template-columns: 1fr;
+    }
 }
