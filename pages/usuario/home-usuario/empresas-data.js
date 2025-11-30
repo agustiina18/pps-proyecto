@@ -13,6 +13,7 @@ const datosEmpresas = [
         telefono: "11-5555-1234",
         logo: "../../img/icono-perfil.png",
         linkMaps: "https://maps.google.com/?q=Av+Las+Heras+1234+Buenos+Aires",
+        email: "lovelyhair@gmail.com",
         calificacion: 4.7
     },
     {
@@ -24,6 +25,7 @@ const datosEmpresas = [
         telefono: "11-4444-9876",
         logo: "../../img/icono-perfil.png",
         linkMaps: "https://maps.google.com/?q=Cordoba+885+Buenos+Aires",
+        email: "sparelax@gmail.com",
         calificacion: 4.9
     },
     {
@@ -35,6 +37,7 @@ const datosEmpresas = [
         telefono: "11-3200-2222",
         logo: "../../img/icono-perfil.png",
         linkMaps: "https://maps.google.com/?q=Rivadavia+2300+Buenos+Aires",
+        email: "finobarber@gmail.com",
         calificacion: 4.5
     },
     {
@@ -46,6 +49,7 @@ const datosEmpresas = [
         telefono: "11-5100-7777",
         logo: "../../img/icono-perfil.png",
         linkMaps: "https://maps.google.com/?q=Cabildo+2450+Buenos+Aires",
+        email: "deluxelux@gmail.com",
         calificacion: 4.8
     }
 ];

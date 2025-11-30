@@ -15,6 +15,7 @@ if (empresa) {
     const calificacionEl = document.getElementById("empresaCalificacion");
     const logoEl = document.getElementById("empresaLogo");
     const linkMapsEl = document.getElementById("empresaLinkMaps");
+    const emailEl = document.getElementById("empresaEmail");
     const btnReservar = document.getElementById("btnReservar");
 
     if (nombreEl) nombreEl.textContent = empresa.nombre || "";
@@ -32,12 +33,27 @@ if (empresa) {
 
     if (telefonoEl) telefonoEl.textContent = empresa.telefono || "—";
 
-    if (calificacionEl) {
-        calificacionEl.textContent =
-            empresa.calificacion !== undefined && empresa.calificacion !== null
-                ? empresa.calificacion
-                : "—";
+    if (emailEl) emailEl.textContent = empresa.email || "—";
+
+
+if (calificacionEl) {
+    if (empresa.calificacion !== undefined && empresa.calificacion !== null) {
+        const calificacion = empresa.calificacion;
+        
+        const estrellasLlenas = Math.floor(calificacion);
+        const mediaEstrella = calificacion % 1 >= 0.5 ? 1 : 0;
+        const estrellasVacias = 5 - estrellasLlenas - mediaEstrella;
+
+        let html = "";
+        html += "⭐".repeat(estrellasLlenas);
+        html += mediaEstrella ? "✩" : "";
+        html += "☆".repeat(estrellasVacias);
+
+        calificacionEl.innerHTML = `${html} <span class="calificacion-num">(${calificacion})</span>`;
+    } else {
+        calificacionEl.textContent = "—";
     }
+}
 
     if (logoEl && empresa.logo) {
         logoEl.src = empresa.logo;

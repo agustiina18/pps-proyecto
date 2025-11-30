@@ -81,6 +81,24 @@
     font-size: 16px;
 }
 
+/* === ESTILO VISUAL DE LA CALIFICACIÓN === */
+#empresaCalificacion {
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: #FFB400; /* Dorado suave */
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.calificacion-num {
+    color: #444;
+    font-size: 15px;
+    font-weight: 500;
+    margin-left: 4px;
+}
+
 /* Responsive */
 @media (max-width: 480px) {
     .empresa-card {
