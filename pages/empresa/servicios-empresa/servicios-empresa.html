@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Servicios | MiTurno</title>
+
+    <link rel="stylesheet" href="servicios-empresa.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="icon" type="favicon" href="../../../favicon.ico">
+
+</head>
+
+<body>
+
+    <!-- NAV -->
+    <nav class="main-nav">
+        <button class="btn-back" onclick="history.back()">
+            <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <h2 class="titulo-nav">Servicios</h2>
+        <div class="espaciador"></div>
+    </nav>
+
+    <main class="contenedor">
+
+        <button class="btn-agregar" id="btnAbrirAgregar">
+            <i class="fa-solid fa-plus"></i> Agregar servicio
+        </button>
+
+        <div id="listaServicios" class="lista-servicios"></div>
+
+    </main>
+
+    <!-- MODAL AGREGAR/EDITAR -->
+    <div id="modalServicio" class="modal-overlay">
+        <div class="modal-contenido">
+
+            <h3 id="tituloModal">Agregar servicio</h3>
+
+            <label>Nombre</label>
+            <input type="text" id="servicioNombre">
+
+            <label>Duración (minutos)</label>
+            <input type="number" id="servicioDuracion">
+
+            <label>Profesional (opcional)</label>
+            <input type="text" id="servicioProfesional">
+
+            <label>Precio</label>
+            <input type="number" id="servicioPrecio">
+
+            <label>Días disponibles</label>
+            <input type="text" id="servicioDias" placeholder="Ej: Lunes, Martes, Viernes">
+
+            <label>Horario</label>
+            <input type="text" id="servicioHorario" placeholder="Ej: 09:00 - 18:00">
+
+            <label>Aclaración</label>
+            <textarea id="servicioAclaracion" rows="3" placeholder="Ej: Incluye lavado, no incluye brushing"></textarea>
+
+
+            <div class="modal-botones">
+                <button id="btnCancelarModal" class="btn-cancelar">Cancelar</button>
+                <button id="btnGuardarModal" class="btn-enviar">Guardar</button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- MODAL ELIMINAR -->
+    <div id="modalEliminar" class="modal-overlay">
+        <div class="modal-contenido">
+
+            <h3>Eliminar servicio</h3>
+            <p id="textoEliminar" class="modal-subtitulo">¿Deseás eliminar este servicio?</p>
+
+            <div class="modal-botones">
+                <button id="btnCancelarEliminar" class="btn-cancelar">Cancelar</button>
+                <button id="btnConfirmarEliminar" class="btn-enviar" style="background:#a00000;">Eliminar</button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- =========== MODAL EDITAR SERVICIO =========== -->
+<div id="modalEditarServicio" class="modal-overlay">
+    <div class="modal-servicio">
+        <div class="modal-contenido">
+
+            <h2>Editar servicio</h2>
+
+            <label>Nombre del servicio</label>
+            <input type="text" id="editNombre">
+
+            <label>Duración (minutos)</label>
+            <input type="number" id="editDuracion" min="1">
+
+            <label>Precio ($)</label>
+            <input type="number" id="editPrecio" min="0">
+
+            <label>Aclaración (opcional)</label>
+            <textarea id="editAclaracion"></textarea>
+
+            <div class="modal-botones">
+                <button id="btnCancelarEditar" class="btn-cancelar">Cancelar</button>
+                <button id="btnGuardarEditar" class="btn-guardar">Guardar</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+    <script src="servicios-empresa.js"></script>
+</body>
+
+</html>

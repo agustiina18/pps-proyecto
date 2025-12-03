@@ -1,0 +1,392 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #ecf0f1;
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+}
+
+/* ==========================
+   NAV SUPERIOR
+========================== */
+
+.main-nav {
+    width: 100%;
+    background: #AC0505;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.btn-back {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.titulo-nav {
+    flex-grow: 1;
+    text-align: center;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.espaciador {
+    width: 30px;
+}
+
+/* ==========================
+   CONTENIDO
+========================== */
+
+.contenedor {
+    max-width: 800px;
+    margin: 25px auto;
+    padding: 20px;
+}
+
+.titulo-seccion {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 18px;
+}
+
+/* ==========================
+   BOTÓN INVITAR EMPLEADO
+========================== */
+
+.btn-invitar {
+    width: 100%;
+    background: #AC0505;
+    color: white;
+    padding: 12px 15px;
+    border-radius: 12px;
+    border: none;
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-invitar:hover {
+    background: #7D0000;
+}
+
+.modal-subtitulo {
+    text-align: center;
+    font-size: 16px;
+    margin-top: -8px;
+    margin-bottom: 10px;
+    color: #666;
+}
+
+/* ==========================
+   TARJETAS DE EMPLEADOS
+========================== */
+
+.lista-empleados {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.empleado-card {
+    background: white;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.empleado-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.empleado-nombre {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.empleado-rol {
+    font-size: 15px;
+    color: #555;
+}
+
+/* BOTONES ACCIONES */
+
+.empleado-acciones {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-accion {
+    background: #AC0505;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 10px;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.btn-accion:hover {
+    background: #7D0000;
+}
+
+.btn-eliminar {
+    background: #a00000;
+}
+
+.btn-eliminar:hover {
+    background: #700000;
+}
+
+/* DESHABILITADO */
+.deshabilitado {
+    opacity: 0.4;
+    cursor: not-allowed !important;
+}
+
+/* ==========================
+   MODAL INVITAR EMPLEADO
+========================== */
+
+.modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+
+    
+    overflow-x: hidden;
+    max-width: 100vw;
+}
+
+.modal-overlay.show {
+    display: flex;
+}
+
+.modal-contenido {
+    background: #ffffff;
+    width: 90%;
+    max-width: 400px;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+
+.modal-contenido *,
+.modal-contenido *::before,
+.modal-contenido *::after {
+    box-sizing: border-box !important;
+}
+
+.modal-contenido h3 {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.modal-contenido label {
+    font-weight: 600;
+    margin-top: 5px;
+}
+
+.modal-contenido input,
+.modal-contenido select {
+    width: 100%;
+    max-width: 100%;
+    display: block;
+    padding: 12px;
+    border-radius: 10px;
+    background: #f0f0f0;
+    font-size: 15px;
+    border: 1px solid #ccc;
+
+    
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.modal-botones {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.btn-cancelar {
+    background: #777;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-enviar {
+    background: #AC0505;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-enviar:hover {
+    background: #7D0000;
+}
+
+
+/* ========================================================
+   RESPONSIVE – TABLETS Y CELULARES GRANDES
+======================================================== */
+@media (max-width: 768px) {
+
+    .contenedor {
+        padding: 15px;
+        max-width: 95%;
+    }
+
+    .empleado-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .empleado-acciones {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .btn-accion {
+        flex-grow: 1;
+        justify-content: center;
+    }
+
+    .modal-contenido {
+        width: 92%;
+        max-width: 380px;
+    }
+}
+
+/* ========================================================
+   RESPONSIVE (480px)
+======================================================== */
+@media (max-width: 480px) {
+
+    .main-nav {
+        padding: 12px 15px;
+    }
+
+    .titulo-nav {
+        font-size: 18px;
+    }
+
+    .modal-overlay {
+        padding: 0 10px;
+    }
+
+    .modal-contenido {
+        width: 100%;
+        max-width: 100%;
+        padding: 20px;
+        border-radius: 12px;
+    }
+
+    .modal-contenido input,
+    .modal-contenido select {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .modal-botones {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .btn-cancelar,
+    .btn-enviar {
+        width: 100%;
+        padding: 12px;
+    }
+}
+
+/* ========================================================
+   RESPONSIVE – (360px)
+======================================================== */
+@media (max-width: 360px) {
+
+    .modal-contenido {
+        padding: 16px;
+    }
+
+    .modal-contenido h3 {
+        font-size: 18px;
+    }
+
+    .modal-contenido input,
+    .modal-contenido select {
+        padding: 9px;
+        font-size: 14px;
+    }
+
+    .btn-cancelar,
+    .btn-enviar {
+        padding: 10px;
+        font-size: 14px;
+    }
+}
+
+/* ========================================================
+   RESPONSIVE (330px)
+======================================================== */
+@media (max-width: 330px) {
+
+    .modal-contenido {
+        padding: 14px;
+        gap: 10px;
+    }
+
+    .modal-contenido h3 {
+        font-size: 17px;
+    }
+
+    .modal-contenido input,
+    .modal-contenido select {
+        padding: 8px;
+        font-size: 13px;
+    }
+
+    .btn-cancelar,
+    .btn-enviar {
+        padding: 9px;
+        font-size: 13px;
+    }
+}

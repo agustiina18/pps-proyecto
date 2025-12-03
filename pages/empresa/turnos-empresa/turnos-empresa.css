@@ -1,0 +1,268 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #ecf0f1;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* NAV */
+.main-nav {
+    width: 100%;
+    background: #AC0505;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.btn-back {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.titulo-nav {
+    flex-grow: 1;
+    text-align: center;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+/* CONTENEDOR */
+.contenedor {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+/* FILTROS */
+.filtros {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.filtros input,
+.filtros select {
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #aaa;
+    flex: 1;
+}
+
+/* LISTA */
+.lista-turnos {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* TARJETA */
+.turno-card {
+    background: white;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+}
+
+.turno-header {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.turno-dato {
+    font-size: 15px;
+    color: #333;
+    margin-top: 5px;
+}
+
+.badge {
+    padding: 4px 8px;
+    border-radius: 8px;
+    color: white;
+    font-size: 13px;
+}
+
+.badge.confirmado { background: #e8f5e9; color: #4CAF50;}
+.badge.cumplido { background: #e3f2fd; color: #2196F3;}
+.badge.no_cumplido { background: #fff3e0; color: #FB8C00;}
+.badge.cancelado { background: #ffebee; color: #E53935;}
+
+/* BOTONES DE LA TARJETA */
+.turno-botones {
+    margin-top: 12px;
+    display: flex;
+    gap: 8px;
+}
+
+.btn-detalle {
+    flex: 1;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    background: #AC0505;
+    color: white;
+    cursor: pointer;
+}
+
+/* MODAL */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.modal-overlay.show {
+    display: flex;
+}
+
+.modal-turno {
+    width: 90%;
+    max-width: 450px;
+}
+
+.modal-contenido {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-sizing: border-box;
+}
+
+.modal-dato {
+    margin-bottom: 10px;
+}
+
+.modal-separador {
+    height: 1px;
+    background: #ccc;
+    margin: 10px 0;
+}
+
+/* BOTONES MODAL */
+.modal-botones-columna {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+    
+}
+
+.btn-verde { background: #e8f5e9; color: #4CAF50; padding: 12px; border-radius: 10px; border: none; }
+.btn-amarillo { background: #fff3e0; color: #FB8C00; padding: 12px; border-radius: 10px; border: none; }
+.btn-rojo { background: #ffebee; color: #E53935; padding: 12px; border-radius: 10px; border: none; }
+
+.btn-desactivado {
+    background: #999;
+    color: white;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    cursor: not-allowed;
+}
+
+.btn-cancelar2 {
+    background: #555;
+    color: white;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+}
+
+/* ===========================================================
+   RESPONSIVE 
+=========================================================== */
+
+@media (max-width: 480px) {
+
+    /* NAV */
+    .main-nav {
+        padding: 12px;
+    }
+
+    .titulo-nav {
+        font-size: 18px;
+    }
+
+    /* CONTENEDOR */
+    .contenedor {
+        padding: 15px;
+        margin: 10px auto;
+    }
+
+    /* FILTROS */
+    .filtros {
+        flex-direction: column;
+    }
+
+    .filtros input,
+    .filtros select {
+        font-size: 14px;
+        padding: 9px;
+    }
+
+    /* TARJETAS */
+    .turno-card {
+        padding: 14px;
+        border-radius: 10px;
+    }
+
+    
+    .turno-header {
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        gap: 0 !important;
+    }
+
+    .turno-header span:first-child {
+        max-width: 65% !important;
+        font-size: 15px !important;
+    }
+
+    .badge {
+        flex-shrink: 0 !important;
+        padding: 4px 8px !important;
+        font-size: 12.5px !important;
+        margin-left: auto !important;
+    }
+
+    .turno-dato {
+        font-size: 14px;
+    }
+
+    .btn-detalle {
+        padding: 9px;
+        font-size: 14px;
+    }
+
+    /* MODAL */
+    .modal-turno {
+        width: 80% !important;
+        max-width: 380px !important;
+    }
+
+    .modal-contenido {
+        padding: 18px !important;
+        max-height: 90vh !important;
+        overflow-y: auto !important;
+    }
+
+    .modal-dato {
+        font-size: 14px !important;
+    }
+
+    .modal-botones-columna button {
+        font-size: 14px !important;
+        padding: 10px !important;
+    }
+}

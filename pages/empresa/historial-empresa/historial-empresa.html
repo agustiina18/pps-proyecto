@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historial de Turnos</title>
+    <link rel="stylesheet" href="historial-empresa.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="icon" type="favicon" href="../../../favicon.ico">
+</head>
+
+<body>
+
+    <nav class="main-nav">
+        <button class="btn-back" onclick="history.back()">
+            <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <span class="titulo-nav">Historial de Turnos</span>
+        <div class="espaciador"></div>
+    </nav>
+
+
+    <main class="contenedor">
+
+        <!-- FILTROS -->
+        <div class="filtros">
+            <input type="date" id="filtroFecha">
+            <select id="filtroEstado">
+                <option value="">Estado</option>
+                <option value="cumplido">Cumplido</option>
+                <option value="no_cumplido">No cumplido</option>
+                <option value="cancelado">Cancelado</option>
+            </select>
+            <select id="filtroProfesional">
+                <option value="">Profesional</option>
+            </select>
+        </div>
+
+        <!-- LISTA -->
+        <div id="listaHistorial" class="lista-turnos"></div>
+
+    </main>
+
+    <!-- MODAL DETALLE -->
+    <div id="modalOverlay" class="modal-overlay">
+        <div class="modal-turno">
+            <div class="modal-contenido">
+
+                <h2 id="modalNombre" class="modal-dato"></h2>
+
+                <div class="modal-dato"><b>DNI:</b> <span id="modalDni"></span></div>
+                <div class="modal-dato"><b>Fecha:</b> <span id="modalFecha"></span></div>
+                <div class="modal-dato"><b>Hora:</b> <span id="modalHora"></span></div>
+
+                <div class="modal-separador"></div>
+
+                <div class="modal-dato"><b>Servicio:</b> <span id="modalServicio"></span></div>
+                <div class="modal-dato"><b>Duración:</b> <span id="modalDuracion"></span> min</div>
+                <div class="modal-dato"><b>Precio:</b> $<span id="modalPrecio"></span></div>
+                <div class="modal-dato"><b>Aclaración:</b> <span id="modalAclaracion"></span></div>
+
+                <div class="modal-separador"></div>
+
+                <div class="modal-dato"><b>Profesional:</b> <span id="modalProfesional"></span></div>
+
+                <div class="modal-separador"></div>
+
+                <button id="cerrarModal" class="btn-cancelar2">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="historial-empresa.js"></script>
+</body>
+
+</html>

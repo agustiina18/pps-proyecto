@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turnos | MiTurno</title>
+
+    <link rel="stylesheet" href="turnos-empresa.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="icon" type="favicon" href="../../../favicon.ico">
+</head>
+
+<body>
+
+    <!-- NAV -->
+    <nav class="main-nav">
+        <button class="btn-back" onclick="history.back()">
+            <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <h2 class="titulo-nav">Turnos</h2>
+        <div class="espaciador"></div>
+    </nav>
+
+    <main class="contenedor">
+
+        <!-- FILTROS -->
+        <section class="filtros">
+            <input type="date" id="filtroFecha">
+            <select id="filtroEstado">
+                <option value="">Todos los estados</option>
+                <option value="confirmado">Confirmado</option>
+                <option value="cancelado">Cancelado</option>
+                <option value="cumplido">Cumplido</option>
+                <option value="no_cumplido">No cumplido</option>
+            </select>
+            <select id="filtroProfesional">
+                <option value="">Todos los profesionales</option>
+            </select>
+        </section>
+
+        <!-- LISTA DE TURNOS -->
+        <div id="listaTurnos" class="lista-turnos"></div>
+
+    </main>
+
+    <!-- MODAL DETALLE DEL TURNO -->
+    <div id="modalTurno" class="modal-overlay">
+        <div class="modal-contenido modal-turno">
+
+            <h3>Detalles del turno</h3>
+
+            <div class="modal-dato"><b>Cliente:</b> <span id="mCliente"></span></div>
+            <div class="modal-dato"><b>DNI:</b> <span id="mDni"></span></div>
+            <div class="modal-dato"><b>Fecha:</b> <span id="mFecha"></span></div>
+            <div class="modal-dato"><b>Hora:</b> <span id="mHora"></span></div>
+
+            <div class="modal-separador"></div>
+
+            <div class="modal-dato"><b>Servicio:</b> <span id="mServicio"></span></div>
+            <div class="modal-dato"><b>Duración:</b> <span id="mDuracion"></span></div>
+            <div class="modal-dato"><b>Precio:</b> <span id="mPrecio"></span></div>
+            <div class="modal-dato"><b>Aclaración:</b> <span id="mAclaracion"></span></div>
+
+            <div class="modal-separador"></div>
+
+            <div class="modal-dato"><b>Profesional:</b> <span id="mProfesional"></span></div>
+
+            <div class="modal-separador"></div>
+
+            <div class="modal-dato"><b>Estado actual:</b> <span id="mEstado"></span></div>
+
+            <div class="modal-botones-columna">
+                <button class="btn-verde" id="btnCumplido">Marcar como cumplido</button>
+                <button class="btn-amarillo" id="btnNoCumplido">Marcar como no cumplido</button>
+                <button class="btn-rojo" id="btnCancelarTurno">Cancelar turno</button>
+
+                <!-- CONTACTAR DESHABILITADO -->
+                <button class="btn-desactivado" id="btnContactar" disabled>
+                    Contactar (sin teléfono)
+                </button>
+
+                <button class="btn-cancelar2" id="btnCerrarModal">Cerrar</button>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="turnos-empresa.js"></script>
+</body>
+</html>

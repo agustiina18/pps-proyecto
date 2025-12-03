@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MiTurno - Empleados</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="stylesheet" href="./empleados-empresa.css">
+
+    <link rel="icon" type="favicon" href="../../../favicon.ico">
+</head>
+
+<body>
+
+    <!-- NAV -->
+    <nav class="main-nav">
+        <button onclick="history.back()" class="btn-back">
+            <i class="fa-solid fa-arrow-left"></i>
+        </button>
+
+        <h2 class="titulo-nav">Empleados</h2>
+
+        <div class="espaciador"></div>
+    </nav>
+
+    <!-- CONTENIDO -->
+    <main class="contenedor">
+        <h3 class="titulo-seccion">Miembros de la Empresa</h3>
+
+        <button id="btnInvitar" class="btn-invitar">
+            <i class="fa-solid fa-user-plus"></i> Invitar Empleado
+        </button>
+
+        <div id="listaEmpleados" class="lista-empleados">
+            
+        </div>
+    </main>
+
+    <!-- =============== MODAL INVITAR EMPLEADO =============== -->
+    <div id="modalInvitar" class="modal-overlay">
+        <div class="modal-contenido">
+
+            <h3>Invitar Empleado</h3>
+
+            <label>Email del empleado</label>
+            <input type="email" id="inputEmailInvitar" placeholder="empleado@correo.com">
+
+            <label>Rol a asignar</label>
+            <select id="selectRolInvitar">
+                <option value="empleado">Empleado</option>
+                <option value="profesional">Profesional</option>
+                <option value="gerente">Gerente</option>
+            </select>
+
+            <div class="modal-botones">
+                <button id="btnCancelarInvitacion" class="btn-cancelar">Cancelar</button>
+                <button id="btnEnviarInvitacion" class="btn-enviar">Enviar</button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- =============== MODAL CAMBIAR ROL =============== -->
+    <div id="modalCambiarRol" class="modal-overlay">
+        <div class="modal-contenido">
+
+            <h3>Cambiar Rol</h3>
+
+            <p id="cambiarRolNombre" class="modal-subtitulo">Empleado</p>
+
+            <label>Rol actual</label>
+            <input type="text" id="cambiarRolActual" disabled>
+
+            <label>Nuevo rol</label>
+            <select id="cambiarRolNuevo">
+                <option value="empleado">Empleado</option>
+                <option value="profesional">Profesional</option>
+                <option value="gerente">Gerente</option>
+            </select>
+
+            <div class="modal-botones">
+                <button id="btnCancelarCambioRol" class="btn-cancelar">Cancelar</button>
+                <button id="btnGuardarCambioRol" class="btn-enviar">Guardar</button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- =============== MODAL ELIMINAR EMPLEADO =============== -->
+    <div id="modalEliminarEmpleado" class="modal-overlay">
+        <div class="modal-contenido">
+
+            <h3>Eliminar Empleado</h3>
+
+            <p id="textoEliminar" class="modal-subtitulo">
+                ¿Deseás eliminar a este miembro?
+            </p>
+
+            <div class="modal-botones">
+                <button id="btnCancelarEliminar" class="btn-cancelar">Cancelar</button>
+                <button id="btnConfirmarEliminar" class="btn-enviar" style="background:#a00000;">
+                    Eliminar
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- JS -->
+    <script src="./empleados-empresa.js"></script>
+
+</body>
+
+</html>
