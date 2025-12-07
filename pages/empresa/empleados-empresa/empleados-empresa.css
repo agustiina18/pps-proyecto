@@ -17,21 +17,19 @@ body {
     padding: 15px 20px;
     display: flex;
     align-items: center;
-    gap: 20px;
 }
 
 .btn-back {
-    background: transparent;
+    background: none;
     border: none;
     color: white;
-    font-size: 25px;
+    font-size: 24px;
     cursor: pointer;
 }
 
 .titulo-nav {
-    flex-grow: 1;
-    text-align: center;
-    font-size: 22px;
+    margin: 0 auto;
+    font-size: 20px;
     font-weight: 600;
 }
 

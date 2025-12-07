@@ -1,40 +1,31 @@
-// =====================================
-// CONFIG
-// =====================================
 const API_URL = "http://localhost:8000";
-const USE_BACKEND = false; // cambiar a true al integrar nuestro back
+const USE_BACKEND = false;
 
 let empresaId = localStorage.getItem("empresaSeleccionada") || 1;
 
-// =====================================
-// MODO MOCK para Datos simulados
-// =====================================
+// MOCK 
 const MOCK_DATA = {
     rol: "propietario",
     miembros: [
         { id: 1, apellido: "García", nombre: "Lucía", rol: "gerente" },
-        { id: 2, apellido: "López", nombre: "Marcos", rol: "profesional" },
+        { id: 2, apellido: "López", nombre: "Marcos", rol: "empleado" },
         { id: 3, apellido: "Pérez", nombre: "Ana", rol: "empleado" },
     ]
 };
 
-// =====================================
 // DOM
-// =====================================
 const listaEmpleados = document.getElementById("listaEmpleados");
 const btnInvitar = document.getElementById("btnInvitar");
 
-// =====================================
+
 // INICIO
-// =====================================
 document.addEventListener("DOMContentLoaded", () => {
     if (USE_BACKEND) cargarDesdeBackend();
     else renderizar(MOCK_DATA);
 });
 
-// =====================================
-// CARGAR DESDE BACKEND Miturno
-// =====================================
+
+// CARGA BACKEND
 async function cargarDesdeBackend() {
     try {
         const r = await fetch(`${API_URL}/empresas/${empresaId}/panel`, {
@@ -48,17 +39,16 @@ async function cargarDesdeBackend() {
 
     } catch (err) {
         console.error(err);
-        alert("No se pudo conectar al backend. Activando MODO MOCK.");
+        alert("No se pudo conectar al backend. MODO MOCK.");
         renderizar(MOCK_DATA);
     }
 }
 
-// =====================================
-// RENDERIZA LISTA
-// =====================================
+
+// RENDER DE LISTA
+
 function renderizar(data) {
     listaEmpleados.innerHTML = "";
-
     const rolUsuario = data.rol;
 
     controlarPermisos(rolUsuario);
@@ -84,269 +74,151 @@ function renderizar(data) {
             </div>
         `;
 
-        // EVENTOS (mock)
-        div.querySelector(".btn-rol").onclick = () => {
-            abrirModalCambiarRol(emp, rolUsuario);
-        };
-
-        div.querySelector(".btn-eliminar").onclick = () => {
-            abrirModalEliminar(emp, rolUsuario);
-        };
+        div.querySelector(".btn-rol").onclick = () => abrirModalCambiarRol(emp, rolUsuario);
+        div.querySelector(".btn-eliminar").onclick = () => abrirModalEliminar(emp, rolUsuario);
 
         listaEmpleados.appendChild(div);
     });
 }
 
-// =====================================
-// PERMISOS POR ROL
-// =====================================
+
+// CONTROL PERMISOS
+
 function controlarPermisos(rol) {
+
+    // empleado — sin permiso de invitar
     if (rol === "empleado") {
         btnInvitar.classList.add("deshabilitado");
-        btnInvitar.onclick = () => alert("No tienes permisos.");
+        btnInvitar.onclick = () => alert("No tienes permisos para invitar.");
+    }
+
+    // gerente — solo puede invitar “empleado”
+    if (rol === "gerente") {
+        const select = document.getElementById("selectRolInvitar");
+        select.innerHTML = `<option value="empleado">Empleado</option>`;
     }
 }
 
-// ====================================================
+
 // MODAL INVITAR EMPLEADO
-// ====================================================
-const modal = document.getElementById("modalInvitar");
-const btnInvitarEmpleado = document.getElementById("btnInvitar");
+
+const modalInvitar = document.getElementById("modalInvitar");
 
 const inputEmailInvitar = document.getElementById("inputEmailInvitar");
 const selectRolInvitar = document.getElementById("selectRolInvitar");
 
-const btnCancelarInvitacion = document.getElementById("btnCancelarInvitacion");
-const btnEnviarInvitacion = document.getElementById("btnEnviarInvitacion");
+document.getElementById("btnInvitar").onclick = () => modalInvitar.classList.add("show");
+document.getElementById("btnCancelarInvitacion").onclick =
+    () => modalInvitar.classList.remove("show");
 
-
-// ABRIR MODAL
-btnInvitarEmpleado.addEventListener("click", () => {
-    modal.classList.add("show");
-});
-
-// CERRAR MODAL
-btnCancelarInvitacion.addEventListener("click", () => {
-    modal.classList.remove("show");
-});
-
-
-// ====================================================
-// ENVIAR INVITACIÓN
-// ====================================================
-btnEnviarInvitacion.addEventListener("click", async () => {
+document.getElementById("btnEnviarInvitacion").onclick = () => {
 
     const email = inputEmailInvitar.value.trim();
-    const rolSeleccionado = selectRolInvitar.value;
+    const rolSel = selectRolInvitar.value;
 
-    // Validación simple
-    if (!email || !email.includes("@")) {
+    if (!email.includes("@")) {
         alert("Debe ingresar un email válido.");
         return;
     }
 
-    // OBJETO A ENVIAR
-    const invitacion = {
-        usuario_email: email,
-        rol: rolSeleccionado
-    };
+    alert(`Invitación MOCK enviada:\nEmail: ${email}\nRol: ${rolSel}`);
 
-    // MODO MOCK
-    if (!USE_BACKEND) {
-        alert(`📩 Invitación MOCK enviada a: ${email}\nRol: ${rolSeleccionado}`);
-        modal.classList.remove("show");
-        inputEmailInvitar.value = "";
-        return;
-    }
+    modalInvitar.classList.remove("show");
+    inputEmailInvitar.value = "";
+};
 
-    // ENVÍO AL BACKEND
-    try {
-        const r = await fetch(`${API_URL}/empresas/${empresaId}/invitar_empleado`, {
-            method: "POST",
-            credentials: "include",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(invitacion)
-        });
 
-        if (!r.ok) {
-            const error = await r.json();
-            console.error(error);
-            alert("Error al enviar la invitación.");
-            return;
-        }
-
-        alert("✔ Invitación enviada con éxito.");
-        modal.classList.remove("show");
-        inputEmailInvitar.value = "";
-
-    } catch (err) {
-        console.error(err);
-        alert("Error de conexión con el servidor.");
-    }
-});
-
-// ====================================================
 // MODAL CAMBIAR ROL
-// ====================================================
-
 const modalCambiarRol = document.getElementById("modalCambiarRol");
 
 const cambiarRolNombre = document.getElementById("cambiarRolNombre");
 const cambiarRolActual = document.getElementById("cambiarRolActual");
 const cambiarRolNuevo = document.getElementById("cambiarRolNuevo");
 
-const btnCancelarCambioRol = document.getElementById("btnCancelarCambioRol");
-const btnGuardarCambioRol = document.getElementById("btnGuardarCambioRol");
-
-// Variable temporal
 let empleadoSeleccionado = null;
 
-
-// ABRIR MODAL CAMBIAR ROL
 function abrirModalCambiarRol(emp, rolUsuario) {
 
-    if (rolUsuario === "empleado") {
+    if (rolUsuario === "empleado")
         return alert("No tienes permisos para cambiar roles.");
-    }
 
-    if (emp.rol === "propietario") {
+    if (rolUsuario === "gerente")
+        return alert("Un gerente no puede cambiar roles.");
+
+    if (emp.rol === "propietario")
         return alert("No puedes modificar al propietario.");
-    }
 
     empleadoSeleccionado = emp;
 
     cambiarRolNombre.textContent = `${emp.apellido}, ${emp.nombre}`;
     cambiarRolActual.value = emp.rol;
+
+    // propietario puede asignar todos los roles
+    cambiarRolNuevo.innerHTML = `
+        <option value="propietario">Propietario</option>
+        <option value="gerente">Gerente</option>
+        <option value="empleado">Empleado</option>
+    `;
+
     cambiarRolNuevo.value = emp.rol;
 
     modalCambiarRol.classList.add("show");
 }
 
+document.getElementById("btnCancelarCambioRol").onclick =
+    () => modalCambiarRol.classList.remove("show");
 
-// CERRAR MODAL
-btnCancelarCambioRol.addEventListener("click", () => {
-    modalCambiarRol.classList.remove("show");
-});
-
-
-// GUARDAR CAMBIO DE ROL
-btnGuardarCambioRol.addEventListener("click", async () => {
-
-    const nuevoRol = cambiarRolNuevo.value;
+document.getElementById("btnGuardarCambioRol").onclick = () => {
 
     if (!empleadoSeleccionado) return;
 
-    // MODO MOCK
-    if (!USE_BACKEND) {
-        alert(`(MODO MOCK)\nRol cambiado:\n${empleadoSeleccionado.nombre}: ${empleadoSeleccionado.rol} → ${nuevoRol}`);
-        modalCambiarRol.classList.remove("show");
-        return;
-    }
+    const nuevoRol = cambiarRolNuevo.value;
 
-    // ENVÍO 
-    try {
-        const r = await fetch(`${API_URL}/empresas/${empresaId}/modificar_rol`, {
-            method: "PUT",
-            credentials: "include",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                usuario_id: empleadoSeleccionado.id,
-                nuevo_rol: nuevoRol
-            })
-        });
+    // ACTUALIZAR MOCK Y RENDERIZAR
+    empleadoSeleccionado.rol = nuevoRol;
+    renderizar(MOCK_DATA);
 
-        if (!r.ok) throw new Error("Error al actualizar rol");
+    alert(`✔ Rol actualizado a: ${nuevoRol}`);
 
-        alert("✔ Rol actualizado correctamente.");
+    modalCambiarRol.classList.remove("show");
+};
 
-        modalCambiarRol.classList.remove("show");
 
-        // Recarga lista 
-        cargarDesdeBackend();
-
-    } catch (err) {
-        console.error(err);
-        alert("No se pudo conectar al servidor.");
-    }
-});
-
-// ====================================================
 // MODAL ELIMINAR EMPLEADO
-// ====================================================
 
-const modalEliminarEmpleado = document.getElementById("modalEliminarEmpleado");
+const modalEliminar = document.getElementById("modalEliminarEmpleado");
 const textoEliminar = document.getElementById("textoEliminar");
-
-const btnCancelarEliminar = document.getElementById("btnCancelarEliminar");
-const btnConfirmarEliminar = document.getElementById("btnConfirmarEliminar");
 
 let empleadoAEliminar = null;
 
-// ABRIR MODAL
 function abrirModalEliminar(emp, rolUsuario) {
 
-    if (rolUsuario === "empleado") {
-        return alert("No tienes permisos para eliminar miembros.");
-    }
+    if (rolUsuario === "empleado")
+        return alert("No tienes permisos para eliminar.");
 
-    if (emp.rol === "propietario") {
+    if (rolUsuario === "gerente" && emp.rol === "propietario")
         return alert("No podés eliminar al propietario.");
-    }
 
     empleadoAEliminar = emp;
 
     textoEliminar.textContent = `¿Eliminar a ${emp.apellido}, ${emp.nombre}?`;
 
-    modalEliminarEmpleado.classList.add("show");
+    modalEliminar.classList.add("show");
 }
 
+document.getElementById("btnCancelarEliminar").onclick =
+    () => modalEliminar.classList.remove("show");
 
-// CERRAR MODAL
-btnCancelarEliminar.onclick = () => {
-    modalEliminarEmpleado.classList.remove("show");
-};
+document.getElementById("btnConfirmarEliminar").onclick = () => {
 
+    // ELIMINAR DEL MOCK Y RERENDERIZAR
+    MOCK_DATA.miembros = MOCK_DATA.miembros.filter(
+        m => m.id !== empleadoAEliminar.id
+    );
 
-// CONFIRMAR ELIMINACIÓN
-btnConfirmarEliminar.onclick = async () => {
+    renderizar(MOCK_DATA);
 
-    if (!empleadoAEliminar) return;
+    alert(`Empleado eliminado: ${empleadoAEliminar.nombre}`);
 
-    // MODO MOCK
-    if (!USE_BACKEND) {
-        alert(`(MODO MOCK)\nEmpleado eliminado: ${empleadoAEliminar.nombre}`);
-        modalEliminarEmpleado.classList.remove("show");
-        return;
-    }
-
-    // BACKEND MiTurno
-    try {
-
-        const body = {
-            usuario_id: empleadoAEliminar.id
-        };
-
-        const r = await fetch(`${API_URL}/empresas/${empresaId}/eliminar_miembro`, {
-            method: "DELETE",
-            credentials: "include",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(body)
-        });
-
-        if (!r.ok) {
-            const err = await r.json();
-            alert(err.detail || "Error al eliminar.");
-            return;
-        }
-
-        alert("✔ Empleado eliminado correctamente.");
-
-        modalEliminarEmpleado.classList.remove("show");
-
-        cargarDesdeBackend();
-
-    } catch (error) {
-        console.error(error);
-        alert("No se pudo conectar al servidor.");
-    }
+    modalEliminar.classList.remove("show");
 };
