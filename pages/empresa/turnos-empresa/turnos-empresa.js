@@ -1,4 +1,3 @@
-// ========== CONFIG ==========
 const USE_BACKEND = false;
 const API_URL = "http://localhost:8000";
 const empresaId = 1;
@@ -41,7 +40,7 @@ let turnosMock = [
         usuario_nombre: "Laura",
         usuario_apellido: "Gómez",
         usuario_dni: 30222111,
-        fecha_hora: "2025-02-05T15:30:00",
+        fecha_hora: "2025/02/05T15:30:00",
         nombre_de_servicio: "Manicura completa",
         duracion: 60,
         precio: 6000,
@@ -56,7 +55,7 @@ let turnosMock = [
         usuario_nombre: "Julián",
         usuario_apellido: "Moreno",
         usuario_dni: 29888666,
-        fecha_hora: "2025-02-05T17:00:00",
+        fecha_hora: "2025/02/05T17:00:00",
         nombre_de_servicio: "Corte de pelo",
         duracion: 45,
         precio: 4000,
@@ -69,23 +68,58 @@ let turnosMock = [
 ];
 
 
+// ========== HELPERS ==========
+function formatEstado(e) {
+    if (!e) return "";
+    return e.replace("_", " ").replace(/\b\w/g, l => l.toUpperCase());
+}
+
+function formatFecha(fechaISO) {
+    
+    const normalizada = fechaISO.replace(/\//g, "-");
+    const fecha = new Date(normalizada);
+
+    if (isNaN(fecha)) return "—";
+
+    const dia = String(fecha.getDate()).padStart(2, "0");
+    const mes = String(fecha.getMonth() + 1).padStart(2, "0");
+    const año = fecha.getFullYear();
+
+    return `${dia}/${mes}/${año}`;
+}
+
+function formatHora(fechaISO) {
+    const normalizada = fechaISO.replace(/\//g, "-");
+    const fecha = new Date(normalizada);
+
+    if (isNaN(fecha)) return "—";
+
+    const horas = String(fecha.getHours()).padStart(2, "0");
+    const minutos = String(fecha.getMinutes()).padStart(2, "0");
+
+    return `${horas}:${minutos}`;
+}
+
+
 // ========== RENDER ==========
 function renderTurnos(lista) {
     listaTurnos.innerHTML = "";
 
     lista.forEach(t => {
         const div = document.createElement("div");
-        div.className = "turno-card";
+
+        // clase para el borde según estado
+        div.className = `turno-card ${t.estado_turno}`;
 
         div.innerHTML = `
             <div class="turno-header">
                 <span>${t.usuario_apellido}, ${t.usuario_nombre}</span>
-                <span class="badge ${t.estado_turno}">${t.estado_turno}</span>
+                <span class="badge ${t.estado_turno}">${formatEstado(t.estado_turno)}</span>
             </div>
 
-            <div class="turno-dato">DNI: ${t.usuario_dni}</div>
-            <div class="turno-dato">${formatFecha(t.fecha_hora)} — ${formatHora(t.fecha_hora)}</div>
-            <div class="turno-dato">Servicio: ${t.nombre_de_servicio}</div>
+            <div class="turno-dato"><b>DNI:</b> ${t.usuario_dni}</div>
+            <div class="turno-dato"><b>Fecha:</b> ${formatFecha(t.fecha_hora)}   <b>Hora:</b> ${formatHora(t.fecha_hora)}</div>
+            <div class="turno-dato"><b>Servicio:</b> ${t.nombre_de_servicio}</div>
 
             <div class="turno-botones">
                 <button class="btn-detalle">Ver detalle</button>
@@ -114,7 +148,7 @@ function aplicarFiltros() {
     }
 
     if (filtroProfesional.value) {
-        lista = lista.filter(t => 
+        lista = lista.filter(t =>
             `${t.prof_es_id || ""}` === filtroProfesional.value
         );
     }
@@ -160,12 +194,12 @@ function abrirModalDetalle(turno) {
     mPrecio.textContent = "$" + turno.precio;
     mAclaracion.textContent = turno.aclaracion_de_servicio || "—";
 
-    if (turno.profesional_nombre)
-        mProfesional.textContent = `${turno.profesional_apellido}, ${turno.profesional_nombre}`;
-    else
-        mProfesional.textContent = "No asignado";
+    mProfesional.textContent =
+        turno.profesional_nombre
+            ? `${turno.profesional_apellido}, ${turno.profesional_nombre}`
+            : "No asignado";
 
-    mEstado.textContent = turno.estado_turno;
+    mEstado.textContent = formatEstado(turno.estado_turno);
 
     modalTurno.classList.add("show");
 }
@@ -190,16 +224,6 @@ function cambiarEstado(nuevoEstado) {
 
     // BACKEND MiTurno
     alert("Conectar con backend MiTurno");
-}
-
-
-// ========== UTILIDADES ==========
-function formatFecha(fechaISO) {
-    return fechaISO.split("T")[0];
-}
-
-function formatHora(fechaISO) {
-    return fechaISO.split("T")[1].slice(0,5);
 }
 
 
