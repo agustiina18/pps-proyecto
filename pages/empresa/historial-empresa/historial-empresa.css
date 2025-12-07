@@ -1,135 +1,119 @@
 body {
     margin: 0;
-    padding: 0;
+    font-family: "Poppins", sans-serif;
     background: #ecf0f1;
-    font-family: 'Poppins', sans-serif;
 }
 
 /* NAV */
-.main-nav {
+.nav-superior {
     width: 100%;
     background: #AC0505;
     color: white;
     padding: 15px 20px;
     display: flex;
     align-items: center;
-    gap: 15px;
 }
 
-.btn-back {
-    background: transparent;
+.btn-volver {
+    background: none;
     border: none;
     color: white;
-    font-size: 25px;
+    font-size: 24px;
+    cursor: pointer;
 }
 
 .titulo-nav {
-    flex-grow: 1;
-    text-align: center;
-    font-size: 22px;
+    margin: 0 auto;
+    font-size: 20px;
     font-weight: 600;
 }
 
-.espaciador { width: 25px; }
-
 /* CONTENEDOR */
 .contenedor {
-    max-width: 900px;
+    max-width: 1200px;
     margin: 20px auto;
-    padding: 20px;
+    padding: 15px;
 }
 
-/* FILTROS */
+/* ▶ FILTROS */
 .filtros {
     display: flex;
-    gap: 10px;
+    gap: 15px;
     margin-bottom: 20px;
-    flex-wrap: wrap;
 }
 
 .filtros input,
 .filtros select {
-    padding: 10px;
-    border-radius: 10px;
-    border: 1px solid #aaa;
     flex: 1;
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid #ccc;
     font-size: 15px;
 }
 
-/* TARJETAS */
-.lista-turnos {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+/* ▶ GRID 3 COLUMNAS */
+.lista-historial-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
 }
 
+
+/* ===== CARD ===== */
 .turno-card {
     background: white;
-    padding: 15px;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+    border-radius: 16px;
+    padding: 18px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    border-left: 8px solid transparent;
 }
 
+/* header */
 .turno-header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    margin-bottom: 10px;
 }
 
-.turno-header span:first-child {
-    max-width: 70%;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    font-weight: 600;
-}
-
-/* ESTADOS */
 .badge {
-    padding: 4px 8px;
-    border-radius: 8px;
+    padding: 5px 10px;
+    border-radius: 12px;
     font-size: 13px;
     font-weight: 600;
-    white-space: nowrap;
 }
 
-/* Confirmado */
-.badge.confirmado {
-    background: #e8f5e9 !important;
-    color: #4CAF50 !important;
-}
-/* Cumplido */
-.badge.cumplido {
-    background: #e3f2fd !important;
-    color: #2196F3 !important;
-}
-/* No cumplido */
-.badge.no_cumplido {
-    background: #fff3e0 !important;
-    color: #FB8C00 !important;
-}
-/* Cancelado */
-.badge.cancelado {
-    background: #ffebee !important;
-    color: #E53935 !important;
-}
+/* COLORES DE ESTADO */
+.badge.confirmado { background: #e8f5e9; color: #4CAF50; }
+.turno-card.confirmado { border-left-color: #4CAF50; }
+
+.badge.cumplido { background: #e3f2fd; color: #2196F3; }
+.turno-card.cumplido { border-left-color: #2196F3; }
+
+.badge.no_cumplido { background: #fff3e0; color: #FB8C00; }
+.turno-card.no_cumplido { border-left-color: #FB8C00; }
+
+.badge.cancelado { background: #ffebee; color: #E53935; }
+.turno-card.cancelado { border-left-color: #E53935; }
 
 .turno-dato {
+    margin: 4px 0;
     font-size: 15px;
-    color: #333;
-    margin-top: 5px;
 }
 
+/* BOTÓN */
 .btn-detalle {
-    width: 100%;
     margin-top: 12px;
+    background: #AC0505;
+    border: none;
+    color: white;
     padding: 10px;
     border-radius: 10px;
-    border: none;
-    background: #AC0505;
-    color: white;
     cursor: pointer;
-    font-size: 15px;
+    font-weight: 600;
+}
+
+.btn-detalle:hover {
+    background: #7D0000;
 }
 
 /* MODAL */
@@ -140,115 +124,85 @@ body {
     background: rgba(0,0,0,0.55);
     justify-content: center;
     align-items: center;
-    z-index: 2000;
 }
 
-.modal-overlay.show { display: flex; }
-
-.modal-turno {
-    width: 90%;
-    max-width: 450px;
+.modal-overlay.show {
+    display: flex;
 }
 
 .modal-contenido {
     background: white;
-    padding: 22px;
-    border-radius: 15px;
-    max-height: 90vh;
-    overflow-y: auto;
+    padding: 20px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 450px;
 }
 
-.modal-dato {
-    margin-bottom: 12px;
+.detalle-campo {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 10px;
 }
 
-.modal-separador {
-    height: 1px;
-    background: #ccc;
-    margin: 12px 0;
+.detalle-label {
+    font-weight: 600;
 }
 
-.btn-cancelar2 {
+.btn-cerrar {
+    margin-top: 15px;
+    background: #AC0505;
+    color: white;
+    border: none;
     padding: 12px;
     border-radius: 10px;
-    border: none;
-    font-size: 15px;
-    color: white;
-    background: #555;
 }
 
+.btn-cerrar:hover {
+    background: #7D0000;
+}
 
+/* RESPONSIVE */
+/* Tablets — 2 columnas */
+@media (max-width: 900px) {
 
-/* ===========================================================
-   RESPONSIVE (HASTA 480px)
-   =========================================================== */
-@media (max-width: 480px) {
-
-    /* ===== NAV ===== */
-    .main-nav {
-        padding: 12px 16px;
-        gap: 10px;
+    .lista-historial-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
     }
 
-    .btn-back {
-        font-size: 22px;
-    }
-
-    .titulo-nav {
-        font-size: 18px;
-    }
-
-    /* ===== CONTENEDOR ===== */
-    .contenedor {
-        padding: 15px;
-        margin: 10px auto;
-    }
-
-    /* ===== FILTROS ===== */
     .filtros {
-        flex-direction: column;
-        gap: 12px;
+        flex-direction: row;
+        gap: 10px;
     }
 
     .filtros input,
     .filtros select {
-        width: 100%;
         padding: 10px;
         font-size: 14px;
     }
+}
 
-    /* ===== TARJETAS ===== */
+/* Celulares grandes — 1 columna */
+@media (max-width: 600px) {
+
+    .lista-historial-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
     .turno-card {
-        padding: 14px;
-        border-radius: 10px;
+        padding: 16px;
+        border-radius: 14px;
     }
 
-    
-    .turno-header {
-        display: flex !important;
-        justify-content: space-between !important;
-        align-items: center !important;
-        flex-direction: row !important;
-        width: 100%;
-        gap: 0 !important;
-    }
-
-    
     .turno-header span:first-child {
-        max-width: 65% !important;
-        overflow: hidden !important;
-        white-space: nowrap !important;
-        text-overflow: ellipsis !important;
         font-size: 15px;
+        max-width: 70%;
     }
 
-    /* Estado siempre a la derecha */
     .badge {
-        flex-shrink: 0 !important;
-        white-space: nowrap !important;
-        padding: 4px 8px !important;
-        font-size: 12.5px !important;
-        margin-left: auto !important;
+        font-size: 12px;
+        padding: 4px 10px;
     }
 
     .turno-dato {
@@ -256,78 +210,73 @@ body {
     }
 
     .btn-detalle {
-        padding: 10px;
         font-size: 14px;
+        padding: 9px;
+        font-weight: 500;
     }
 
-    /* MODAL  */
-    .modal-overlay.show {
-        display: flex !important;
-        justify-content: center !important;
-        align-items: center !important;
-        padding: 0 !important;
-        overflow-y: auto !important;
+    /* Filtros apilados */
+    .filtros {
+        flex-direction: column;
+        gap: 12px;
     }
 
-    /* Caja del modal */
-    .modal-turno {
-        width: 93% !important;      
-        max-width: 380px !important;
-        margin: auto !important;
-    }
-
-    .modal-contenido {
-        padding: 18px !important;
-        border-radius: 14px;
-        box-sizing: border-box;
-        max-height: 90vh !important; 
-        overflow-y: auto !important; 
-    }
-
-    .modal-dato {
-        font-size: 14px !important;
-        line-height: 1.4;
-    }
-
-    .modal-separador {
-        margin: 12px 0 !important;
-    }
-
-    /* Botón Cerrar */
-    .btn-cancelar2 {
-        padding: 10px !important;
-        font-size: 14px !important;
-        border-radius: 10px;
+    .filtros input,
+    .filtros select {
+        font-size: 15px;
+        padding: 12px;
     }
 }
 
-/* ===========================================================
-   BREAKPOINT ESPECIAL — 430 x 932 
-   =========================================================== */
+/* 430 × 932  */
 @media (max-width: 430px) and (max-height: 932px) {
 
-    
+    .lista-historial-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .turno-card {
+        padding: 15px;
+        border-radius: 14px;
+    }
+
     .turno-header span:first-child {
-        max-width: 68% !important;
-        font-size: 15px !important;
+        font-size: 15px;
+        max-width: 68%;
     }
 
     .badge {
-        font-size: 12px !important;
-        padding: 4px 7px !important;
+        font-size: 12px;
+        padding: 4px 8px;
     }
 
-    
-    .modal-turno {
-        width: 92% !important;
-        max-width: 370px !important;
+    .filtros {
+        flex-direction: column;
+        gap: 12px;
     }
 
+    .filtros input,
+    .filtros select {
+        font-size: 15px;
+        padding: 12px;
+        border-radius: 12px;
+    }
+
+    /* Modal */
     .modal-contenido {
-        padding: 17px !important;
+        padding: 18px;
+        width: 92%;
+        max-width: 380px;
+        border-radius: 14px;
     }
 
-    .btn-cancelar2 {
-        font-size: 13.5px !important;
+    .detalle-campo {
+        font-size: 14px;
+    }
+
+    .btn-cerrar {
+        font-size: 14px;
+        padding: 10px;
     }
 }
