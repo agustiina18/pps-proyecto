@@ -4,61 +4,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - MiTurno</title>
-    <link rel="stylesheet" href="../../css/style-global.css">
+    <title>MiTurno</title>
+    <link rel="stylesheet" href="./home-empresa.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="icon" type="favicon" href="../../favicon.ico">
+    <link rel="icon" type="favicon" href="../../../favicon.ico">
 </head>
 
 <body>
 
     <nav class="main-nav">
-        <button class="menu-toggle-btn">
-            <i class="fas fa-bars"></i>
-        </button>
+        <div class="user-menu-container">
+            <button class="menu-toggle-btn user-menu-dropdown-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <div class="user-dropdown-content">
+                <a href="../home-empresa/home-empresa.html">Inicio</a>
+                <a href="../servicios-empresa/servicios-empresa.html">Servicios</a>
+                <a href="../historial-empresa/historial-empresa.html">Historial de turnos</a>
+                <a href="../../usuario/contacto/contacto.html">Contacto</a>
+
+            </div>
+        </div>
 
         <div class="nav-logo-container">
-            <a href="../../index.html">
+            <a href="../home-empresa/home-empresa.html">
                 <img src="../../img/logo-miturno2.png" alt="Mi Turno Logo">
             </a>
         </div>
 
         <div class="nav-icons" style="display: flex; align-items: center;">
-            <button class="menu-toggle-btn" style="background-color: transparent; color: white; padding: 5px 10px;">
-                <i class="fas fa-bell"></i>
+            <button class="menu-toggle-btn">
             </button>
 
             <div class="dropdown-menu-container">
                 <button class="menu-toggle-btn profile-dropdown-btn">
                     <i class="fas fa-user-circle"></i>
                     <i class="fas fa-caret-down dropdown-arrow"></i>
+                </button>
 
-
-                    <div class="dropdown-content">
-                        <a href="../home-empresa/perfil-empresa.html">Ver perfil</a>
-                        <a href="../home-empresa/perfil-empresa.html">Configurar mi cuenta</a>
-                        <a href="#">Seguridad</a>
-                        <a href="#">Términos y condiciones</a>
-                        <a href="#" class="logout-link">Cerrar sesión</a>
-                    </div>
+                <div class="dropdown-content">
+                    <a href="../../usuario/home-usuario/home-usuario.html">Ir a mi usuario</a>
+                    <a href="../perfil-empresa/perfil-empresa.html">Ver perfil</a>
+                    <a href="#" class="logout-link">Cerrar sesión</a>
+                </div>
             </div>
         </div>
     </nav>
 
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="panel-container">
 
-    <main>
-        <h2 class="home-title" style="margin-bottom: 20px;">Qué servicio necesitas hoy?</h2>
+        <!-- ENCABEZADO EMPRESA -->
+        <section class="info-empresa">
+            <img id="empresaLogo" class="empresa-logo" src="../../img/icono-perfil.png" alt="Logo Empresa">
 
-        <div class="search-container" style="max-width: 400px; margin: 0 auto 40px auto; flex-grow: 0;">
-            <input type="text" placeholder="Busca un servicio o empresa..." class="nav-search-input"
-                style="height: 45px;">
-        </div>
+            <h2 id="empresaNombre">Nombre de la Empresa</h2>
+            <p id="empresaRubro" class="empresa-rubro">Rubro</p>
 
-  
+            <span id="empresaRol" class="empresa-rol">Rol: Propietario</span>
+        </section>
+
+        <!-- MENÚ DE BOTONES -->
+        <section class="menu-botones">
+
+            <button class="boton-menu" onclick="location.href='../servicios/servicios-empresa.html'">
+                <i class="fa-solid fa-scissors"></i>
+                Servicios
+            </button>
+
+            <button class="boton-menu" onclick="location.href='../turnos/turnos-empresa.html'">
+                <i class="fa-solid fa-calendar-check"></i>
+                Turnos
+            </button>
+
+            <button class="boton-menu" onclick="location.href='../empleados/empleados-empresa.html'">
+                <i class="fa-solid fa-users"></i>
+                Empleados
+            </button>
+
+            <button class="boton-menu" onclick="location.href='../historial/historial-empresa.html'">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+                Historial
+            </button>
+
+            <button class="boton-menu" onclick="location.href='../perfil-empresa/perfil-empresa.html'">
+                <i class="fa-solid fa-pen-to-square"></i>
+                Editar Perfil
+            </button>
+
+        </section>
+
+    </main>
+
+
+    <!-- JS -->
+    <script src="./home-empresa.js"></script>
+    <script src="./home-dropdown.js"></script>
 
 </body>
-
 </html>

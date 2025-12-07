@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="servicios-empresa.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="icon" type="favicon" href="../../../favicon.ico">
-
 </head>
 
 <body>
@@ -26,46 +25,65 @@
     <main class="contenedor">
 
         <button class="btn-agregar" id="btnAbrirAgregar">
-            <i class="fa-solid fa-plus"></i> Agregar servicio
-        </button>
+            <i class="fa-solid fa-plus"></i> Agregar servicio </button>
 
         <div id="listaServicios" class="lista-servicios"></div>
 
     </main>
 
-    <!-- MODAL AGREGAR/EDITAR -->
+    <!-- MODAL AGREGAR / EDITAR SERVICIO -->
     <div id="modalServicio" class="modal-overlay">
-        <div class="modal-contenido">
+        <div class="modal-servicio">
+            <div class="modal-contenido modal-servicio-contenido">
 
-            <h3 id="tituloModal">Agregar servicio</h3>
+                <h3 id="tituloModal">Agregar servicio</h3>
 
-            <label>Nombre</label>
-            <input type="text" id="servicioNombre">
+                <!-- CAMPOS PRINCIPALES -->
+                <div class="campos-servicio">
+                    <div class="campo">
+                        <label for="campoNombre">Nombre</label>
+                        <input type="text" id="campoNombre">
+                    </div>
 
-            <label>Duración (minutos)</label>
-            <input type="number" id="servicioDuracion">
+                    <div class="campo">
+                        <label for="campoDuracion">Duración (min)</label>
+                        <input type="number" id="campoDuracion" min="1">
+                    </div>
 
-            <label>Profesional (opcional)</label>
-            <input type="text" id="servicioProfesional">
+                    <div class="campo campo-profesional">
+                        <label>Profesional</label>
 
-            <label>Precio</label>
-            <input type="number" id="servicioPrecio">
+                        <!-- Para AGREGAR -->
+                        <select id="campoProfesionalSelect"></select>
 
-            <label>Días disponibles</label>
-            <input type="text" id="servicioDias" placeholder="Ej: Lunes, Martes, Viernes">
+                        <!-- Para EDITAR: texto no editable -->
+                        <input type="text" id="campoProfesionalTexto" disabled class="oculto">
+                    </div>
 
-            <label>Horario</label>
-            <input type="text" id="servicioHorario" placeholder="Ej: 09:00 - 18:00">
+                    <div class="campo">
+                        <label for="campoPrecio">Precio ($)</label>
+                        <input type="number" id="campoPrecio" min="0">
+                    </div>
 
-            <label>Aclaración</label>
-            <textarea id="servicioAclaracion" rows="3" placeholder="Ej: Incluye lavado, no incluye brushing"></textarea>
+                    <div class="campo campo-full">
+                        <label for="campoAclaracion">Aclaración</label>
+                        <textarea id="campoAclaracion" rows="3"
+                            placeholder="Ej: Incluye lavado, no incluye brushing"></textarea>
+                    </div>
+                </div>
 
+                <h4 class="subtitulo-bloque">Días y horarios disponibles</h4>
 
-            <div class="modal-botones">
-                <button id="btnCancelarModal" class="btn-cancelar">Cancelar</button>
-                <button id="btnGuardarModal" class="btn-enviar">Guardar</button>
+                <!-- DÍAS & HORARIOS  -->
+                <div id="diasContainer" class="dias-container">
+                </div>
+
+                <div class="modal-botones">
+                    <button id="btnCancelarModal" class="btn-cancelar">Cancelar</button>
+                    <button id="btnGuardarModal" class="btn-enviar">Guardar</button>
+                </div>
+
             </div>
-
         </div>
     </div>
 
@@ -83,34 +101,6 @@
 
         </div>
     </div>
-
-    <!-- =========== MODAL EDITAR SERVICIO =========== -->
-<div id="modalEditarServicio" class="modal-overlay">
-    <div class="modal-servicio">
-        <div class="modal-contenido">
-
-            <h2>Editar servicio</h2>
-
-            <label>Nombre del servicio</label>
-            <input type="text" id="editNombre">
-
-            <label>Duración (minutos)</label>
-            <input type="number" id="editDuracion" min="1">
-
-            <label>Precio ($)</label>
-            <input type="number" id="editPrecio" min="0">
-
-            <label>Aclaración (opcional)</label>
-            <textarea id="editAclaracion"></textarea>
-
-            <div class="modal-botones">
-                <button id="btnCancelarEditar" class="btn-cancelar">Cancelar</button>
-                <button id="btnGuardarEditar" class="btn-guardar">Guardar</button>
-            </div>
-
-        </div>
-    </div>
-</div>
 
     <script src="servicios-empresa.js"></script>
 </body>

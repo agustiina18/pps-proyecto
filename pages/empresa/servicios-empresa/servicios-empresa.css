@@ -1,307 +1,413 @@
 body {
-    margin: 0;
-    padding: 0;
-    background: #ecf0f1;
-    font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #ecf0f1;
+  font-family: 'Poppins', sans-serif;
 }
 
 /* NAV */
 .main-nav {
-    width: 100%;
-    background: #AC0505;
-    color: white;
-    padding: 15px 20px;
-    display: flex;
-    align-items: center;
-    gap: 20px;
+  width: 100%;
+  background: #AC0505;
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
 .btn-back {
-    background: transparent;
-    border: none;
-    color: white;
-    font-size: 25px;
-    cursor: pointer;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 25px;
+  cursor: pointer;
 }
 
 .titulo-nav {
-    flex-grow: 1;
-    text-align: center;
-    font-size: 22px;
-    font-weight: 600;
+  flex-grow: 1;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 600;
 }
 
 .espaciador {
-    width: 30px;
+  width: 30px;
 }
 
 /* CONTENEDOR */
 .contenedor {
-    max-width: 800px;
-    margin: 25px auto;
-    padding: 20px;
+  max-width: 960px;
+  margin: 25px auto;
+  padding: 20px;
 }
 
 /* BOTÓN AGREGAR */
 .btn-agregar {
-    width: 100%;
-    background: #AC0505;
-    color: white;
-    padding: 12px 15px;
-    border-radius: 12px;
-    border: none;
-    font-size: 17px;
-    font-weight: 600;
-    cursor: pointer;
-    margin-bottom: 25px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
+  width: 100%;
+  background: #AC0505;
+  color: white;
+  padding: 12px 15px;
+  border-radius: 12px;
+  border: none;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
 .btn-agregar:hover {
-    background: #7D0000;
+  background: #7D0000;
 }
 
 /* TARJETAS DE SERVICIOS */
 .lista-servicios {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
 }
 
 .servicio-card {
-    background: white;
-    padding: 18px;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+  background: white;
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
 }
 
 .servicio-titulo {
-    font-size: 18px;
-    font-weight: 600;
+  font-size: 18px;
+  font-weight: 600;
 }
 
 .servicio-dato {
-    font-size: 15px;
-    margin-top: 6px;
-    color: #333;
+  font-size: 15px;
+  margin-top: 6px;
+  color: #333;
 }
 
 /* ACCIONES */
 .servicio-acciones {
-    margin-top: 15px;
-    display: flex;
-    gap: 10px;
+  margin-top: 15px;
+  display: flex;
+  gap: 10px;
 }
 
 .btn-accion {
-    flex: 1;
-    background: #AC0505;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 10px;
-    font-size: 15px;
-    cursor: pointer;
-    text-align: center;
+  flex: 1;
+  background: #AC0505;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 15px;
+  cursor: pointer;
+  text-align: center;
 }
 
 .btn-accion:hover {
-    background: #7D0000;
+  background: #7D0000;
 }
 
 .btn-eliminar {
-    background: #a00000;
+  background: #a00000;
 }
+
 .btn-eliminar:hover {
-    background: #700000;
+  background: #700000;
 }
 
-/* MODAL */
+/* MODAL GENERAL */
 .modal-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.55);
-    z-index: 2000;
-    justify-content: center;
-    align-items: center;
-
-    overflow-x: hidden;
-    max-width: 100vw;
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 2000;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+  max-width: 100vw;
 }
 
 .modal-overlay.show {
-    display: flex;
+  display: flex;
+}
+
+.modal-servicio {
+    width: 95%;
+    max-width: 1400px; 
 }
 
 .modal-contenido {
-    background: white;
-    width: 90%;
-    max-width: 400px;
-    padding: 25px;
-    border-radius: 15px;
-    box-shadow: 0 6px 12px rgba(0,0,0,0.25);
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+  background: white;
+  width: 100%;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-sizing: border-box;
+}
 
-    box-sizing: border-box;
+.modal-servicio-contenido {
+  max-height: 90vh;
+  overflow-y: auto;
 }
 
 .modal-contenido *,
 .modal-contenido *::before,
 .modal-contenido *::after {
-    box-sizing: border-box !important;
+  box-sizing: border-box !important;
 }
 
 .modal-subtitulo {
-    text-align: center;
-    margin-top: -5px;
-    color: #666;
-}
-
-.modal-contenido input {
-    width: 100%;
-    padding: 12px;
-    border-radius: 10px;
-    border: 1px solid #ccc;
-    background: #f0f0f0;
-    font-size: 15px;
+  text-align: center;
+  margin-top: -5px;
+  color: #666;
 }
 
 .modal-botones {
-    display: flex;
-    gap: 10px;
-    margin-top: 15px;
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
 }
 
 .btn-cancelar,
 .btn-enviar {
-    flex: 1;
-    padding: 12px;
-    border-radius: 10px;
-    border: none;
-    font-size: 15px;
-    font-weight: 600;
-    cursor: pointer;
+  flex: 1;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
 }
 
 .btn-cancelar {
-    background: #777;
-    color: white;
+  background: #777;
+  color: white;
 }
 
 .btn-enviar {
-    background: #AC0505;
-    color: white;
+  background: #AC0505;
+  color: white;
 }
+
 .btn-enviar:hover {
-    background: #7D0000;
-}
-
-.modal-contenido textarea {
-    width: 100%;
-    padding: 12px;
-    border-radius: 10px;
-    border: 1px solid #ccc;
-    background: #f0f0f0;
-    font-size: 15px;
-    resize: none;
-    box-sizing: border-box;
-}
-
-/* ================== MODAL EDITAR ================== */
-
-#modalEditarServicio {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.55);
-    justify-content: center;
-    align-items: center;
-    z-index: 2000;
-}
-
-#modalEditarServicio.show {
-    display: flex !important;
-}
-
-.modal-servicio {
-    width: 90%;
-    max-width: 430px;
-}
-
-.modal-contenido {
-    background: white;
-    padding: 22px;
-    border-radius: 14px;
-    box-sizing: border-box;
-}
-
-.modal-contenido h2 {
-    margin-bottom: 15px;
-    font-size: 20px;
+  background: #7D0000;
 }
 
 .modal-contenido input,
+.modal-contenido select,
 .modal-contenido textarea {
-    width: 100%;
-    padding: 12px;
-    border-radius: 10px;
-    border: 1px solid #aaa;
-    margin-bottom: 12px;
-    font-size: 15px;
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  background: #f0f0f0;
+  font-size: 14px;
 }
 
 .modal-contenido textarea {
-    resize: none;
-    height: 80px;
+  resize: none;
 }
 
-.modal-botones {
+/* CAMPOS DEL SERVICIO */
+.campos-servicio {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px 20px;
+  margin-bottom: 10px;
+}
+
+.campo label {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.campo-full {
+  grid-column: 1 / -1;
+}
+
+.subtitulo-bloque {
+  margin-top: 10px;
+  margin-bottom: 8px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+/* DÍAS Y HORARIOS */
+.dias-container {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(150px, 1fr)); /* MÁS ANCHO POR DÍA */
+  gap: 5px;
+  margin-top: 12px;
+
+
+}
+
+.dia-card {
+  background: #f7f7f7;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dia-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 5px;
+}
+
+.dia-header label {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.dia-checkbox {
+  cursor: pointer;
+}
+
+.intervalos-dia {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.intervalo {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  justify-content: center;
+}
+
+.intervalo select {
+  padding: 5px 6px;
+  border-radius: 8px;
+  border: 1px solid #bbb;
+  background: #fff;
+  font-size: 13px;
+}
+
+.btn-int {
+  background: #AC0505;
+  color: white;
+  border: none;
+  padding: 3px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.btn-int:hover {
+  background: #7D0000;
+}
+
+.btn-plus-dia {
+  margin-top: 6px;
+  background: transparent;
+  border: none;
+  color: #AC0505;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.btn-plus-dia:hover {
+  transform: scale(1.1);
+}
+
+.btn-replicar-dia {
+  margin-top: 6px;
+  background: #626bff;
+  color: white;
+  border: none;
+  padding: 5px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.btn-replicar-dia:hover {
+  filter: brightness(0.9);
+}
+
+.oculto {
+  display: none;
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 768px) {
+  .campos-servicio {
+    grid-template-columns: 1fr;
+  }
+
+  .dias-container {
     display: flex;
-    justify-content: space-between;
+    overflow-x: auto;
     gap: 10px;
+    padding-bottom: 8px;
+  }
+
+  .dia-card {
+    min-width: 200px;
+  }
 }
 
-.btn-cancelar,
-.btn-guardar {
-    flex: 1;
-    padding: 12px;
-    border-radius: 10px;
-    border: none;
-    font-size: 15px;
-    color: white;
-    cursor: pointer;
-}
-
-.btn-cancelar {
-    background: #555;
-}
-
-.btn-guardar {
-    background: #AC0505;
-}
-
-/* ====== RESPONSIVE MOBILE ====== */
 @media (max-width: 480px) {
+  .modal-contenido {
+    padding: 18px;
+  }
 
-    .modal-contenido {
-        padding: 18px;
-    }
+  .btn-cancelar,
+  .btn-enviar {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
 
-    .modal-contenido input,
-    .modal-contenido textarea {
-        font-size: 14px;
-        padding: 10px;
-    }
+@media (max-width: 1280px) {
 
-    .btn-cancelar,
-    .btn-guardar {
-        font-size: 14px;
-        padding: 10px;
-    }
+  .dias-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 10px;
+    padding-bottom: 8px;
+  }
+
+  .dia-card {
+    min-width: 200px;
+  }
+}
+
+@media (max-width: 1280px) {
+
+  .dias-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 5px;
+    padding-top: 15px;
+    max-width: 100%;
+    margin: -24px;
+  }
+
+  .dia-card {
+    min-width: 200px;
+  }
+
+  .modal-botones {
+    margin-top: 10px;
+  }
 }
