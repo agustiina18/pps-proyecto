@@ -58,20 +58,18 @@ document.head.appendChild(estiloModal);
 function restablecerClave(event) {
     event.preventDefault();
 
-    const numberInput = document.getElementById('resetNumber');
-    const number = numberInput.value.trim();
-    
+    const emailInput = document.getElementById('resetEmail');
+    const email = emailInput.value.trim();
 
-    if (!number) {
-        // 🎯 Ahora la función existe
-        mostrarModalError('Por favor, ingresa tu número de celular.');
+    if (!email) {
+        mostrarModalError('Por favor, ingresa tu email.');
         return;
     }
-    
+
     // Simulación de éxito
-    const mensajeExito = "✅ Se ha enviado un enlace de restablecimiento a " + number + ". Revisa tu WhastApp.";
-    
-    mostrarModalExito(mensajeExito); 
+    const mensajeExito = "📧 Se ha enviado un enlace de restablecimiento al email: " + email + ".";
+
+    mostrarModalExito(mensajeExito);
 
     emailInput.value = '';
 }
@@ -92,15 +90,15 @@ function mostrarModalExito(mensaje, urlDestino) {
     const manejarClick = () => {
         overlay.classList.remove('mostrar');
 
-        boton.removeEventListener('click', manejarClick); 
-        
+        boton.removeEventListener('click', manejarClick);
+
 
         if (urlDestino) {
             window.location.href = urlDestino;
         }
     };
-    
-    boton.textContent = "Aceptar"; 
+
+    boton.textContent = "Aceptar";
     boton.addEventListener('click', manejarClick);
 }
 
@@ -114,15 +112,15 @@ function mostrarModalError(mensaje) {
     const boton = document.getElementById('modal-btn');
 
     // innerHTML para permitir íconos o etiquetas
-    mensajeElemento.innerHTML = "❌ Error:<br>" + mensaje; 
-    
+    mensajeElemento.innerHTML = "❌ Error:<br>" + mensaje;
+
     overlay.classList.add('mostrar');
 
     const manejarClick = () => {
         overlay.classList.remove('mostrar');
         boton.removeEventListener('click', manejarClick);
     };
-    
-    boton.textContent = "Aceptar"; 
+
+    boton.textContent = "Aceptar";
     boton.addEventListener('click', manejarClick);
 }
