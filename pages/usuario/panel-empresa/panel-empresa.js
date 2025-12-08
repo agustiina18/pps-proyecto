@@ -36,24 +36,24 @@ if (empresa) {
     if (emailEl) emailEl.textContent = empresa.email || "—";
 
 
-if (calificacionEl) {
-    if (empresa.calificacion !== undefined && empresa.calificacion !== null) {
-        const calificacion = empresa.calificacion;
-        
-        const estrellasLlenas = Math.floor(calificacion);
-        const mediaEstrella = calificacion % 1 >= 0.5 ? 1 : 0;
-        const estrellasVacias = 5 - estrellasLlenas - mediaEstrella;
+    if (calificacionEl) {
+        if (empresa.calificacion !== undefined && empresa.calificacion !== null) {
+            const calificacion = empresa.calificacion;
 
-        let html = "";
-        html += "⭐".repeat(estrellasLlenas);
-        html += mediaEstrella ? "✩" : "";
-        html += "☆".repeat(estrellasVacias);
+            const estrellasLlenas = Math.floor(calificacion);
+            const mediaEstrella = calificacion % 1 >= 0.5 ? 1 : 0;
+            const estrellasVacias = 5 - estrellasLlenas - mediaEstrella;
 
-        calificacionEl.innerHTML = `${html} <span class="calificacion-num">(${calificacion})</span>`;
-    } else {
-        calificacionEl.textContent = "—";
+            let html = "";
+            html += "⭐".repeat(estrellasLlenas);
+            html += mediaEstrella ? "✩" : "";
+            html += "☆".repeat(estrellasVacias);
+
+            calificacionEl.innerHTML = `${html} <span class="calificacion-num">(${calificacion})</span>`;
+        } else {
+            calificacionEl.textContent = "—";
+        }
     }
-}
 
     if (logoEl && empresa.logo) {
         logoEl.src = empresa.logo;
@@ -117,7 +117,13 @@ if (empresa) {
                 favoritos.push({
                     id: empresa.id,
                     nombre: empresa.nombre,
-                    logo: empresa.logo || "../../img/icono-perfil.png"
+                    rubro: empresa.rubro,
+                    rubro2: empresa.rubro2,
+                    direccion: empresa.direccion,
+                    telefono: empresa.telefono,
+                    email: empresa.email,
+                    logo: empresa.logo || "../../img/icono-perfil.png",
+                    calificacion: empresa.calificacion
                 });
                 alert("Empresa agregada a favoritos");
             }
