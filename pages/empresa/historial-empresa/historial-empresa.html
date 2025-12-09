@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Historial Empresa</title>
 
-  <link rel="stylesheet" href="historial-empresa.css">
+  <link rel="stylesheet" href="./historial-empresa.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="icon" type="favicon" href="../../../favicon.ico">
 </head>
@@ -33,6 +33,11 @@
         <option value="no_cumplido">No cumplido</option>
         <option value="cancelado">Cancelado</option>
       </select>
+
+      <select id="filtroProfesional">
+        <option value="">Todos los profesionales</option>
+      </select>
+
     </div>
 
     <!-- GRID DE CARDS -->
@@ -43,23 +48,26 @@
   <!-- MODAL DETALLE -->
   <div id="modalDetalle" class="modal-overlay">
     <div class="modal-contenido">
-      <h3>Detalle del turno</h3>
 
+      <div class="modal-header-detalle">
+        <h3>Detalles del turno</h3>
+        <span id="detalleEstado" class="badge-modal"></span>
+      </div>
+
+      <!-- CLIENTE -->
       <div class="detalle-campo">
         <span class="detalle-label">Cliente:</span>
         <span id="detalleCliente"></span>
       </div>
 
       <div class="detalle-campo">
-        <span class="detalle-label">Servicio:</span>
-        <span id="detalleServicio"></span>
+        <span class="detalle-label">DNI:</span>
+        <span id="detalleDniCliente"></span>
       </div>
 
-      <div class="detalle-campo">
-        <span class="detalle-label">Profesional:</span>
-        <span id="detalleProfesional"></span>
-      </div>
+      <hr class="modal-divider">
 
+      <!-- FECHA / HORA -->
       <div class="detalle-campo">
         <span class="detalle-label">Fecha:</span>
         <span id="detalleFecha"></span>
@@ -70,16 +78,46 @@
         <span id="detalleHora"></span>
       </div>
 
+      <hr class="modal-divider">
+
+      <!-- SERVICIO -->
       <div class="detalle-campo">
-        <span class="detalle-label">Estado:</span>
-        <span id="detalleEstado"></span>
+        <span class="detalle-label">Servicio:</span>
+        <span id="detalleServicio"></span>
       </div>
+
+      <div class="detalle-campo">
+        <span class="detalle-label">Duración:</span>
+        <span id="detalleDuracion"></span>
+      </div>
+
+      <div class="detalle-campo">
+        <span class="detalle-label">Precio:</span>
+        <span id="detallePrecio"></span>
+      </div>
+
+      <hr class="modal-divider">
+
+      <!-- PROFESIONAL -->
+      <div class="detalle-campo">
+        <span class="detalle-label">Profesional:</span>
+        <span id="detalleProfesional"></span>
+      </div>
+
+      <div class="detalle-campo">
+        <span class="detalle-label">DNI profesional:</span>
+        <span id="detalleDniProfesional"></span>
+      </div>
+
+      <hr class="modal-divider">
 
       <button id="btnCerrarDetalle" class="btn-cerrar">Cerrar</button>
     </div>
   </div>
 
-  <script src="historial-empresa.js"></script>
+
+
+  <script src="./historial-empresa.js"></script>
 </body>
 
 </html>

@@ -7,28 +7,26 @@ body {
 
 /* NAV */
 .main-nav {
-  width: 100%;
-  background: #AC0505;
-  color: white;
-  padding: 15px 20px;
-  display: flex;
-  align-items: center;
-  gap: 20px;
+    width: 100%;
+    background: #AC0505;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
 }
 
 .btn-back {
-  background: transparent;
-  border: none;
-  color: white;
-  font-size: 25px;
-  cursor: pointer;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
 }
 
 .titulo-nav {
-  flex-grow: 1;
-  text-align: center;
-  font-size: 22px;
-  font-weight: 600;
+    margin: 0 auto;
+    font-size: 20px;
+    font-weight: 600;
 }
 
 .espaciador {
@@ -112,13 +110,23 @@ body {
   background: #7D0000;
 }
 
+#modalEliminar .modal-contenido {
+    width: 430px !important;
+    max-width: 430px !important;
+    padding: 25px;
+    border-radius: 15px;
+}
+
+
 .btn-eliminar {
   background: #a00000;
 }
 
-.btn-eliminar:hover {
-  background: #700000;
+.btn-cancelar:hover {
+  background: #6b6a6aff;
 }
+
+
 
 /* MODAL GENERAL */
 .modal-overlay {
@@ -376,21 +384,13 @@ body {
     font-size: 14px;
     padding: 10px;
   }
-}
 
-@media (max-width: 1280px) {
-
-  .dias-container {
-    display: flex;
-    overflow-x: auto;
-    gap: 10px;
-    padding-bottom: 8px;
-  }
-
-  .dia-card {
-    min-width: 200px;
+  #modalEliminar .modal-contenido {
+      width: 90% !important;
+      max-width: 90% !important;
   }
 }
+
 
 @media (max-width: 1280px) {
 

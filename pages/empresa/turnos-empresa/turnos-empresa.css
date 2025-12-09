@@ -223,6 +223,37 @@ body {
     background: #444;
 }
 
+/* HEADER DEL MODAL: título + estado */
+.modal-header-turno {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+}
+
+.badge-modal {
+    padding: 6px 12px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 13px;
+    color: white;
+}
+
+/* Colores iguales que los badges de las cards */
+.badge-modal.confirmado { background: #e8f5e9; color: #4CAF50; }
+.badge-modal.cumplido { background: #e3f2fd; color: #2196F3; }
+.badge-modal.no_cumplido { background: #fff3e0; color: #FB8C00; }
+.badge-modal.cancelado { background: #ffebee; color: #E53935; }
+
+
+/* Separadores */
+.modal-separador {
+    height: 1px;
+    background: #ddd;
+    margin: 12px 0;
+}
+
+
 
 /* =====================
    RESPONSIVE

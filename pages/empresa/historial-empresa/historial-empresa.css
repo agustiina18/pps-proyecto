@@ -51,6 +51,7 @@ body {
     font-size: 15px;
 }
 
+
 /* ▶ GRID 3 COLUMNAS */
 .lista-historial-grid {
     display: grid;
@@ -86,7 +87,7 @@ body {
 .badge.confirmado { background: #e8f5e9; color: #4CAF50; }
 .turno-card.confirmado { border-left-color: #4CAF50; }
 
-.badge.cumplido { background: #e3f2fd; color: #2196F3; }
+.badge.cumplido { background: #e3f2fd; color: #2196f3; }
 .turno-card.cumplido { border-left-color: #2196F3; }
 
 .badge.no_cumplido { background: #fff3e0; color: #FB8C00; }
@@ -135,8 +136,15 @@ body {
     padding: 20px;
     border-radius: 12px;
     width: 90%;
-    max-width: 450px;
+    max-width: 400px;
 }
+
+.modal-divider {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 14px 0;
+}
+
 
 .detalle-campo {
     display: flex;
@@ -160,6 +168,32 @@ body {
 .btn-cerrar:hover {
     background: #7D0000;
 }
+
+
+.modal-header-detalle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+
+.badge-modal {
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 13px;
+    text-transform: capitalize;
+    color: white;
+}
+
+/* Colores del badge según estado */
+.badge-modal.confirmado { background: #4CAF50; }
+.badge-modal.cumplido { background: #e3f2fd; color: #2196f3; }
+.badge-modal.no_cumplido { background: #fff3e0; color: #FB8C00; }
+.badge-modal.cancelado { background: #ffebee; color: #E53935; }
+
+
 
 /* RESPONSIVE */
 /* Tablets — 2 columnas */
@@ -233,7 +267,7 @@ body {
 
     .lista-historial-grid {
         grid-template-columns: 1fr;
-        gap: 14px;
+        gap: 10px;
     }
 
     .turno-card {
@@ -266,8 +300,8 @@ body {
     /* Modal */
     .modal-contenido {
         padding: 18px;
-        width: 92%;
-        max-width: 380px;
+        width: 80%;
+        max-width: 280px;
         border-radius: 14px;
     }
 

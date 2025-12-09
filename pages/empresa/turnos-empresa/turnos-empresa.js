@@ -75,7 +75,7 @@ function formatEstado(e) {
 }
 
 function formatFecha(fechaISO) {
-    
+
     const normalizada = fechaISO.replace(/\//g, "-");
     const fecha = new Date(normalizada);
 
@@ -183,23 +183,39 @@ function cargarFiltroProfesional(lista) {
 function abrirModalDetalle(turno) {
     turnoSeleccionado = turno;
 
+    // Cliente
     mCliente.textContent = `${turno.usuario_apellido}, ${turno.usuario_nombre}`;
     mDni.textContent = turno.usuario_dni;
 
+    // Fecha / Hora
     mFecha.textContent = formatFecha(turno.fecha_hora);
     mHora.textContent = formatHora(turno.fecha_hora);
 
+    // Servicio
     mServicio.textContent = turno.nombre_de_servicio;
     mDuracion.textContent = turno.duracion + " min";
     mPrecio.textContent = "$" + turno.precio;
-    mAclaracion.textContent = turno.aclaracion_de_servicio || "—";
+    mAclaracion.textContent = turno.aclaracion_de_servicio
+        ? turno.aclaracion_de_servicio
+        : "—";
 
+
+
+    // Profesional
     mProfesional.textContent =
         turno.profesional_nombre
             ? `${turno.profesional_apellido}, ${turno.profesional_nombre}`
             : "No asignado";
 
-    mEstado.textContent = formatEstado(turno.estado_turno);
+    mProfesionalDni.textContent =
+        turno.profesional_dni ?? "—";
+
+    // Estado con color
+    const estadoLimpio = formatEstado(turno.estado_turno);
+    const estadoBadge = document.getElementById("mEstadoBadge");
+
+    estadoBadge.textContent = estadoLimpio;
+    estadoBadge.className = `badge-modal ${turno.estado_turno}`;
 
     modalTurno.classList.add("show");
 }
