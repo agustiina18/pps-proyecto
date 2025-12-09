@@ -7,10 +7,20 @@ let empresaId = localStorage.getItem("empresaSeleccionada") || 1;
 const MOCK_DATA = {
     rol: "propietario",
     miembros: [
-        { id: 1, apellido: "García", nombre: "Lucía", rol: "gerente" },
-        { id: 2, apellido: "López", nombre: "Marcos", rol: "empleado" },
-        { id: 3, apellido: "Pérez", nombre: "Ana", rol: "empleado" },
+        {
+            id: 1, apellido: "García", nombre: "Lucía", dni: "38.123.456",
+            email: "lucia.garcia@mail.com", rol: "gerente"
+        },
+        {
+            id: 2, apellido: "López", nombre: "Marcos", dni: "41.987.222",
+            email: "marcos.lopez@mail.com", rol: "empleado"
+        },
+        {
+            id: 3, apellido: "Pérez", nombre: "Ana", dni: "37.555.120",
+            email: "ana.perez@mail.com", rol: "empleado"
+        }
     ]
+
 };
 
 // DOM
@@ -58,10 +68,13 @@ function renderizar(data) {
         div.classList.add("empleado-card");
 
         div.innerHTML = `
-            <div class="empleado-info">
-                <span class="empleado-nombre">${emp.apellido}, ${emp.nombre}</span>
-                <span class="empleado-rol">Rol: ${emp.rol}</span>
-            </div>
+           <div class="empleado-info">
+            <span class="empleado-nombre">${emp.apellido}, ${emp.nombre}</span>
+            <span class="empleado-dato">DNI: ${emp.dni}</span>
+            <span class="empleado-dato">Email: ${emp.email}</span>
+            <span class="empleado-rol">Rol: ${emp.rol}</span>
+           </div>
+
 
             <div class="empleado-acciones">
                 <button class="btn-accion btn-rol">

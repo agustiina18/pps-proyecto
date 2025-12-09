@@ -127,6 +127,11 @@ body {
     display: flex;
     gap: 10px;
 }
+.empleado-dato {
+    font-size: 15px;
+    color: #444;
+}
+
 
 .btn-accion {
     background: #AC0505;
@@ -202,6 +207,7 @@ body {
 .modal-contenido *::before,
 .modal-contenido *::after {
     box-sizing: border-box !important;
+
 }
 
 .modal-contenido h3 {
@@ -289,8 +295,8 @@ body {
     }
 
     .modal-contenido {
-        width: 92%;
-        max-width: 380px;
+        width: 90%;
+        max-width: 280px;
     }
 }
 
@@ -313,7 +319,7 @@ body {
 
     .modal-contenido {
         width: 100%;
-        max-width: 100%;
+        max-width: 280px;
         padding: 20px;
         border-radius: 12px;
     }
