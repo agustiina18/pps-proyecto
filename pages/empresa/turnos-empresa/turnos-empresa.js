@@ -24,7 +24,6 @@ const mAclaracion = document.getElementById("mAclaracion");
 const mProfesional = document.getElementById("mProfesional");
 const mEstado = document.getElementById("mEstado");
 
-// Botones modal
 document.getElementById("btnCerrarModal").onclick = () => modalTurno.classList.remove("show");
 const btnCumplido = document.getElementById("btnCumplido");
 const btnNoCumplido = document.getElementById("btnNoCumplido");
@@ -55,7 +54,7 @@ let turnosMock = [
         usuario_nombre: "Julián",
         usuario_apellido: "Moreno",
         usuario_dni: 29888666,
-        fecha_hora: "2025/02/05T17:00:00",
+        fecha_hora: "2025/02/06T17:00:00",
         nombre_de_servicio: "Corte de pelo",
         duracion: 45,
         precio: 4000,
@@ -108,7 +107,6 @@ function renderTurnos(lista) {
     lista.forEach(t => {
         const div = document.createElement("div");
 
-        // clase para el borde según estado
         div.className = `turno-card ${t.estado_turno}`;
 
         div.innerHTML = `
@@ -131,7 +129,7 @@ function renderTurnos(lista) {
         listaTurnos.appendChild(div);
     });
 
-    cargarFiltroProfesional(lista);
+
 }
 
 
@@ -140,7 +138,10 @@ function aplicarFiltros() {
     let lista = [...turnosMock];
 
     if (filtroFecha.value) {
-        lista = lista.filter(t => t.fecha_hora.startsWith(filtroFecha.value));
+        lista = lista.filter(t => {
+            const normalizada = t.fecha_hora.replace(/\//g, "-");
+            return normalizada.startsWith(filtroFecha.value);
+        });
     }
 
     if (filtroEstado.value) {
@@ -148,9 +149,13 @@ function aplicarFiltros() {
     }
 
     if (filtroProfesional.value) {
-        lista = lista.filter(t =>
-            `${t.prof_es_id || ""}` === filtroProfesional.value
-        );
+        lista = lista.filter(t => {
+            const nombre = t.profesional_nombre && t.profesional_apellido
+                ? `${t.profesional_nombre} ${t.profesional_apellido}`
+                : "Sin asignar";
+
+            return nombre === filtroProfesional.value;
+        });
     }
 
     renderTurnos(lista);
@@ -163,19 +168,25 @@ function aplicarFiltros() {
 
 // ========== CARGAR PROFESIONALES ==========
 function cargarFiltroProfesional(lista) {
-    const unicos = {};
+    const unicos = new Set();
 
     lista.forEach(t => {
-        if (t.prof_es_id) {
-            unicos[t.prof_es_id] = `${t.prof_apellido}, ${t.prof_nombre}`;
+        if (t.profesional_nombre && t.profesional_apellido) {
+            unicos.add(`${t.profesional_nombre} ${t.profesional_apellido}`);
+        } else {
+            unicos.add("Sin asignar");
         }
     });
 
-    filtroProfesional.innerHTML = `<option value="">Todos los profesionales</option>`;
+    filtroProfesional.innerHTML = `
+        <option value="">Todos los profesionales</option>
+    `;
 
-    for (const id in unicos) {
-        filtroProfesional.innerHTML += `<option value="${id}">${unicos[id]}</option>`;
-    }
+    unicos.forEach(nombre => {
+        filtroProfesional.innerHTML += `
+            <option value="${nombre}">${nombre}</option>
+        `;
+    });
 }
 
 
@@ -183,54 +194,40 @@ function cargarFiltroProfesional(lista) {
 function abrirModalDetalle(turno) {
     turnoSeleccionado = turno;
 
-    // Cliente
     mCliente.textContent = `${turno.usuario_apellido}, ${turno.usuario_nombre}`;
     mDni.textContent = turno.usuario_dni;
 
-    // Fecha / Hora
     mFecha.textContent = formatFecha(turno.fecha_hora);
     mHora.textContent = formatHora(turno.fecha_hora);
 
-    // Servicio
     mServicio.textContent = turno.nombre_de_servicio;
     mDuracion.textContent = turno.duracion + " min";
     mPrecio.textContent = "$" + turno.precio;
-    mAclaracion.textContent = turno.aclaracion_de_servicio
-        ? turno.aclaracion_de_servicio
-        : "—";
+    mAclaracion.textContent = turno.aclaracion_de_servicio || "—";
 
-
-
-    // Profesional
     mProfesional.textContent =
         turno.profesional_nombre
             ? `${turno.profesional_apellido}, ${turno.profesional_nombre}`
             : "No asignado";
 
-    mProfesionalDni.textContent =
-        turno.profesional_dni ?? "—";
+    mProfesionalDni.textContent = turno.profesional_dni ?? "—";
 
-    // Estado con color
-    const estadoLimpio = formatEstado(turno.estado_turno);
     const estadoBadge = document.getElementById("mEstadoBadge");
-
-    estadoBadge.textContent = estadoLimpio;
+    estadoBadge.textContent = formatEstado(turno.estado_turno);
     estadoBadge.className = `badge-modal ${turno.estado_turno}`;
 
     modalTurno.classList.add("show");
 }
 
 
-// ========== BOTONES DE ESTADO ==========
+// ========== ESTADO ==========
 btnCumplido.onclick = () => cambiarEstado("cumplido");
 btnNoCumplido.onclick = () => cambiarEstado("no_cumplido");
 btnCancelarTurno.onclick = () => cambiarEstado("cancelado");
 
 function cambiarEstado(nuevoEstado) {
-
     if (!turnoSeleccionado) return;
 
-    // MOCK
     if (!USE_BACKEND) {
         turnoSeleccionado.estado_turno = nuevoEstado;
         modalTurno.classList.remove("show");
@@ -238,10 +235,10 @@ function cambiarEstado(nuevoEstado) {
         return;
     }
 
-    // BACKEND MiTurno
     alert("Conectar con backend MiTurno");
 }
 
 
 // ========== INICIO ==========
 renderTurnos(turnosMock);
+cargarFiltroProfesional(turnosMock); 
