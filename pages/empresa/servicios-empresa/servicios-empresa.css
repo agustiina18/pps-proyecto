@@ -254,12 +254,22 @@ body {
 /* DÍAS Y HORARIOS */
 .dias-container {
   display: grid;
-  grid-template-columns: repeat(7, minmax(150px, 1fr)); /* MÁS ANCHO POR DÍA */
+  grid-template-columns: repeat(7, minmax(150px, 1fr)); 
   gap: 5px;
   margin-top: 12px;
 
 
 }
+
+.subtitulo-ayuda {
+  display: block;
+  font-size: 14px;
+  font-weight: 400;
+  color: #777; 
+  margin-top: 2px;
+}
+
+
 
 .dia-card {
   background: #f7f7f7;
@@ -287,19 +297,65 @@ body {
   cursor: pointer;
 }
 
-.intervalos-dia {
+/* CONTENEDOR DE GRUPOS */
+.grupos-horarios-dia {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 12px; 
   margin-top: 4px;
 }
 
-.intervalo {
+/* ESTILO DE CADA GRUPO REPETIBLE (INT/MAX + HORARIO) */
+.intervalo-grupo {
+    padding: 4px 0;
+    border-radius: 8px;
+}
+
+
+/* ESTILOS DE INT/MAX (Bloque superior del grupo) */
+.dia-config { 
+  width: 100%;
+  margin: 0 0 4px 0; 
+  font-size: 12px;
+  align-items: center; 
+  gap: 15px; 
+}
+
+.dia-config span {
+  font-weight: 600;
+  color: #555;
+  margin-right: 4px;
+ 
+}
+
+.dia-config input {
+  width: 40px;               
+  height: 30px;             
+  padding: 0 6px;            
+  border-radius: 8px;
+  border: 1px solid #bbb;
+  background: #fff;
+  text-align: center;
+  font-size: 13px;
+  box-sizing: border-box;
+}
+
+.input-int {
+  margin-right: 6px;
+}
+
+/* ESTILOS DE HORARIO (Bloque inferior del grupo) */
+.intervalo { 
   display: flex;
-  gap: 4px;
+  gap: 8px; 
   align-items: center;
-  justify-content: center;
+  justify-content: center; 
+}
+
+.intervalo span {
+    font-weight: 600;
+    font-size: 13px;
 }
 
 .intervalo select {
@@ -308,6 +364,8 @@ body {
   border: 1px solid #bbb;
   background: #fff;
   font-size: 13px;
+
+  width: 70px; 
 }
 
 .btn-int {
@@ -410,4 +468,20 @@ body {
   .modal-botones {
     margin-top: 10px;
   }
+}
+
+/* ELIMINAR FLECHAS DE LOS INPUTS TIPO NUMBER (Int y Max) */
+/* Para navegadores basados en WebKit (Chrome, Safari, Edge) */
+.input-int::-webkit-outer-spin-button,
+.input-max::-webkit-outer-spin-button,
+.input-int::-webkit-inner-spin-button,
+.input-max::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Para navegadores Mozilla Firefox */
+.input-int[type=number],
+.input-max[type=number] {
+    -moz-appearance: textfield;
 }

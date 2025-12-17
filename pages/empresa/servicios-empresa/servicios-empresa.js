@@ -12,7 +12,7 @@ const profesionalesMock = [
 // ELEMENTOS DEL DOM
 const listaServicios = document.getElementById("listaServicios");
 
-// Modal agregar/editar (es el mismo)
+// Modal agregar/editar 
 const modalServicio = document.getElementById("modalServicio");
 const tituloModal = document.getElementById("tituloModal");
 
@@ -76,25 +76,22 @@ let serviciosMock = [
   }
 ];
 
-// RENDER DE TARJETAS
-function resumenDias(serv) {
-  if (!serv.horarios) return "—";
-  const dias = Object.keys(serv.horarios);
-  return dias.length ? dias.join(", ") : "—";
-}
 
-function resumenHorarios(serv) {
-  if (!serv.horarios) return "—";
-  const dia = Object.keys(serv.horarios)[0];
-  if (!dia) return "—";
-  const ints = serv.horarios[dia];
-  if (!ints || !ints.length) return "—";
-  if (ints.length === 1) {
-    return `${ints[0].desde} - ${ints[0].hasta}`;
+function crearSelectHora(valor = "09:00") {
+  const select = document.createElement("select");
+  select.classList.add("select-hora");
+  for (let h = 0; h < 24; h++) {
+    const hora = String(h).padStart(2, "0") + ":00";
+    const opt = document.createElement("option");
+    opt.value = hora;
+    opt.textContent = hora;
+    if (hora === valor) opt.selected = true;
+    select.appendChild(opt);
   }
-  return "Varios intervalos";
+  return select;
 }
 
+// RENDER DE TARJETAS 
 function renderServicios(lista) {
   listaServicios.innerHTML = "";
 
@@ -102,13 +99,18 @@ function renderServicios(lista) {
     const div = document.createElement("div");
     div.className = "servicio-card";
 
+    
+    const dniProfesional = "99.999.999"; 
+    
     div.innerHTML = `
       <div class="servicio-titulo">${serv.nombre}</div>
-      <div class="servicio-dato">Duración: ${serv.duracion} min</div>
+      
       <div class="servicio-dato">Profesional: ${serv.profesional || "No asignado"}</div>
+      <div class="servicio-dato">DNI Profesional: ${dniProfesional}</div>
+      <div class="servicio-dato">Duración: ${serv.duracion} min</div> 
+      
       <div class="servicio-dato">Precio: $${serv.precio}</div>
-      <div class="servicio-dato">Días: ${resumenDias(serv)}</div>
-      <div class="servicio-dato">Horario: ${resumenHorarios(serv)}</div>
+      
       <div class="servicio-dato">Aclaración: ${serv.aclaracion || "—"}</div>
 
       <div class="servicio-acciones">
@@ -135,37 +137,61 @@ const diasSemana = [
   { key: "Dom", label: "Dom", laboral: false }
 ];
 
-function crearSelectHora(valor = "09:00") {
-  const select = document.createElement("select");
-  select.classList.add("select-hora");
-  for (let h = 0; h < 24; h++) {
-    const hora = String(h).padStart(2, "0") + ":00";
-    const opt = document.createElement("option");
-    opt.value = hora;
-    opt.textContent = hora;
-    if (hora === valor) opt.selected = true;
-    select.appendChild(opt);
-  }
-  return select;
-}
 
-function crearFilaIntervalo(container, desde = "09:00", hasta = "17:00") {
-  const fila = document.createElement("div");
-  fila.classList.add("intervalo");
 
+function crearGrupoIntervalo(container, desde = "09:00", hasta = "17:00") {
+  const grupo = document.createElement("div");
+  grupo.classList.add("intervalo-grupo"); 
+
+  // Configuración (Int y Max)
+  const configIntMax = document.createElement("div");
+  configIntMax.classList.add("dia-config"); 
+
+  const lblInt = document.createElement("span");
+  lblInt.textContent = "Int:";
+  
+  const inputInt = document.createElement("input");
+  inputInt.type = "number";
+  inputInt.min = 1;
+  inputInt.max = 999;
+  inputInt.placeholder = "15";
+  inputInt.classList.add("input-int");
+  
+  const lblMax = document.createElement("span");
+  lblMax.textContent = "Max:";
+  
+  const inputMax = document.createElement("input");
+  inputMax.type = "number";
+  inputMax.min = 1;
+  inputMax.max = 99;
+  inputMax.placeholder = "∞";
+  inputMax.classList.add("input-max");
+  
+  configIntMax.append(lblInt, inputInt, lblMax, inputMax);
+
+
+  // Horario (Desde/Hasta y Botón de Eliminar)
+  const horarioFila = document.createElement("div");
+  horarioFila.classList.add("intervalo"); 
+  
+  
   const selDesde = crearSelectHora(desde);
   selDesde.classList.add("select-desde");
   const selHasta = crearSelectHora(hasta);
   selHasta.classList.add("select-hasta");
-
+  
   const btnEliminar = document.createElement("button");
   btnEliminar.textContent = "-";
   btnEliminar.classList.add("btn-int");
-  btnEliminar.onclick = () => fila.remove();
+  btnEliminar.onclick = () => grupo.remove(); // Elimina todo el grupo
 
-  fila.append(selDesde, selHasta, btnEliminar);
-  container.appendChild(fila);
+
+  horarioFila.append(selDesde, selHasta, btnEliminar);
+
+  grupo.append(configIntMax, horarioFila);
+  container.appendChild(grupo);
 }
+
 
 function construirUIHorarios(horariosIniciales = null, esNuevo = false) {
   diasContainer.innerHTML = "";
@@ -187,8 +213,8 @@ function construirUIHorarios(horariosIniciales = null, esNuevo = false) {
 
     header.append(chk, lbl);
 
-    const intervalosDiv = document.createElement("div");
-    intervalosDiv.classList.add("intervalos-dia");
+    const gruposContainer = document.createElement("div"); // Contenedor de grupos
+    gruposContainer.classList.add("grupos-horarios-dia");
 
     // Valores iniciales
     let intervalosData = [];
@@ -201,20 +227,21 @@ function construirUIHorarios(horariosIniciales = null, esNuevo = false) {
     if (intervalosData.length) {
       chk.checked = true;
       intervalosData.forEach(int => {
-        crearFilaIntervalo(intervalosDiv, int.desde, int.hasta);
+        crearGrupoIntervalo(gruposContainer, int.desde, int.hasta); // Crear grupo inicial
       });
     }
 
+    // Botón de Agregar (+)
     const btnPlus = document.createElement("button");
     btnPlus.textContent = "+";
     btnPlus.classList.add("btn-plus-dia");
     btnPlus.onclick = () => {
       if (!chk.checked) chk.checked = true;
-      crearFilaIntervalo(intervalosDiv);
+      crearGrupoIntervalo(gruposContainer); // Agrega un nuevo grupo completo
     };
 
 
-    card.append(header, intervalosDiv, btnPlus);
+    card.append(header, gruposContainer, btnPlus);
     diasContainer.appendChild(card);
   });
 }
@@ -226,14 +253,19 @@ function leerHorariosDesdeUI() {
   cards.forEach(card => {
     const diaKey = card.dataset.dia;
     const chk = card.querySelector(".dia-checkbox");
-    const intervalosDiv = card.querySelector(".intervalos-dia");
-    const filas = [...intervalosDiv.querySelectorAll(".intervalo")];
+    const gruposContainer = card.querySelector(".grupos-horarios-dia"); 
+    const grupos = [...gruposContainer.querySelectorAll(".intervalo-grupo")];
 
-    if (!chk.checked || !filas.length) return;
+    if (!chk.checked || !grupos.length) return;
 
-    const arr = filas.map(f => ({
-      desde: f.querySelector(".select-desde").value,
-      hasta: f.querySelector(".select-hasta").value
+    
+    const arr = grupos.map(grupo => ({
+      // Lectura de Horario (Desde/Hasta)
+      desde: grupo.querySelector(".select-desde").value,
+      hasta: grupo.querySelector(".select-hasta").value,
+      // Lectura de Int/Max
+      int: Number(grupo.querySelector(".input-int").value) || null,
+      max: Number(grupo.querySelector(".input-max").value) || null,
     }));
 
     data[diaKey] = arr;
@@ -269,13 +301,13 @@ function abrirModalAgregar() {
   campoPrecio.value = "";
   campoAclaracion.value = "";
 
-  // Profesional: usar SELECT
+  // Profesional
   poblarProfesionalesSelect();
   profesionalSelect.classList.remove("oculto");
   profesionalTexto.classList.add("oculto");
   profesionalTexto.value = "";
 
-  // Horarios por defecto (Lun-Vie 09-17)
+  // Horarios por defecto 
   construirUIHorarios(null, true);
 
   modalServicio.classList.add("show");
@@ -361,3 +393,13 @@ btnCancelarModal.onclick = () => modalServicio.classList.remove("show");
 
 // INICIO
 renderServicios(serviciosMock);
+
+document.addEventListener("input", e => {
+  if (e.target.classList.contains("input-int")) {
+    e.target.value = e.target.value.slice(0, 3);
+  }
+
+  if (e.target.classList.contains("input-max")) {
+    e.target.value = e.target.value.slice(0, 2);
+  }
+});
