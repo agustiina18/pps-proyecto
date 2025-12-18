@@ -119,6 +119,28 @@ body {
     background: #7D0000;
 }
 
+/* BOTÓN ELIMINAR TURNO e */
+.btnEliminarTurno {
+    background: #fde8e8;          
+    color: #e53935;               
+    padding: 8px 18px;
+    border-radius: 999px;         
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(229, 57, 53, 0.15);
+    transition: all 0.2s ease;
+}
+
+/* Hover */
+.btnEliminarTurno:hover {
+    background: #fbdada;
+}
+
+/* Estado oculto (cuando es confirmado) */
+.btnEliminarTurno.oculto {
+    display: none;
+}
 
 
 /* MODAL*/

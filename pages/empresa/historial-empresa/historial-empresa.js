@@ -1,4 +1,5 @@
-// MOCK 
+const HISTORIAL_STORAGE =
+    JSON.parse(localStorage.getItem("turnosEmpresaHistorial"));
 
 const MOCK = [
     {
@@ -32,8 +33,14 @@ const MOCK = [
 ];
 
 
-// REFERENCIAS DOM
+let historialTurnos =
+    HISTORIAL_STORAGE && HISTORIAL_STORAGE.length
+        ? HISTORIAL_STORAGE
+        : MOCK;
 
+/* =========================
+   DOM
+========================= */
 const lista = document.getElementById("listaHistorial");
 const modal = document.getElementById("modalDetalle");
 const cerrarBtn = document.getElementById("btnCerrarDetalle");
@@ -42,177 +49,155 @@ const filtroFecha = document.getElementById("filtroFecha");
 const filtroEstado = document.getElementById("filtroEstado");
 const filtroProfesional = document.getElementById("filtroProfesional");
 
-
-// FORMATEO DE ESTADOS
-
+/* =========================
+   HELPERS
+========================= */
 function formatoEstado(estado) {
-    switch (estado) {
-        case "cumplido": return "Cumplido";
-        case "no_cumplido": return "No cumplido";
-        case "cancelado": return "Cancelado";
-        case "confirmado": return "Confirmado";
-        default: return estado;
-    }
+    return estado.replace("_", " ").replace(/\b\w/g, l => l.toUpperCase());
 }
 
+function formatFechaHora(iso) {
+    const f = new Date(iso);
+    return {
+        fecha: f.toLocaleDateString(),
+        hora: f.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
+    };
+}
 
-// GENERA LISTA DE PROFESIONALES
-
+/* =========================
+   FILTRO PROFESIONALES
+========================= */
 function cargarProfesionales() {
-    const profesionalesUnicos = new Set();
+    const set = new Set();
 
-    MOCK.forEach(t => {
+    historialTurnos.forEach(t => {
         if (t.profesional_nombre) {
-            profesionalesUnicos.add(
-                `${t.profesional_nombre} ${t.profesional_apellido}`
-            );
+            set.add(`${t.profesional_nombre} ${t.profesional_apellido}`);
         }
     });
 
-    profesionalesUnicos.forEach(nombre => {
-        const option = document.createElement("option");
-        option.value = nombre;
-        option.textContent = nombre;
-        filtroProfesional.appendChild(option);
-    });
+    filtroProfesional.innerHTML =
+        `<option value="">Todos los profesionales</option>`;
+
+    set.forEach(n =>
+        filtroProfesional.innerHTML += `<option value="${n}">${n}</option>`
+    );
 }
 
-
-// RENDERIZA CARDS
-
+/* =========================
+   RENDER
+========================= */
 function cargarHistorial(data) {
     lista.innerHTML = "";
 
     data.forEach(t => {
-        const fecha = new Date(t.fecha_hora);
-        const fechaStr = fecha.toLocaleDateString();
-        const horaStr = fecha.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+        const { fecha, hora } = formatFechaHora(t.fecha_hora);
 
         const card = document.createElement("div");
         card.className = `turno-card ${t.estado_turno}`;
 
         card.innerHTML = `
-    <!-- HEADER: NOMBRE + ESTADO -->
-    <div class="turno-header">
-        <span class="cliente-nombre"><strong>${t.usuario_apellido}, ${t.usuario_nombre}</strong></span>
-        <span class="badge ${t.estado_turno}">
-            ${formatoEstado(t.estado_turno)}
-        </span>
-    </div>
+            <div class="turno-header">
+                <strong>${t.usuario_apellido}, ${t.usuario_nombre}</strong>
+                <span class="badge ${t.estado_turno}">
+                    ${formatoEstado(t.estado_turno)}
+                </span>
+            </div>
 
-    <!-- DNI -->
-    <div class="turno-dato">
-        <strong>DNI:</strong> ${t.usuario_dni}
-    </div>
+            <div class="turno-dato"><b>DNI:</b> ${t.usuario_dni}</div>
+            <div class="turno-dato">
+                <b>Fecha:</b> ${fecha}
+                <b>Hora:</b> ${hora}
+            </div>
+            <div class="turno-dato">
+                <b>Servicio:</b> ${t.nombre_de_servicio}
+            </div>
 
-    <!-- FECHA + HORA -->
-    <div class="turno-dato">
-        <strong>Fecha:</strong> ${fechaStr}  
-        <strong>Hora:</strong> ${horaStr}
-    </div>
-
-    <!-- SERVICIO -->
-    <div class="turno-dato">
-        <strong>Servicio:</strong> ${t.nombre_de_servicio}
-    </div>
-
-    <button class="btn-detalle" data-id="${t.id}">Ver detalle</button>
-`;
-
+            <button class="btn-detalle" data-id="${t.id}">
+                Ver detalle
+            </button>
+        `;
 
         lista.appendChild(card);
     });
 
-    // abrir modal
     document.querySelectorAll(".btn-detalle").forEach(btn => {
-        btn.addEventListener("click", () => {
-            const turno = MOCK.find(t => t.id == btn.dataset.id);
+        btn.onclick = () => {
+            const turno = historialTurnos.find(
+                t => t.id == btn.dataset.id
+            );
             abrirModal(turno);
-        });
+        };
     });
 }
 
-
-// FILTROS
-
+/* FILTROS */
 function aplicarFiltros() {
-    let filtrado = [...MOCK];
+    let listaFiltrada = [...historialTurnos];
 
-    // FILTRO POR FECHA
-    const f = filtroFecha.value;
-    if (f) filtrado = filtrado.filter(t => t.fecha_hora.startsWith(f));
+    if (filtroFecha.value) {
+        listaFiltrada = listaFiltrada.filter(t =>
+            t.fecha_hora.startsWith(filtroFecha.value)
+        );
+    }
 
-    // FILTRO POR ESTADO
-    const est = filtroEstado.value;
-    if (est) filtrado = filtrado.filter(t => t.estado_turno === est);
+    if (filtroEstado.value) {
+        listaFiltrada = listaFiltrada.filter(
+            t => t.estado_turno === filtroEstado.value
+        );
+    }
 
-    // FILTRO POR PROFESIONAL
-    const prof = filtroProfesional.value;
-    if (prof) {
-        filtrado = filtrado.filter(t => {
-            const nombreCompleto = t.profesional_nombre
+    if (filtroProfesional.value) {
+        listaFiltrada = listaFiltrada.filter(t => {
+            const nombre = t.profesional_nombre
                 ? `${t.profesional_nombre} ${t.profesional_apellido}`
                 : "";
-            return nombreCompleto === prof;
+            return nombre === filtroProfesional.value;
         });
     }
 
-    cargarHistorial(filtrado);
+    cargarHistorial(listaFiltrada);
 }
 
-
-// MODAL
-
+/* MODAL*/
 function abrirModal(t) {
-    const fecha = new Date(t.fecha_hora);
+    const { fecha, hora } = formatFechaHora(t.fecha_hora);
 
-    // CLIENTE
-    document.getElementById("detalleCliente").innerText =
+    document.getElementById("detalleCliente").textContent =
         `${t.usuario_apellido}, ${t.usuario_nombre}`;
-
-    document.getElementById("detalleDniCliente").innerText =
+    document.getElementById("detalleDniCliente").textContent =
         t.usuario_dni ?? "—";
 
-    // FECHA / HORA
-    document.getElementById("detalleFecha").innerText =
-        fecha.toLocaleDateString();
+    document.getElementById("detalleFecha").textContent = fecha;
+    document.getElementById("detalleHora").textContent = hora;
 
-    document.getElementById("detalleHora").innerText =
-        fecha.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+    document.getElementById("detalleServicio").textContent =
+        t.nombre_de_servicio;
+    document.getElementById("detalleDuracion").textContent =
+        t.duracion;
+    document.getElementById("detallePrecio").textContent =
+        `$${t.precio}`;
 
-    // SERVICIO
-    document.getElementById("detalleServicio").innerText = t.nombre_de_servicio;
-    document.getElementById("detalleDuracion").innerText = t.duracion;
-    document.getElementById("detallePrecio").innerText = `$${t.precio}`;
-
-
-
-    // PROFESIONAL
-    document.getElementById("detalleProfesional").innerText =
+    document.getElementById("detalleProfesional").textContent =
         t.profesional_nombre
             ? `${t.profesional_apellido}, ${t.profesional_nombre}`
             : "No asignado";
 
-    document.getElementById("detalleDniProfesional").innerText =
+    document.getElementById("detalleDniProfesional").textContent =
         t.profesional_dni ?? "—";
 
-    // ESTADO badge 
-    const estadoElem = document.getElementById("detalleEstado");
-    estadoElem.innerText = formatoEstado(t.estado_turno);
-    estadoElem.className = `badge-modal ${t.estado_turno}`;
+    const estado = document.getElementById("detalleEstado");
+    estado.textContent = formatoEstado(t.estado_turno);
+    estado.className = `badge-modal ${t.estado_turno}`;
 
     modal.classList.add("show");
 }
 
+cerrarBtn.onclick = () => modal.classList.remove("show");
 
-cerrarBtn.addEventListener("click", () => modal.classList.remove("show"));
-
-
-// INICIALIZACIÓN
-
+/* INIT*/
 cargarProfesionales();
-cargarHistorial(MOCK);
+cargarHistorial(historialTurnos);
 
-filtroFecha.addEventListener("change", aplicarFiltros);
-filtroEstado.addEventListener("change", aplicarFiltros);
-filtroProfesional.addEventListener("change", aplicarFiltros);
+[filtroFecha, filtroEstado, filtroProfesional]
+    .forEach(el => el.onchange = aplicarFiltros);

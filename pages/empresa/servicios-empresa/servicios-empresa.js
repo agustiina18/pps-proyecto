@@ -154,7 +154,7 @@ function crearGrupoIntervalo(container, desde = "09:00", hasta = "17:00") {
   inputInt.type = "number";
   inputInt.min = 1;
   inputInt.max = 999;
-  inputInt.placeholder = "15";
+  inputInt.placeholder = "5";
   inputInt.classList.add("input-int");
   
   const lblMax = document.createElement("span");
@@ -164,7 +164,7 @@ function crearGrupoIntervalo(container, desde = "09:00", hasta = "17:00") {
   inputMax.type = "number";
   inputMax.min = 1;
   inputMax.max = 99;
-  inputMax.placeholder = "∞";
+  inputMax.placeholder = "1";
   inputMax.classList.add("input-max");
   
   configIntMax.append(lblInt, inputInt, lblMax, inputMax);
